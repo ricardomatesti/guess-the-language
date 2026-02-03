@@ -14,7 +14,7 @@ export const Progress = ({
   return (
     <div className="flex items-center justify-center gap-0">
       {steps.map((step, index) => {
-        const isPast = index < currentStep;
+        const isPast = index + 1 < currentStep;
 
         return (
           <div key={index} className="flex items-center">
@@ -22,7 +22,7 @@ export const Progress = ({
 
             {index < steps.length - 1 && (
               <div
-                className={`h-[2px] w-4 rounded-full transition-colors duration-500 ${
+                className={`h-[2px] w-4 transition-colors duration-500 ${
                   isPast ? "bg-white/50" : "bg-white/10"
                 }`}
               />

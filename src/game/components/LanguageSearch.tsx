@@ -1,6 +1,10 @@
 import { useState, useEffect, useRef, useContext } from "react";
 import { IoSearch } from "react-icons/io5";
-import { GameContext } from "../contexts/gameContext";
+import { GameContext } from "../contexts/GameContext";
+import { Button } from "./shared/Button";
+import useIsMobile from "../hooks/useIsMobile";
+import { ArrowButton } from "./shared/ArrowButton";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 const languages = [
   "Alemán",
@@ -19,12 +23,13 @@ const languages = [
 type statusType = "correct" | "skipped" | "incorrect" | "current" | "locked";
 
 const LanguageSearch = () => {
+  const { isMobile } = useIsMobile();
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<String[]>([]);
   const [showDropdown, setShowDropdown] = useState(false);
   const containerRef = useRef(null);
 
-  const { setSteps } = useContext(GameContext);
+  const { setSteps, currentStep } = useContext(GameContext);
 
   useEffect(() => {
     if (query.length > 0) {
@@ -39,11 +44,11 @@ const LanguageSearch = () => {
 
   return (
     <div
-      className="flex flex-col items-center w-full max-w-md mx-auto p-4 gap-4"
+      className="flex flex-col items-center w-full max-w-lg gap-4 items-end"
       ref={containerRef}
     >
-      <div className="relative w-full">
-        <div className="relative w-full max-w-md group">
+      <div className="relative w-full flex justify-end">
+        <div className="relative w-full group">
           <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#0391CE]/70 group-focus-within:text-blue-600/100 transition-colors z-10">
             <IoSearch size={20} />
           </span>
@@ -56,9 +61,9 @@ const LanguageSearch = () => {
               if (e.target.value.length > 0) setShowDropdown(true);
             }}
             placeholder="Busca un idioma..."
-            className="w-full pl-12 px-6 py-4 bg-white backdrop-blur-sm border-0 border-[#4BB8EB] rounded-lg font-medium
+            className="w-full pl-12 px-6 py-4 bg-white backdrop-blur-sm border-0 border-[#4BB8EB] rounded-xl font-medium
                 shadow-[inset_0_2px_4px_rgba(0,0,0,0.3),_inset_0_-2px_4px_rgba(255,255,255,0.2),_0_8px_10px_-3px_rgba(86,203,249,0.8)] 
-                focus:outline-none focus:border-blue-400 text-blue-900 placeholder-[#0391CE]/80 transition-all"
+                focus:outline-none focus:border-blue-400 text-black placeholder-[#0391CE]/80 transition-all"
           />
 
           {showDropdown && results.length > 0 && (
@@ -89,61 +94,47 @@ const LanguageSearch = () => {
         </div>
       </div>
       <div className="flex flew-row justify-end items-center w-full gap-2 shrink flex-wrap-reverse">
-        <button
-          className="
-                px-8 py-4 
-                bg-[#EAF6FF]
-                text-[#085878]
-                font-bold 
-                rounded-2xl
-                shadow-[0_4px_0_#0391CE] 
-                active:shadow-none 
-                active:translate-y-[4px]
-                hover:bg-[#cceeff]
-                transition-all
-                tracking-wider
-              "
-          onClick={() => {
-            setSteps((prev) => {
-              const currentIndex = prev.findIndex(
-                (s) => s.status === "current"
-              );
+        <ArrowButton direction="left" size="lg" disabled={true}></ArrowButton>
 
-              return [
-                ...prev.slice(0, currentIndex),
-                ...[
-                  { ...prev[currentIndex], status: "skipped" as statusType },
-                  {
-                    ...prev[currentIndex + 1],
-                    status: "current" as statusType,
-                  },
-                ],
-                ...prev.slice(currentIndex + 2),
-              ];
-            });
-          }}
-        >
-          Saltar
-        </button>
-        <button
-          className="
-                px-8 py-4 
-                bg-[#1FB6FF]
-                text-black
-                font-bold 
-                rounded-2xl
-                shadow-[0_4px_0_#0676a2] 
-                active:shadow-none 
-                active:translate-y-[4px]
-                hover:bg-[#4fc6ff]
-                transition-all
-                uppercase
-                tracking-wider
-                shrink-1
-              "
-        >
-          ¡Comprobar!
-        </button>
+        <ArrowButton direction="right" size="lg"></ArrowButton>
+
+        {currentStep < 5 && (
+          <Button
+            bg="#EAF6FF"
+            shadow="#0391CE"
+            hover="#D9F3FF"
+            textColor="#085878"
+            text="Saltar"
+            tailwindClasses={isMobile ? "flex-1" : ""}
+            onClick={() => {
+              setSteps((prev) => {
+                const currentIndex = prev.findIndex(
+                  (s) => s.status === "current"
+                );
+
+                return [
+                  ...prev.slice(0, currentIndex),
+                  ...[
+                    { ...prev[currentIndex], status: "skipped" as statusType },
+                    {
+                      ...prev[currentIndex + 1],
+                      status: "current" as statusType,
+                    },
+                  ],
+                  ...prev.slice(currentIndex + 2),
+                ];
+              });
+            }}
+          ></Button>
+        )}
+        <Button
+          bg="#1FB6FF"
+          shadow="#0676a2"
+          hover="#4fc6ff"
+          textColor="black"
+          text="¡Comprobar!"
+          tailwindClasses={isMobile ? "flex-1 uppercase" : "uppercase"}
+        ></Button>
       </div>
     </div>
   );

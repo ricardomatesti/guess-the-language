@@ -36,6 +36,19 @@ export function GameContextProvider({
     return steps.find((s) => s.status === "current")?.id || 0;
   }, steps);
 
+  const getLanguageForTheGame = async function () {
+    try {
+      const response = await fetch("../data/data.json");
+      const data = await response.json();
+      const texts = data[0];
+
+      const randomIndex = Math.floor((texts.length - 1) * Math.random());
+      return texts[randomIndex].text;
+    } catch (error) {
+      console.error("Error cargando el JSON:", error);
+    }
+  };
+
   return (
     <GameContext.Provider value={{ currentStep, steps, setSteps }}>
       {children}

@@ -106,7 +106,8 @@ const SoundBars = () => {
 };
 
 const getArray = () => {
-  const NUMBER_OF_ELEMENTS = 60;
+  const { isMobile } = useIsMobile({ maxWidth: 900 });
+  const NUMBER_OF_ELEMENTS = isMobile ? 8 : 38;
   const array = Array(NUMBER_OF_ELEMENTS);
 
   for (let i = 0; i < NUMBER_OF_ELEMENTS; i++) {

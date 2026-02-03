@@ -1,7 +1,7 @@
 import useIsMobile from "../hooks/useIsMobile";
 
 export const Level4 = () => {
-  const { isMobile } = useIsMobile();
+  const { isMobile } = useIsMobile({ maxWidth: 900 });
 
   if (isMobile) {
     return (
