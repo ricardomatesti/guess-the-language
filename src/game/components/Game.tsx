@@ -13,8 +13,8 @@ import { Guesses } from "./Guesses";
 
 export const Game = () => {
   const { isMobile } = useIsMobile({ maxWidth: 900 });
-  const { currentStep, steps } = useContext(GameContext);
-  const stepName = steps[currentStep - 1].name;
+  const { currentShowingStep, steps } = useContext(GameContext);
+  const stepName = steps[currentShowingStep - 1].name;
 
   if (isMobile) {
     return (
@@ -36,15 +36,15 @@ export const Game = () => {
           <div className="flex flex-row items-center justify-between h-fit -mt-4 -mx-4">
             <div className="flex flex-col gap-0">
               <span className="text-md font-normal text-gray-700 -mb-1">
-                Pista {currentStep}
+                Pista {currentShowingStep}
               </span>
               <span className="text-md font-normal text-gray-700 -mt-1">
                 {stepName}
               </span>
             </div>
-            <Progress steps={steps} currentStep={currentStep}></Progress>
+            <Progress steps={steps} currentStep={currentShowingStep}></Progress>
           </div>
-          <CurrentLevel currentStep={currentStep}></CurrentLevel>
+          <CurrentLevel currentStep={currentShowingStep}></CurrentLevel>
           <div className="w-full flex justify-center">
             <LanguageSearch></LanguageSearch>
           </div>
@@ -61,11 +61,11 @@ export const Game = () => {
       >
         <div className="flex flex-row items-center justify-between h-fit -mt-4">
           <span className="text-xl font-normal text-gray-700">
-            Pista {currentStep} - {stepName}
+            Pista {currentShowingStep} - {stepName}
           </span>
-          <Progress steps={steps} currentStep={currentStep}></Progress>
+          <Progress steps={steps} currentStep={currentShowingStep}></Progress>
         </div>
-        <CurrentLevel currentStep={currentStep}></CurrentLevel>
+        <CurrentLevel currentStep={currentShowingStep}></CurrentLevel>
         <div className="w-full flex justify-center">
           <LanguageSearch></LanguageSearch>
         </div>

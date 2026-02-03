@@ -5,6 +5,7 @@ import { Button } from "./shared/Button";
 import useIsMobile from "../hooks/useIsMobile";
 import { ArrowButton } from "./shared/ArrowButton";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { steps } from "motion";
 
 const languages = [
   "Alemán",
@@ -29,7 +30,13 @@ const LanguageSearch = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const containerRef = useRef(null);
 
-  const { setSteps, currentStep } = useContext(GameContext);
+  const {
+    steps,
+    currentShowingStep,
+    currentPlayingStep,
+    skipLevel,
+    moveToLevel,
+  } = useContext(GameContext);
 
   useEffect(() => {
     if (query.length > 0) {
@@ -94,11 +101,26 @@ const LanguageSearch = () => {
         </div>
       </div>
       <div className="flex flew-row justify-end items-center w-full gap-2 shrink flex-wrap-reverse">
-        <ArrowButton direction="left" size="lg" disabled={true}></ArrowButton>
+        <ArrowButton
+          direction="left"
+          size="lg"
+          disabled={currentShowingStep === 1}
+          onClick={() => {
+            if (currentShowingStep !== 1) moveToLevel({ type: "down" });
+          }}
+        ></ArrowButton>
 
-        <ArrowButton direction="right" size="lg"></ArrowButton>
+        <ArrowButton
+          direction="right"
+          size="lg"
+          disabled={steps[currentShowingStep - 1].status === "current"}
+          onClick={() => {
+            const disabled = steps[currentShowingStep - 1].status === "current";
+            if (!disabled) moveToLevel({ type: "up" });
+          }}
+        ></ArrowButton>
 
-        {currentStep < 5 && (
+        {currentPlayingStep < 4 && (
           <Button
             bg="#EAF6FF"
             shadow="#0391CE"
@@ -106,25 +128,7 @@ const LanguageSearch = () => {
             textColor="#085878"
             text="Saltar"
             tailwindClasses={isMobile ? "flex-1" : ""}
-            onClick={() => {
-              setSteps((prev) => {
-                const currentIndex = prev.findIndex(
-                  (s) => s.status === "current"
-                );
-
-                return [
-                  ...prev.slice(0, currentIndex),
-                  ...[
-                    { ...prev[currentIndex], status: "skipped" as statusType },
-                    {
-                      ...prev[currentIndex + 1],
-                      status: "current" as statusType,
-                    },
-                  ],
-                  ...prev.slice(currentIndex + 2),
-                ];
-              });
-            }}
+            onClick={skipLevel}
           ></Button>
         )}
         <Button

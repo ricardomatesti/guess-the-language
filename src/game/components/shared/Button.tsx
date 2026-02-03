@@ -18,13 +18,13 @@ export const Button = ({
   tailwindClasses?: string;
 }) => {
   const baseClasses =
-    "font-bold rounded-2xl active:shadow-none active:translate-y-[4px] transition-all tracking-wider bg-[var(--bg)] text-[var(--text)] shadow-[0_4px_0_var(--shadow)] hover:bg-[var(--hover)]";
+    "font-bold  active:shadow-none active:translate-y-[4px] transition-all tracking-wider bg-[var(--bg)] text-[var(--text)] shadow-[0_4px_0_var(--shadow)] hover:bg-[var(--hover)]";
   const sizeClasses =
     size === "lg"
-      ? "px-8 py-4"
+      ? "px-8 py-4 rounded-2xl"
       : size === "md"
-      ? "px-7 py-3"
-      : "px-6 py-2 text-sm";
+      ? "px-7 py-3 rounded-2xl"
+      : "px-6 py-2 text-sm rounded-xl";
 
   return (
     <button

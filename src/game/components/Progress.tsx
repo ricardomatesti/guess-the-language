@@ -1,20 +1,21 @@
 import { FaCheck, FaCross } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
+import { GameContext, type Step } from "../contexts/GameContext";
+import { useContext } from "react";
 
 export const Progress = ({
   steps,
   currentStep,
 }: {
-  steps: {
-    id: number;
-    status: "correct" | "skipped" | "incorrect" | "current" | "locked";
-  }[];
+  steps: Step[];
   currentStep: number;
 }) => {
+  const { currentPlayingStep } = useContext(GameContext);
+
   return (
     <div className="flex items-center justify-center gap-0">
       {steps.map((step, index) => {
-        const isPast = index + 1 < currentStep;
+        const isPast = index < currentPlayingStep;
 
         return (
           <div key={index} className="flex items-center">

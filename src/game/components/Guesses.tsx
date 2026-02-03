@@ -1,22 +1,27 @@
 import { ImCross } from "react-icons/im";
 import { FaCheck } from "react-icons/fa";
+import { useContext } from "react";
+import { GameContext } from "../contexts/GameContext";
 
 export const Guesses = () => {
+  const { guesses } = useContext(GameContext);
+
+  if (guesses.length === 0) return;
+
   return (
     <div className="flex flex-col gap-2 w-full items-center">
-      <Guess country="Alemán"></Guess>
-      <Guess country="Francés"></Guess>
-      <Guess country="Ruso"></Guess>
-      <Guess country="Inglés" mistake={false}></Guess>
+      {guesses.map((g) => (
+        <Guess language={g.language} mistake={g.mistake}></Guess>
+      ))}
     </div>
   );
 };
 
 const Guess = ({
-  country,
+  language,
   mistake = true,
 }: {
-  country: string;
+  language: string;
   mistake?: boolean;
 }) => {
   if (mistake) {
@@ -29,7 +34,7 @@ const Guess = ({
         />
 
         <p className="text-xl uppercase tracking-widest font-semibold text-red-600">
-          {country}
+          {language}
         </p>
       </div>
     );
@@ -39,7 +44,7 @@ const Guess = ({
     <div className="flex items-center w-full max-w-lg gap-2 p-2 px-4 bg-green-500/40 backdrop-blur-md rounded-2xl border-[1px] border-green-600/50 shadow-[0_0_20px_rgba(50,205,50,0.35)] mt-2">
       <FaCheck size={14} className="text-green-600 mt-[2px]" strokeWidth={3} />
       <p className="text-xl uppercase tracking-widest font-bold text-white">
-        {country}
+        {language}
       </p>
     </div>
   );

@@ -1,22 +1,37 @@
-import { createContext, useMemo, useState } from "react";
+import { createContext, useEffect, useMemo, useState } from "react";
 import type { Dispatch, ReactNode, SetStateAction } from "react";
 
-type Step = {
+export type Step = {
   id: number;
   status: statusType;
   name: string;
 };
 
+export type Guess = {
+  language: string;
+  mistake: boolean;
+};
+
 type statusType = "correct" | "skipped" | "incorrect" | "current" | "locked";
 
 export const GameContext = createContext<{
-  currentStep: number;
+  currentShowingStep: number;
+  currentPlayingStep: number;
   steps: Step[];
+  guesses: Guess[];
   setSteps: Dispatch<SetStateAction<Step[]>>;
+  setGuesses: Dispatch<SetStateAction<Guess[]>>;
+  skipLevel: () => void;
+  moveToLevel: ({ type }: { type: "up" | "down" }) => void;
 }>({
-  currentStep: 0,
+  currentShowingStep: 0,
+  currentPlayingStep: 0,
   steps: [],
+  guesses: [],
+  setGuesses: () => {},
   setSteps: () => {},
+  skipLevel: () => {},
+  moveToLevel: () => {},
 });
 
 export function GameContextProvider({
@@ -31,10 +46,9 @@ export function GameContextProvider({
     { id: 4, status: "locked", name: "Frase" },
     { id: 5, status: "locked", name: "País" },
   ]);
-
-  const currentStep = useMemo(() => {
-    return steps.find((s) => s.status === "current")?.id || 0;
-  }, steps);
+  const [guesses, setGuesses] = useState<Guess[]>([]);
+  const [currentShowingStep, setCurrentShowingStep] = useState(1);
+  const [currentPlayingStep, setCurrentPlayingStep] = useState(0);
 
   const getLanguageForTheGame = async function () {
     try {
@@ -49,9 +63,52 @@ export function GameContextProvider({
     }
   };
 
+  const skipLevel = () => {
+    setSteps((prev) => {
+      return [
+        ...prev.slice(0, currentPlayingStep),
+        ...[
+          { ...prev[currentPlayingStep], status: "skipped" as statusType },
+          {
+            ...prev[currentPlayingStep + 1],
+            status: "current" as statusType,
+          },
+        ],
+        ...prev.slice(currentPlayingStep + 2),
+      ];
+    });
+
+    setCurrentShowingStep(currentPlayingStep + 2);
+    setCurrentPlayingStep((prev) => prev + 1);
+  };
+
+  const moveToLevel = ({ type }: { type: "up" | "down" }) => {
+    if (type === "up") {
+      setCurrentShowingStep((prev) => prev + 1);
+    }
+    if (type === "down") {
+      setCurrentShowingStep((prev) => prev - 1);
+    }
+  };
+
   return (
-    <GameContext.Provider value={{ currentStep, steps, setSteps }}>
+    <GameContext.Provider
+      value={{
+        currentShowingStep,
+        currentPlayingStep,
+        steps,
+        guesses,
+        setGuesses,
+        setSteps,
+        skipLevel,
+        moveToLevel,
+      }}
+    >
       {children}
     </GameContext.Provider>
   );
 }
+
+export const getCurrevntIndexFromArray = (array: Step[]) => {
+  return array.findIndex((s) => s.status === "current");
+};
