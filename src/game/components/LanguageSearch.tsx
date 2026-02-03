@@ -4,8 +4,7 @@ import { GameContext } from "../contexts/GameContext";
 import { Button } from "./shared/Button";
 import useIsMobile from "../hooks/useIsMobile";
 import { ArrowButton } from "./shared/ArrowButton";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import { steps } from "motion";
+import { AnimatePresence, motion } from "motion/react";
 
 const languages = [
   "Alemán",
@@ -21,8 +20,6 @@ const languages = [
   "Ruso",
 ];
 
-type statusType = "correct" | "skipped" | "incorrect" | "current" | "locked";
-
 const LanguageSearch = () => {
   const { isMobile } = useIsMobile();
   const [query, setQuery] = useState("");
@@ -34,8 +31,10 @@ const LanguageSearch = () => {
     steps,
     currentShowingStep,
     currentPlayingStep,
+    formError,
     skipLevel,
     moveToLevel,
+    checkGuess,
   } = useContext(GameContext);
 
   useEffect(() => {
@@ -72,6 +71,7 @@ const LanguageSearch = () => {
                 shadow-[inset_0_2px_4px_rgba(0,0,0,0.3),_inset_0_-2px_4px_rgba(255,255,255,0.2),_0_8px_10px_-3px_rgba(86,203,249,0.8)] 
                 focus:outline-none focus:border-blue-400 text-black placeholder-[#0391CE]/80 transition-all"
           />
+          {formError && <FormPopover text={formError}></FormPopover>}
 
           {showDropdown && results.length > 0 && (
             <ul className="absolute z-10 w-full mt-1 bg-white backdrop-blur-md border border-blue-100 rounded-2xl shadow-xl max-h-49 overflow-y-auto overflow-hidden">
@@ -137,10 +137,52 @@ const LanguageSearch = () => {
           hover="#4fc6ff"
           textColor="black"
           text="¡Comprobar!"
+          onClick={() => checkGuess({ guess: query, setFormText: setQuery })}
           tailwindClasses={isMobile ? "flex-1 uppercase" : "uppercase"}
         ></Button>
       </div>
     </div>
+  );
+};
+
+const FormPopover = ({ text }: { text: string }) => {
+  const { setFormError } = useContext(GameContext);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setFormError(undefined);
+    }, 2000);
+  }, []);
+
+  return (
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0, y: 10, scale: 0.9 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.9 }}
+        className="absolute -top-10 left-38 -translate-x-1/2 z-50 whitespace-nowrap"
+      >
+        <div
+          className=" 
+            relative px-6 py-2 
+            bg-[#f7939b] text-white 
+            font-bold rounded-2xl
+            shadow-[0_4px_0_#b91c1c] 
+            border-0 border-white/20
+        "
+        >
+          {text}
+          <div
+            className="
+                absolute -bottom-2 left-10 -translate-x-1/2 
+                w-4 h-4 bg-[#f7939b] 
+                rotate-45 border-r-0 border-b-0 border-white/10
+                shadow-[3px_3px_0_#b91c1c]
+            "
+          />
+        </div>
+      </motion.div>
+    </AnimatePresence>
   );
 };
 
