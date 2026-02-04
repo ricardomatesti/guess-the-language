@@ -10,8 +10,8 @@ export const Guesses = () => {
 
   return (
     <div className="flex flex-col gap-2 w-full items-center">
-      {guesses.map((g) => (
-        <Guess language={g.language} mistake={g.mistake}></Guess>
+      {guesses.map((g, index) => (
+        <Guess key={index} language={g.language} mistake={g.mistake}></Guess>
       ))}
     </div>
   );

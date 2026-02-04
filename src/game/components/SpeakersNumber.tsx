@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { RiSpeakLine } from "react-icons/ri";
 import { useIsMobile } from "../hooks/useIsMobile";
 
-export const SpeakersNumber = () => {
+export const SpeakersNumber = ({ population }: { population: number }) => {
   const { isMobile } = useIsMobile({ maxWidth: 900 });
 
   const count = useMotionValue(0);
@@ -12,8 +12,8 @@ export const SpeakersNumber = () => {
   );
 
   useEffect(() => {
-    const controls = animate(count, 4000000, {
-      duration: 2.5,
+    const controls = animate(count, population, {
+      duration: 2,
       ease: "circOut",
     });
     return () => controls.stop();

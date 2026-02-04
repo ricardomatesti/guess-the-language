@@ -40,7 +40,7 @@ export const useIsMobile = ({
       // Combine both checks - prioritize media query but consider user agent
       const isMobileDevice =
         mediaQuery.matches || (isMobileUA && window.innerWidth <= maxWidth);
-      console.log("checking", isMobileDevice);
+
       setIsMobile(isMobileDevice);
 
       setIsLoading(false);

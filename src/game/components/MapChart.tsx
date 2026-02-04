@@ -18,8 +18,6 @@ const continentsColors = {
   SA: "white",
 };
 
-const continents = ["AS", "EU"];
-
 type geo = {
   geometry: any;
   id: string;
@@ -28,7 +26,7 @@ type geo = {
   svgPath: string;
   type: string;
 };
-const MapChart = () => {
+const MapChart = ({ continents }: { continents: String[] }) => {
   return (
     <ComposableMap
       projectionConfig={{

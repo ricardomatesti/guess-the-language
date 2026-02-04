@@ -5,20 +5,7 @@ import { Button } from "./shared/Button";
 import useIsMobile from "../hooks/useIsMobile";
 import { ArrowButton } from "./shared/ArrowButton";
 import { AnimatePresence, motion } from "motion/react";
-
-const languages = [
-  "Alemán",
-  "Árabe",
-  "Chino",
-  "Español",
-  "Francés",
-  "Hindi",
-  "Inglés",
-  "Italiano",
-  "Japonés",
-  "Portugués",
-  "Ruso",
-];
+import { languages } from "../languages";
 
 const LanguageSearch = () => {
   const { isMobile } = useIsMobile();

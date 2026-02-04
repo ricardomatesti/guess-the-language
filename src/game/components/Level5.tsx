@@ -1,8 +1,13 @@
 import { LiaQrcodeSolid } from "react-icons/lia";
 import { useIsMobile } from "../hooks/useIsMobile";
+import { useContext } from "react";
+import { GameContext } from "../contexts/GameContext";
 
 export const Level5 = () => {
   const { isMobile } = useIsMobile({ maxWidth: 900 });
+  const { guessingData } = useContext(GameContext);
+  const { countryName, countryIso2Code, countryIso3Code } =
+    guessingData["fifthHint"];
 
   return (
     <div className="flex flex-row justify-center">
@@ -11,15 +16,15 @@ export const Level5 = () => {
           <div className="flex flex-col gap-4">
             {isMobile ? (
               <BoardingPassMobile
-                countryCode="FRN"
-                countryName="Francia"
-                passengerName="Ricardo Sierra"
+                countryCode={countryIso3Code}
+                countryName={countryName}
+                passengerName="Anónimo/a"
               ></BoardingPassMobile>
             ) : (
               <BoardingPass
-                countryCode="FRN"
-                countryName="Francia"
-                passengerName="Ricardo Sierra"
+                countryCode={countryIso3Code}
+                countryName={countryName}
+                passengerName="Anónimo/a"
               ></BoardingPass>
             )}
           </div>
@@ -92,7 +97,7 @@ const BoardingPass = ({
               </span>
             </div>
             <div className="flex flex-row gap-2 -mt-6 items-center ml-2">
-              <span className="text-6xl font-black text-gray-900 ">
+              <span className="text-6xl font-black text-gray-900 uppercase">
                 {countryCode}
               </span>
               <img

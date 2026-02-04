@@ -1,6 +1,6 @@
-import { createContext, useEffect, useMemo, useState } from "react";
+import { createContext, useState } from "react";
 import type { Dispatch, ReactNode, SetStateAction } from "react";
-import { SiD } from "react-icons/si";
+import { languages } from "../languages";
 
 export type Step = {
   id: number;
@@ -14,13 +14,17 @@ export type Guess = {
 };
 
 type statusType = "correct" | "skipped" | "incorrect" | "current" | "locked";
+type GameStatusType = "notStarted" | "loading" | "started" | "won" | "lost";
 
 export const GameContext = createContext<{
+  gameStatus: GameStatusType;
   currentShowingStep: number;
   currentPlayingStep: number;
   steps: Step[];
   guesses: Guess[];
   formError: string | undefined;
+  guessingData: any; // TODO tipar la data
+  startGame: () => void;
   setFormError: Dispatch<SetStateAction<string | undefined>>;
   setSteps: Dispatch<SetStateAction<Step[]>>;
   setGuesses: Dispatch<SetStateAction<Guess[]>>;
@@ -34,11 +38,14 @@ export const GameContext = createContext<{
     setFormText: Dispatch<SetStateAction<string>>;
   }) => void;
 }>({
+  gameStatus: "notStarted",
   currentShowingStep: 0,
   currentPlayingStep: 0,
   steps: [],
   guesses: [],
   formError: "",
+  guessingData: undefined,
+  startGame: () => {},
   setGuesses: () => {},
   setFormError: () => {},
   setSteps: () => {},
@@ -59,25 +66,57 @@ export function GameContextProvider({
     { id: 4, status: "locked", name: "Frase" },
     { id: 5, status: "locked", name: "País" },
   ]);
+  const [gameStatus, setGameStatus] = useState<GameStatusType>("notStarted");
   const [guesses, setGuesses] = useState<Guess[]>([]);
   const [formError, setFormError] = useState<string | undefined>(undefined);
   const [currentShowingStep, setCurrentShowingStep] = useState(1);
   const [currentPlayingStep, setCurrentPlayingStep] = useState(0);
 
+  const [guessingData, setGuessingData] = useState<any>(undefined);
+
   const getLanguageForTheGame = async function () {
     try {
-      const response = await fetch("../data/data.json");
+      const response = await fetch("/data/data.json");
       const data = await response.json();
-      const texts = data[0];
+      const languages = data["languages"];
 
-      const randomIndex = Math.floor((texts.length - 1) * Math.random());
-      return texts[randomIndex].text;
+      const randomIndex = Math.floor((languages.length - 1) * Math.random());
+      await setGuessingData(languages[randomIndex]);
+      return;
     } catch (error) {
       console.error("Error cargando el JSON:", error);
     }
   };
 
-  const checkEndGame = () => {};
+  const startGame = async () => {
+    // Ponemos los valores por defecto
+    setSteps([
+      { id: 1, status: "current", name: "Nº nativos" },
+      { id: 2, status: "locked", name: "Palabra" },
+      { id: 3, status: "locked", name: "Audio" },
+      { id: 4, status: "locked", name: "Frase" },
+      { id: 5, status: "locked", name: "País" },
+    ]);
+    setGuesses([]);
+    setCurrentShowingStep(1);
+    setCurrentPlayingStep(0);
+
+    await getLanguageForTheGame();
+    setGameStatus("started");
+  };
+
+  const checkEndGame = (guess: string) => {
+    if (guess.toLowerCase() === guessingData["name"].toLowerCase()) {
+      setGameStatus("won");
+      return true;
+    }
+
+    if (currentPlayingStep === 4) {
+      setGameStatus("lost");
+      return true;
+    }
+    return false;
+  };
 
   const checkGuess = ({
     guess,
@@ -90,31 +129,39 @@ export function GameContextProvider({
 
     if (trimmedGuess === "") return;
 
-    if (!isInLanguageList(trimmedGuess) && false) {
+    if (!isInLanguageList(trimmedGuess)) {
       setFormError("Selecciona un idioma de la lista");
+      return;
     }
 
-    if (true) {
-      checkEndGame();
+    const gameEnded = checkEndGame(guess);
 
-      setSteps((prev) => {
-        return [
-          ...prev.slice(0, currentPlayingStep),
-          ...[
-            { ...prev[currentPlayingStep], status: "incorrect" as statusType },
-            {
-              ...prev[currentPlayingStep + 1],
-              status: "current" as statusType,
-            },
-          ],
-          ...prev.slice(currentPlayingStep + 2),
-        ];
-      });
-      setFormText("");
+    if (gameEnded) return;
 
-      setCurrentShowingStep(currentPlayingStep + 2);
-      setCurrentPlayingStep((prev) => prev + 1);
-    }
+    setSteps((prev) => {
+      return [
+        ...prev.slice(0, currentPlayingStep),
+        ...[
+          { ...prev[currentPlayingStep], status: "incorrect" as statusType },
+          {
+            ...prev[currentPlayingStep + 1],
+            status: "current" as statusType,
+          },
+        ],
+        ...prev.slice(currentPlayingStep + 2),
+      ];
+    });
+    setGuesses((prev) => [
+      ...prev,
+      {
+        language: guess,
+        mistake: true,
+      },
+    ]);
+    setFormText("");
+
+    setCurrentShowingStep(currentPlayingStep + 2);
+    setCurrentPlayingStep((prev) => prev + 1);
   };
 
   const skipLevel = () => {
@@ -148,11 +195,14 @@ export function GameContextProvider({
   return (
     <GameContext.Provider
       value={{
+        gameStatus,
         currentShowingStep,
         currentPlayingStep,
         steps,
         guesses,
         formError,
+        guessingData,
+        startGame,
         setGuesses,
         setFormError,
         setSteps,
@@ -167,7 +217,7 @@ export function GameContextProvider({
 }
 
 const isInLanguageList = (language: string) => {
-  const languageList = [""];
+  const languageList = languages;
 
   return languageList.includes(language);
 };
