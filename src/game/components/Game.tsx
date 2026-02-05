@@ -143,11 +143,8 @@ export const GameStarted = () => {
       >
         <div className="flex flex-row items-center justify-between h-fit -mt-4 -mx-4">
           <div className="flex flex-col gap-0">
-            <span className="text-md font-normal text-gray-700 -mb-1">
-              Pista {currentShowingStep}
-            </span>
-            <span className="text-md font-normal text-gray-700 -mt-1">
-              {stepName}
+            <span className="text-md font-normal text-gray-700 mb-0">
+              Pista {currentShowingStep} - {stepName}
             </span>
           </div>
           <Progress steps={steps}></Progress>
