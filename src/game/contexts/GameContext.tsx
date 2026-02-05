@@ -1,6 +1,7 @@
 import { createContext, useState } from "react";
 import type { Dispatch, ReactNode, SetStateAction } from "react";
 import { languages } from "../languages";
+import useIsMobile from "../hooks/useIsMobile";
 
 export type Step = {
   id: number;
@@ -27,6 +28,7 @@ export const GameContext = createContext<{
   streak: number;
   record: number;
   tries: number;
+  isMobile: boolean;
   startGame: () => void;
   setFormError: Dispatch<SetStateAction<string | undefined>>;
   setSteps: Dispatch<SetStateAction<Step[]>>;
@@ -51,6 +53,7 @@ export const GameContext = createContext<{
   streak: 0,
   record: 0,
   tries: 0,
+  isMobile: false,
   startGame: () => {},
   setGuesses: () => {},
   setFormError: () => {},
@@ -65,6 +68,7 @@ export function GameContextProvider({
 }: {
   children: ReactNode | ReactNode[];
 }) {
+  const { isMobile } = useIsMobile({ maxWidth: 900 });
   const [steps, setSteps] = useState<Step[]>([
     { id: 1, status: "current", name: "Nº nativos" },
     { id: 2, status: "locked", name: "Palabra" },
@@ -243,6 +247,7 @@ export function GameContextProvider({
         record: stats.record,
         streak: stats.streak,
         tries,
+        isMobile,
         startGame,
         setGuesses,
         setFormError,

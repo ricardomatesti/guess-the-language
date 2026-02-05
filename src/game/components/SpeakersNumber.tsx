@@ -1,10 +1,10 @@
 import { animate, motion, useMotionValue, useTransform } from "motion/react";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { RiSpeakLine } from "react-icons/ri";
-import { useIsMobile } from "../hooks/useIsMobile";
+import { GameContext } from "../contexts/GameContext";
 
 export const SpeakersNumber = ({ population }: { population: number }) => {
-  const { isMobile } = useIsMobile({ maxWidth: 900 });
+  const { isMobile } = useContext(GameContext);
 
   const count = useMotionValue(0);
   const rounded = useTransform(() =>
