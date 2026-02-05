@@ -1,11 +1,10 @@
-import "./App.css";
 import { GameContextProvider } from "./game/contexts/GameContext";
 import { Game } from "./game/components/Game";
 
 function App() {
   return (
     <>
-      <div className="bg-[#B2E6FF] w-full h-full bg-cover bg-center relative patron">
+      <div className="bg-[#B2E6FF] w-screen min-h-dvh h-fit bg-cover bg-center relative flex flex-col patron">
         <div
           className="w-full h-full absolute z-0 hidden"
           style={{
