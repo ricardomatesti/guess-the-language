@@ -2,13 +2,12 @@ import { useState, useEffect, useRef, useContext } from "react";
 import { IoSearch } from "react-icons/io5";
 import { GameContext } from "../contexts/GameContext";
 import { Button } from "./shared/Button";
-import useIsMobile from "../hooks/useIsMobile";
 import { ArrowButton } from "./shared/ArrowButton";
 import { AnimatePresence, motion } from "motion/react";
 import { languages } from "../languages";
 
 const LanguageSearch = () => {
-  const { isMobile } = useIsMobile();
+  const { isMobile } = useContext(GameContext);
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<String[]>([]);
   const [showDropdown, setShowDropdown] = useState(false);

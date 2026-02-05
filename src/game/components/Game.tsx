@@ -7,7 +7,6 @@ import { Level3 } from "./Level3";
 import { Level4 } from "./Level4";
 import { Level5 } from "./Level5";
 import { Progress } from "./Progress";
-import useIsMobile from "../hooks/useIsMobile";
 import { Button } from "./shared/Button";
 import { Guesses } from "./Guesses";
 import { GameOver } from "./GameOver";
@@ -131,8 +130,7 @@ export const GameNotStarted = () => {
 };
 
 export const GameStarted = () => {
-  const { isMobile } = useIsMobile({ maxWidth: 900 });
-  const { currentShowingStep, steps } = useContext(GameContext);
+  const { currentShowingStep, steps, isMobile } = useContext(GameContext);
   const stepName = steps[currentShowingStep - 1].name;
 
   if (isMobile) {

@@ -1,12 +1,11 @@
 import MapChart from "./MapChart";
 import { SpeakersNumber } from "./SpeakersNumber";
-import { useIsMobile } from "../hooks/useIsMobile";
+
 import { useContext } from "react";
 import { GameContext } from "../contexts/GameContext";
 
 export const Level1 = () => {
-  const { isMobile } = useIsMobile({ maxWidth: 900 });
-  const { guessingData } = useContext(GameContext);
+  const { guessingData, isMobile } = useContext(GameContext);
   const { continents, population } = guessingData["firstHint"];
 
   const HEADER_TEXT =

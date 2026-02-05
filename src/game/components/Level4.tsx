@@ -1,10 +1,8 @@
 import { useContext } from "react";
-import useIsMobile from "../hooks/useIsMobile";
 import { GameContext } from "../contexts/GameContext";
 
 export const Level4 = () => {
-  const { isMobile } = useIsMobile({ maxWidth: 900 });
-  const { guessingData } = useContext(GameContext);
+  const { guessingData, isMobile } = useContext(GameContext);
   const { sentence, translation } = guessingData["fourthHint"];
 
   if (isMobile) {

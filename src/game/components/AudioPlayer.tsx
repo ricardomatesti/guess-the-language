@@ -2,7 +2,8 @@ import { motion } from "framer-motion";
 import { FaPlay } from "react-icons/fa";
 import { FaVolumeUp } from "react-icons/fa";
 import { useSpeech } from "../hooks/useSpeech";
-import { useIsMobile } from "../hooks/useIsMobile";
+import { useContext } from "react";
+import { GameContext } from "../contexts/GameContext";
 
 export const AudioPlayer = ({
   textToSpeak,
@@ -11,7 +12,7 @@ export const AudioPlayer = ({
   textToSpeak: string;
   countryName: string;
 }) => {
-  const { isMobile } = useIsMobile({ maxWidth: 900 });
+  const { isMobile } = useContext(GameContext);
   const { play, isPlaying } = useSpeech({
     text: textToSpeak,
     lang: countryName,
@@ -106,7 +107,7 @@ const SoundBars = () => {
 };
 
 const getArray = () => {
-  const { isMobile } = useIsMobile({ maxWidth: 900 });
+  const { isMobile } = useContext(GameContext);
   const NUMBER_OF_ELEMENTS = isMobile ? 36 : 60;
   const array = Array(NUMBER_OF_ELEMENTS);
 

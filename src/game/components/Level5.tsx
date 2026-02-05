@@ -1,11 +1,9 @@
 import { LiaQrcodeSolid } from "react-icons/lia";
-import { useIsMobile } from "../hooks/useIsMobile";
 import { useContext } from "react";
 import { GameContext } from "../contexts/GameContext";
 
 export const Level5 = () => {
-  const { isMobile } = useIsMobile({ maxWidth: 900 });
-  const { guessingData } = useContext(GameContext);
+  const { guessingData, isMobile } = useContext(GameContext);
   const { countryName, countryIso2Code, countryIso3Code } =
     guessingData["fifthHint"];
 

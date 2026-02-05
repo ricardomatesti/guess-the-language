@@ -1,11 +1,9 @@
 import { AudioPlayer } from "./AudioPlayer";
-import useIsMobile from "../hooks/useIsMobile";
 import { useContext } from "react";
 import { GameContext } from "../contexts/GameContext";
 
 export const Level3 = () => {
-  const { isMobile } = useIsMobile({ maxWidth: 900 });
-  const { guessingData } = useContext(GameContext);
+  const { guessingData, isMobile } = useContext(GameContext);
   const { audioText, languageCode } = guessingData["thirdHint"];
 
   if (isMobile) {
