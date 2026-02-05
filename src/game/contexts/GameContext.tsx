@@ -1,6 +1,7 @@
 import { createContext, useState } from "react";
 import type { Dispatch, ReactNode, SetStateAction } from "react";
 import { languages } from "../languages";
+import { number } from "motion";
 
 export type Step = {
   id: number;
@@ -24,6 +25,9 @@ export const GameContext = createContext<{
   guesses: Guess[];
   formError: string | undefined;
   guessingData: any; // TODO tipar la data
+  streak: number;
+  record: number;
+  tries: number;
   startGame: () => void;
   setFormError: Dispatch<SetStateAction<string | undefined>>;
   setSteps: Dispatch<SetStateAction<Step[]>>;
@@ -45,6 +49,9 @@ export const GameContext = createContext<{
   guesses: [],
   formError: "",
   guessingData: undefined,
+  streak: 0,
+  record: 0,
+  tries: 0,
   startGame: () => {},
   setGuesses: () => {},
   setFormError: () => {},
@@ -66,11 +73,20 @@ export function GameContextProvider({
     { id: 4, status: "locked", name: "Frase" },
     { id: 5, status: "locked", name: "País" },
   ]);
+  const [stats, setStats] = useState(() => {
+    const savedStreak = localStorage.getItem("game_current_streak");
+    const savedRecord = localStorage.getItem("game_max_record");
+    return {
+      streak: savedStreak ? parseInt(savedStreak, 10) : 0,
+      record: savedRecord ? parseInt(savedRecord, 10) : 0,
+    };
+  });
   const [gameStatus, setGameStatus] = useState<GameStatusType>("notStarted");
   const [guesses, setGuesses] = useState<Guess[]>([]);
   const [formError, setFormError] = useState<string | undefined>(undefined);
   const [currentShowingStep, setCurrentShowingStep] = useState(1);
   const [currentPlayingStep, setCurrentPlayingStep] = useState(0);
+  const [tries, setTries] = useState(0);
 
   const [guessingData, setGuessingData] = useState<any>(undefined);
 
@@ -100,6 +116,7 @@ export function GameContextProvider({
     setGuesses([]);
     setCurrentShowingStep(1);
     setCurrentPlayingStep(0);
+    setTries(0);
 
     await getLanguageForTheGame();
     setGameStatus("started");
@@ -108,14 +125,35 @@ export function GameContextProvider({
   const checkEndGame = (guess: string) => {
     if (guess.toLowerCase() === guessingData["name"].toLowerCase()) {
       setGameStatus("won");
+      registerWinLocalStorage();
       return true;
     }
 
     if (currentPlayingStep === 4) {
       setGameStatus("lost");
+      registerLossLocalStorage();
       return true;
     }
     return false;
+  };
+
+  const registerWinLocalStorage = () => {
+    setStats((prev) => {
+      const nextStreak = prev.streak + 1;
+      const nextRecord = Math.max(nextStreak, prev.record);
+
+      localStorage.setItem("game_current_streak", nextStreak.toString());
+      localStorage.setItem("game_max_record", nextRecord.toString());
+
+      return { streak: nextStreak, record: nextRecord };
+    });
+  };
+
+  const registerLossLocalStorage = () => {
+    setStats((prev) => {
+      localStorage.setItem("game_current_streak", "0");
+      return { ...prev, streak: 0 };
+    });
   };
 
   const checkGuess = ({
@@ -134,6 +172,7 @@ export function GameContextProvider({
       return;
     }
 
+    setTries((prev) => prev + 1);
     const gameEnded = checkEndGame(guess);
 
     if (gameEnded) return;
@@ -202,6 +241,9 @@ export function GameContextProvider({
         guesses,
         formError,
         guessingData,
+        record: stats.record,
+        streak: stats.streak,
+        tries,
         startGame,
         setGuesses,
         setFormError,
@@ -220,4 +262,24 @@ const isInLanguageList = (language: string) => {
   const languageList = languages;
 
   return languageList.includes(language);
+};
+
+const StreakManager = {
+  KEY: "game_win_streak",
+
+  get: () => {
+    const streak = localStorage.getItem(StreakManager.KEY);
+    return streak ? parseInt(streak, 10) : 0;
+  },
+
+  increment: () => {
+    const newStreak = StreakManager.get() + 1;
+    localStorage.setItem(StreakManager.KEY, newStreak.toString());
+    return newStreak;
+  },
+
+  reset: () => {
+    localStorage.setItem(StreakManager.KEY, "0");
+    return 0;
+  },
 };

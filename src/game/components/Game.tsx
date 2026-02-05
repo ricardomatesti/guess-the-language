@@ -17,9 +17,9 @@ const GameLayout = ({ children }: { children: ReactNode | ReactNode[] }) => {
     <div className="absolute z-1 w-full h-full flex flex-col justify-start items-center">
       <div className="w-full flex justify-end p-2">
         <Button
-          bg="rgb(247,147,155)"
+          bg="#F7939B"
           shadow="#f45b69"
-          hover="#4fc6ff"
+          hover="#FF808B"
           textColor="#FFFFFF"
           text="Iniciar sesión"
           size="sm"
