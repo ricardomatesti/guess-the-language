@@ -8,16 +8,6 @@ import {
 
 const geoUrl = "/countries_with_continents.json";
 
-const continentsColors = {
-  AF: "4BB8EB",
-  AN: "white",
-  AS: "white",
-  EU: "white",
-  NA: "white",
-  OC: "white",
-  SA: "white",
-};
-
 type geo = {
   geometry: any;
   id: string;

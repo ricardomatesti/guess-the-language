@@ -68,7 +68,6 @@ export const Game = () => {
 };
 
 export const GameNotStarted = () => {
-  const { isMobile } = useIsMobile({ maxWidth: 900 });
   const { startGame } = useContext(GameContext);
 
   return (
@@ -151,7 +150,7 @@ export const GameStarted = () => {
               {stepName}
             </span>
           </div>
-          <Progress steps={steps} currentStep={currentShowingStep}></Progress>
+          <Progress steps={steps}></Progress>
         </div>
         <CurrentLevel currentStep={currentShowingStep}></CurrentLevel>
         <div className="w-full flex justify-center">
@@ -171,7 +170,7 @@ export const GameStarted = () => {
         <span className="text-xl font-normal text-gray-700">
           Pista {currentShowingStep} - {stepName}
         </span>
-        <Progress steps={steps} currentStep={currentShowingStep}></Progress>
+        <Progress steps={steps}></Progress>
       </div>
       <CurrentLevel currentStep={currentShowingStep}></CurrentLevel>
       <div className="w-full flex justify-center">

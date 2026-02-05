@@ -1,15 +1,9 @@
-import { FaCheck, FaCross } from "react-icons/fa";
+import { FaCheck } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 import { GameContext, type Step } from "../contexts/GameContext";
 import { useContext } from "react";
 
-export const Progress = ({
-  steps,
-  currentStep,
-}: {
-  steps: Step[];
-  currentStep: number;
-}) => {
+export const Progress = ({ steps }: { steps: Step[] }) => {
   const { currentPlayingStep } = useContext(GameContext);
 
   return (
