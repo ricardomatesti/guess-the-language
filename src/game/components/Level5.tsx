@@ -17,12 +17,14 @@ export const Level5 = () => {
             {isMobile ? (
               <BoardingPassMobile
                 countryCode={countryIso3Code}
+                shortCountryCode={countryIso2Code}
                 countryName={countryName}
                 passengerName="Anónimo/a"
               ></BoardingPassMobile>
             ) : (
               <BoardingPass
                 countryCode={countryIso3Code}
+                shortCountryCode={countryIso2Code}
                 countryName={countryName}
                 passengerName="Anónimo/a"
               ></BoardingPass>
@@ -37,9 +39,11 @@ export const Level5 = () => {
 const BoardingPass = ({
   countryCode,
   countryName,
+  shortCountryCode,
   passengerName,
 }: {
   countryCode: string;
+  shortCountryCode: string;
   countryName: string;
   passengerName: string;
 }) => {
@@ -92,7 +96,7 @@ const BoardingPass = ({
           </div>
           <div className="w-full flex flex-col grow justify-between px-6 gap-2 ">
             <div>
-              <span className="text-xl font-medium uppercase text-gray-700 line-clamp-1 mt-4">
+              <span className="text-md tracking-widest font-bold uppercase text-gray-400 line-clamp-1 mt-2">
                 PAÍS CON MÁS HABLANTES DEL IDIOMA:
               </span>
             </div>
@@ -105,7 +109,7 @@ const BoardingPass = ({
                 width={70}
                 src="/flight-icon-black.png"
               ></img>
-              <span className="text-6xl font-black text-gray-900">
+              <span className="text-6xl font-black text-gray-900 uppercase">
                 {countryName}
               </span>
             </div>
@@ -140,19 +144,19 @@ const BoardingPass = ({
         className="bg-white rounded-r-2xl flex flex-col items-center"
       >
         <div className="w-full h-10 bg-[#F45B69] flex flex-row gap-2 items-center px-4">
-          <span className="text-2xl font-semibold text-white line-clamp-1">
-            FRANCIA
+          <span className="text-2xl font-semibold text-white line-clamp-1 uppercase">
+            {countryName}
           </span>
           <img className="-mb-1" width={30} src="/flight-icon.png"></img>
-          <span className="text-2xl font-semibold text-white line-clamp-1">
-            FRN
+          <span className="text-2xl font-semibold text-white line-clamp-1 uppercase">
+            {countryCode}
           </span>
         </div>
         <div className="w-full flex flex-col px-6 gap-2">
           <div className="flex justify-between items-center">
             <img
               className="h-[55px] max-w-[100px] aspect-[6/1] rounded-md"
-              src="https://flagcdn.com/w640/fr.png"
+              src={`https://flagcdn.com/w640/${shortCountryCode}.png`}
             ></img>
 
             <LiaQrcodeSolid size={80} />
@@ -212,10 +216,12 @@ const LabelAndText = ({
 
 const BoardingPassMobile = ({
   countryCode,
+  shortCountryCode,
   countryName,
   passengerName,
 }: {
   countryCode: string;
+  shortCountryCode: string;
   countryName: string;
   passengerName: string;
 }) => {
@@ -268,7 +274,7 @@ const BoardingPassMobile = ({
               <div>
                 <img
                   className="h-[60px] w-auto rounded-md aspect-[7/4]"
-                  src="https://flagcdn.com/w640/fr.png"
+                  src={`https://flagcdn.com/w640/${shortCountryCode}.png`}
                   alt="flag"
                 />
               </div>

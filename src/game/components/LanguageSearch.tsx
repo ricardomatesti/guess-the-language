@@ -25,15 +25,24 @@ const LanguageSearch = () => {
   } = useContext(GameContext);
 
   useEffect(() => {
+    const normalizeText = (text: string) =>
+      text
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+
     if (query.length > 0) {
-      const filtered = languages.filter((lang) =>
-        lang.toLowerCase().includes(query.toLowerCase())
-      );
+      const normalizedQuery = normalizeText(query);
+
+      const filtered = languages.filter((lang) => {
+        const normalizedLang = normalizeText(lang);
+        return normalizedLang.includes(normalizedQuery);
+      });
       setResults(filtered);
     } else {
       setResults([]);
     }
-  }, [query]);
+  }, [query, languages]);
 
   return (
     <div

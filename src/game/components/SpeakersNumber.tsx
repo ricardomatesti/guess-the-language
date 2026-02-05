@@ -13,7 +13,7 @@ export const SpeakersNumber = ({ population }: { population: number }) => {
 
   useEffect(() => {
     const controls = animate(count, population, {
-      duration: 2,
+      duration: 1.5,
       ease: "circOut",
     });
     return () => controls.stop();

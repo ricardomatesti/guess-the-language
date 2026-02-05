@@ -165,7 +165,7 @@ export const GameStarted = () => {
   return (
     <div
       id="ContenedorDePista"
-      className="mt-20 backdrop-blur-[1px] w-200 h-fit p-10 bg-[#56CBF9]/40 shadow-lg rounded-2xl flex flex-col gap-6 relative"
+      className="mt-20 backdrop-blur-[1px] w-220 h-fit p-10 bg-[#56CBF9]/40 shadow-lg rounded-2xl flex flex-col gap-6 relative"
     >
       <div className="flex flex-row items-center justify-between h-fit -mt-4">
         <span className="text-xl font-normal text-gray-700">

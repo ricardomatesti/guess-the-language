@@ -87,9 +87,9 @@ export const AudioPlayer = ({
 const SoundBars = () => {
   return (
     <div className="flex items-center gap-[3px] h-8">
-      {getArray().map((i) => (
+      {getArray().map((i, index) => (
         <motion.div
-          key={i}
+          key={index}
           className="w-[3px] bg-white rounded-full"
           animate={{
             height: ["20%", "100%", "20%"],
@@ -107,7 +107,7 @@ const SoundBars = () => {
 
 const getArray = () => {
   const { isMobile } = useIsMobile({ maxWidth: 900 });
-  const NUMBER_OF_ELEMENTS = isMobile ? 8 : 38;
+  const NUMBER_OF_ELEMENTS = isMobile ? 36 : 60;
   const array = Array(NUMBER_OF_ELEMENTS);
 
   for (let i = 0; i < NUMBER_OF_ELEMENTS; i++) {

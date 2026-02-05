@@ -1,127 +1,6 @@
 {
   "languages": [
     {
-      "name": "Español",
-      "firstHint": {
-        "continents": ["EU", "SA", "NA"],
-        "population": 485000000
-      },
-      "secondHint": {
-        "word": "Biblioteca",
-        "fonetic": "bi.βljo.ˈte.ka",
-        "category": "Lugar",
-        "family": "Indoeuropea (Romance)"
-      },
-      "thirdHint": {
-        "audioText": "Me gustaría viajar por todo el mundo para conocer nuevas culturas.",
-        "languageCode": "es-ES"
-      },
-      "fourthHint": {
-        "sentence": "El sol brilla con mucha fuerza en el verano.",
-        "translation": "The sun shines very brightly in the summer."
-      },
-      "fifthHint": {
-        "countryName": "España",
-        "countryIso2Code": "es",
-        "countryIso3Code": "esp"
-      }
-    },
-    {
-      "name": "Francés",
-      "firstHint": { "continents": ["EU", "AF"], "population": 80000000 },
-      "secondHint": {
-        "word": "Boulangerie",
-        "fonetic": "bu.lɑ̃.ʒə.ʁi",
-        "category": "Comercio",
-        "family": "Indoeuropea (Romance)"
-      },
-      "thirdHint": {
-        "audioText": "Voulez-vous un café avec votre croissant ce matin?",
-        "languageCode": "fr-FR"
-      },
-      "fourthHint": {
-        "sentence": "La tour Eiffel es magnifique la nuit.",
-        "translation": "La Torre Eiffel es magnífica por la noche."
-      },
-      "fifthHint": {
-        "countryName": "Francia",
-        "countryIso2Code": "fr",
-        "countryIso3Code": "fra"
-      }
-    },
-    {
-      "name": "Alemán",
-      "firstHint": { "continents": ["EU"], "population": 95000000 },
-      "secondHint": {
-        "word": "Zeitgeist",
-        "fonetic": "ˈtsaɪt.ɡaɪst",
-        "category": "Concepto",
-        "family": "Indoeuropea (Germánica)"
-      },
-      "thirdHint": {
-        "audioText": "Guten Morgen, wie geht es dir heute?",
-        "languageCode": "de-DE"
-      },
-      "fourthHint": {
-        "sentence": "Der Zug kommt pünktlich am Bahnhof an.",
-        "translation": "El tren llega puntual a la estación."
-      },
-      "fifthHint": {
-        "countryName": "Alemania",
-        "countryIso2Code": "de",
-        "countryIso3Code": "deu"
-      }
-    },
-    {
-      "name": "Italiano",
-      "firstHint": { "continents": ["EU"], "population": 65000000 },
-      "secondHint": {
-        "word": "Pomeriggio",
-        "fonetic": "po.me.ˈrid.dʒo",
-        "category": "Tiempo",
-        "family": "Indoeuropea (Romance)"
-      },
-      "thirdHint": {
-        "audioText": "La pasta al dente è il segreto della cucina italiana.",
-        "languageCode": "it-IT"
-      },
-      "fourthHint": {
-        "sentence": "Mi piace camminare per le strade di Roma.",
-        "translation": "Me gusta caminar por las calles de Roma."
-      },
-      "fifthHint": {
-        "countryName": "Italia",
-        "countryIso2Code": "it",
-        "countryIso3Code": "ita"
-      }
-    },
-    {
-      "name": "Portugués",
-      "firstHint": {
-        "continents": ["SA", "EU", "AF"],
-        "population": 230000000
-      },
-      "secondHint": {
-        "word": "Saudade",
-        "fonetic": "saw.ˈda.dʒi",
-        "category": "Sentimiento",
-        "family": "Indoeuropea (Romance)"
-      },
-      "thirdHint": {
-        "audioText": "O Brasil é o maior país da América do Sul.",
-        "languageCode": "pt-PT"
-      },
-      "fourthHint": {
-        "sentence": "Gosto de ouvir fado numa noite de luar.",
-        "translation": "Me gusta escuchar fado en una noche de luna."
-      },
-      "fifthHint": {
-        "countryName": "Portugal",
-        "countryIso2Code": "pt",
-        "countryIso3Code": "prt"
-      }
-    },
-    {
       "name": "Ruso",
       "firstHint": { "continents": ["EU", "AS"], "population": 150000000 },
       "secondHint": {
@@ -131,11 +10,11 @@
         "family": "Indoeuropea (Eslava)"
       },
       "thirdHint": {
-        "audioText": "Добро пожаловать в нашу прекрасную столицу.",
+        "audioText": "Dobro pozhalovat' v nashu prekrasnuyu stolitsu.",
         "languageCode": "ru-RU"
       },
       "fourthHint": {
-        "sentence": "На улице сегодня очень холодно и идет снег.",
+        "sentence": "Na ulitse segodnya ochen' kholodno i idet sneg.",
         "translation": "Hace mucho frío hoy en la calle y está nevando."
       },
       "fifthHint": {
@@ -154,11 +33,11 @@
         "family": "Japónica"
       },
       "thirdHint": {
-        "audioText": "富士山は日本で最も高い山です。",
+        "audioText": "Fujisan wa Nihon de mottomo takai yama desu.",
         "languageCode": "ja-JP"
       },
       "fourthHint": {
-        "sentence": "美味しい寿司を食べに行きましょう。",
+        "sentence": "Oishii sushi o tabe ni ikimashou.",
         "translation": "Vamos a comer un sushi delicioso."
       },
       "fifthHint": {
@@ -177,12 +56,12 @@
         "family": "Sino-tibetana"
       },
       "thirdHint": {
-        "audioText": "你喜欢喝绿茶还是红茶？",
+        "audioText": "Ni xihuan he lücha haishi hongcha?",
         "languageCode": "zh-CN"
       },
       "fourthHint": {
-        "sentence": "长城是中国最著名的名胜之一。",
-        "translation": "La Gran Muralla es una de las atracciones más famosas de China."
+        "sentence": "Changcheng shi zhege diqu zui zhuming de mingsheng zhi yi.",
+        "translation": "La Gran Muralla es una de las atracciones más famosas de esta región."
       },
       "fifthHint": {
         "countryName": "China",
@@ -200,12 +79,12 @@
         "family": "Coreánica"
       },
       "thirdHint": {
-        "audioText": "한국 요리는 맵지만 정말 맛있습니다.",
+        "audioText": "Hanguk yorineun maepjiman jeongmal masitseumnida.",
         "languageCode": "ko-KR"
       },
       "fourthHint": {
-        "sentence": "서울의 야경은 정말 아름답습니다.",
-        "translation": "La vista nocturna de Seúl es realmente hermosa."
+        "sentence": "Seoul-ui yagyeong-eun jeongmal areumdaun gyeongchiimnida.",
+        "translation": "La vista nocturna de la capital es realmente hermosa."
       },
       "fifthHint": {
         "countryName": "Corea del Sur",
@@ -223,11 +102,11 @@
         "family": "Afroasiática (Semítica)"
       },
       "thirdHint": {
-        "audioText": "أهلاً بك في دبي، مدينة المستقبل.",
+        "audioText": "Ahlan bika fi Dubai, madinat al-mustaqbal.",
         "languageCode": "ar-SA"
       },
       "fourthHint": {
-        "sentence": "السفر يفتح آفاقاً جديدة للإنسان.",
+        "sentence": "Al-safar yaftahu afaqan jadidatan lil-insan.",
         "translation": "Viajar abre nuevos horizontes para el ser humano."
       },
       "fifthHint": {
@@ -246,11 +125,11 @@
         "family": "Indoeuropea (Indoirania)"
       },
       "thirdHint": {
-        "audioText": "भारत एक बहुत ही विविध और सुंदर देश है।",
+        "audioText": "Bharat ek bahut hi vividh aur sundar desh hai.",
         "languageCode": "hi-IN"
       },
       "fourthHint": {
-        "sentence": "क्या आप मेरे साथ ताज महल देखने चलेंगे?",
+        "sentence": "Kya aap mere saath Taj Mahal dekhne chalenge?",
         "translation": "¿Vendrás conmigo a ver el Taj Mahal?"
       },
       "fifthHint": {
@@ -269,86 +148,17 @@
         "family": "Túrquica"
       },
       "thirdHint": {
-        "audioText": "İstanbul iki kıtayı birbirine bağlayan bir şehirdir.",
+        "audioText": "Istanbul iki kitayi birbirine baglayan bir sehirdir.",
         "languageCode": "tr-TR"
       },
       "fourthHint": {
-        "sentence": "Türk çayı kahvaltıların vazgeçilmezidir.",
-        "translation": "El té turco es indispensable en los desayunos."
+        "sentence": "Bizim cayimiz kahvaltilarin vazgecilmezidir.",
+        "translation": "Nuestro té es indispensable en los desayunos."
       },
       "fifthHint": {
         "countryName": "Turquía",
         "countryIso2Code": "tr",
         "countryIso3Code": "tur"
-      }
-    },
-    {
-      "name": "Neerlandés",
-      "firstHint": { "continents": ["EU"], "population": 24000000 },
-      "secondHint": {
-        "word": "Gezellig",
-        "fonetic": "ɣə.ˈzɛ.ləx",
-        "category": "Sentimiento",
-        "family": "Indoeuropea (Germánica)"
-      },
-      "thirdHint": {
-        "audioText": "Nederland staat bekend om zijn tulpen en windmolens.",
-        "languageCode": "nl-NL"
-      },
-      "fourthHint": {
-        "sentence": "Ik ga elke dag met de fiets naar mijn werk.",
-        "translation": "Voy todos los días en bicicleta al trabajo."
-      },
-      "fifthHint": {
-        "countryName": "Países Bajos",
-        "countryIso2Code": "nl",
-        "countryIso3Code": "nld"
-      }
-    },
-    {
-      "name": "Sueco",
-      "firstHint": { "continents": ["EU"], "population": 10000000 },
-      "secondHint": {
-        "word": "Fika",
-        "fonetic": "ˈfiː.ka",
-        "category": "Costumbre",
-        "family": "Indoeuropea (Germánica)"
-      },
-      "thirdHint": {
-        "audioText": "Sverige är ett land med mycket vacker natur.",
-        "languageCode": "sv-SE"
-      },
-      "fourthHint": {
-        "sentence": "Vi dricker kaffe och äter kanelbullar tillsammans.",
-        "translation": "Tomamos café y comemos bollos de canela juntos."
-      },
-      "fifthHint": {
-        "countryName": "Suecia",
-        "countryIso2Code": "se",
-        "countryIso3Code": "swe"
-      }
-    },
-    {
-      "name": "Polaco",
-      "firstHint": { "continents": ["EU"], "population": 40000000 },
-      "secondHint": {
-        "word": "Dziękuję",
-        "fonetic": "d͡ʑɛŋˈku.jɛ",
-        "category": "Cortesía",
-        "family": "Indoeuropea (Eslava)"
-      },
-      "thirdHint": {
-        "audioText": "Kraków to jedno z najstarszych miast w Polsce.",
-        "languageCode": "pl-PL"
-      },
-      "fourthHint": {
-        "sentence": "Bardzo lubię jeść pierogi z kapustą i grzybami.",
-        "translation": "Me gusta mucho comer pierogi con col y setas."
-      },
-      "fifthHint": {
-        "countryName": "Polonia",
-        "countryIso2Code": "pl",
-        "countryIso3Code": "pol"
       }
     },
     {
@@ -361,12 +171,12 @@
         "family": "Indoeuropea (Helénica)"
       },
       "thirdHint": {
-        "audioText": "Η Ελλάδα είναι η κοιτίδα της δημοκρατίας.",
+        "audioText": "I Ellada einai i koitida tis dimokratias.",
         "languageCode": "el-GR"
       },
       "fourthHint": {
-        "sentence": "Το φαγητό στα ελληνικά νησιά είναι φανταστικό.",
-        "translation": "La comida en las islas griegas es fantástica."
+        "sentence": "To fagito sta nisia mas einai fantastiko.",
+        "translation": "La comida en nuestras islas es fantástica."
       },
       "fifthHint": {
         "countryName": "Grecia",
@@ -384,11 +194,11 @@
         "family": "Kra-Dai"
       },
       "thirdHint": {
-        "audioText": "กรุงเทพมหานครเป็นเมืองที่มีชีวิตชีวามาก",
+        "audioText": "Krung Thep Maha Nakhon pen mueang thi mi chiwit chiwa mak.",
         "languageCode": "th-TH"
       },
       "fourthHint": {
-        "sentence": "ฉันชอบกินผัดไทยเผ็ดๆ ที่ร้านอาหารข้างทาง",
+        "sentence": "Chan chop kin Pad Thai phet-phet thi ran ahan khang thang.",
         "translation": "Me gusta comer Pad Thai picante en los puestos callejeros."
       },
       "fifthHint": {
@@ -402,160 +212,22 @@
       "firstHint": { "continents": ["AS"], "population": 76000000 },
       "secondHint": {
         "word": "Phở",
-        "fonetic": "fəː˧˩ الثالث",
+        "fonetic": "fəː˧˩",
         "category": "Comida",
         "family": "Austroasiática"
       },
       "thirdHint": {
-        "audioText": "Chào mừng bạn đến với đất nước Việt Nam của chúng tôi.",
+        "audioText": "Chao mung ban den voi dat nuoc cua chung toi.",
         "languageCode": "vi-VN"
       },
       "fourthHint": {
-        "sentence": "Cà phê sữa đá là thức uống phổ biến ở đây.",
+        "sentence": "Ca phe sua da la thuc uong pho bien o day.",
         "translation": "El café con leche y hielo es una bebida popular aquí."
       },
       "fifthHint": {
         "countryName": "Vietnam",
         "countryIso2Code": "vn",
         "countryIso3Code": "vnm"
-      }
-    },
-    {
-      "name": "Indonesio",
-      "firstHint": { "continents": ["AS", "OC"], "population": 43000000 },
-      "secondHint": {
-        "word": "Selamat",
-        "fonetic": "sə.ˈla.mat",
-        "category": "Cortesía",
-        "family": "Austronesia"
-      },
-      "thirdHint": {
-        "audioText": "Indonesia memiliki lebih dari tujuh belas ribu pulau.",
-        "languageCode": "id-ID"
-      },
-      "fourthHint": {
-        "sentence": "Hutan hujan tropis di Kalimantan sangat luas.",
-        "translation": "La selva tropical en Kalimantan es muy extensa."
-      },
-      "fifthHint": {
-        "countryName": "Indonesia",
-        "countryIso2Code": "id",
-        "countryIso3Code": "idn"
-      }
-    },
-    {
-      "name": "Húngaro",
-      "firstHint": { "continents": ["EU"], "population": 10000000 },
-      "secondHint": {
-        "word": "Köszönöm",
-        "fonetic": "ˈkø.sø.nøm",
-        "category": "Cortesía",
-        "family": "Urálica"
-      },
-      "thirdHint": {
-        "audioText": "Budapest a Duna két partján terül el.",
-        "languageCode": "hu-HU"
-      },
-      "fourthHint": {
-        "sentence": "Szeretem a csípős paprikát a gulyáslevesben.",
-        "translation": "Me gusta el pimentón picante en la sopa goulash."
-      },
-      "fifthHint": {
-        "countryName": "Hungría",
-        "countryIso2Code": "hu",
-        "countryIso3Code": "hun"
-      }
-    },
-    {
-      "name": "Danés",
-      "firstHint": { "continents": ["EU"], "population": 6000000 },
-      "secondHint": {
-        "word": "Hygge",
-        "fonetic": "ˈhyɡə",
-        "category": "Concepto",
-        "family": "Indoeuropea (Germánica)"
-      },
-      "thirdHint": {
-        "audioText": "Det er en dejlig dag i København.",
-        "languageCode": "da-DK"
-      },
-      "fourthHint": {
-        "sentence": "Jeg elsker at cykle til arbejde hver dag.",
-        "translation": "Me encanta ir al trabajo en bicicleta todos los días."
-      },
-      "fifthHint": {
-        "countryName": "Dinamarca",
-        "countryIso2Code": "dk",
-        "countryIso3Code": "dnk"
-      }
-    },
-    {
-      "name": "Finlandés",
-      "firstHint": { "continents": ["EU"], "population": 5500000 },
-      "secondHint": {
-        "word": "Sisu",
-        "fonetic": "ˈsisu",
-        "category": "Sentimiento",
-        "family": "Urálica"
-      },
-      "thirdHint": {
-        "audioText": "Suomi on tuhansien järvien maa.",
-        "languageCode": "fi-FI"
-      },
-      "fourthHint": {
-        "sentence": "Haluaisin mennen saunaan tänä iltana.",
-        "translation": "Me gustaría ir a la sauna esta noche."
-      },
-      "fifthHint": {
-        "countryName": "Finlandia",
-        "countryIso2Code": "fi",
-        "countryIso3Code": "fin"
-      }
-    },
-    {
-      "name": "Noruego",
-      "firstHint": { "continents": ["EU"], "population": 5300000 },
-      "secondHint": {
-        "word": "Fjord",
-        "fonetic": "fjuːr",
-        "category": "Naturaleza",
-        "family": "Indoeuropea (Germánica)"
-      },
-      "thirdHint": {
-        "audioText": "Norge har vakre fjell og fjorder.",
-        "languageCode": "nb-NO"
-      },
-      "fourthHint": {
-        "sentence": "Vil du være med på tur i skogen?",
-        "translation": "¿Quieres venir a dar un paseo por el bosque?"
-      },
-      "fifthHint": {
-        "countryName": "Noruega",
-        "countryIso2Code": "no",
-        "countryIso3Code": "nor"
-      }
-    },
-    {
-      "name": "Rumano",
-      "firstHint": { "continents": ["EU"], "population": 24000000 },
-      "secondHint": {
-        "word": "Zâmbet",
-        "fonetic": "ˈzɨm.bet",
-        "category": "Acción",
-        "family": "Indoeuropea (Romance)"
-      },
-      "thirdHint": {
-        "audioText": "Bună ziua, ce mai faceți astăzi?",
-        "languageCode": "ro-RO"
-      },
-      "fourthHint": {
-        "sentence": "Castelul Bran este celebru în toată lumea.",
-        "translation": "El Castillo de Bran es famoso en todo el mundo."
-      },
-      "fifthHint": {
-        "countryName": "Rumania",
-        "countryIso2Code": "ro",
-        "countryIso3Code": "rou"
       }
     },
     {
@@ -568,40 +240,17 @@
         "family": "Indoeuropea (Eslava)"
       },
       "thirdHint": {
-        "audioText": "Україна — це велика країна в центрі Європи.",
+        "audioText": "Ukrayina — tse velyka krayina v tsentri Yevropy.",
         "languageCode": "uk-UA"
       },
       "fourthHint": {
-        "sentence": "Я люблю читати вірші Тараса Шевченка.",
-        "translation": "Me gusta leer los poemas de Taras Shevchenko."
+        "sentence": "Ya lyublyu chytaty virshi Tarasa Shevchenka.",
+        "translation": "Me gusta leer los poemas del bardo nacional."
       },
       "fifthHint": {
         "countryName": "Ucrania",
         "countryIso2Code": "ua",
         "countryIso3Code": "ukr"
-      }
-    },
-    {
-      "name": "Checo",
-      "firstHint": { "continents": ["EU"], "population": 10500000 },
-      "secondHint": {
-        "word": "Pivo",
-        "fonetic": "ˈpɪvo",
-        "category": "Bebida",
-        "family": "Indoeuropea (Eslava)"
-      },
-      "thirdHint": {
-        "audioText": "Praha je jedno z nejkrásnějších měst na světě.",
-        "languageCode": "cs-CZ"
-      },
-      "fourthHint": {
-        "sentence": "Můžete mi prosím poradit cestu na nádraží?",
-        "translation": "¿Puede indicarme el camino a la estación, por favor?"
-      },
-      "fifthHint": {
-        "countryName": "República Checa",
-        "countryIso2Code": "cz",
-        "countryIso3Code": "cze"
       }
     },
     {
@@ -614,11 +263,11 @@
         "family": "Afroasiática (Semítica)"
       },
       "thirdHint": {
-        "audioText": "העיר ירושלים קדושה לשלוש דתות.",
+        "audioText": "Ha-ir Yerushalayim kedosha le-shalosh datot.",
         "languageCode": "he-IL"
       },
       "fourthHint": {
-        "sentence": "אני אוהב לאכול חומוס עם פיתה טרייה.",
+        "sentence": "Ani ohev le'ekhol khumus im pita triya.",
         "translation": "Me gusta comer hummus con pita fresca."
       },
       "fifthHint": {
@@ -637,86 +286,17 @@
         "family": "Indoeuropea (Indoirania)"
       },
       "thirdHint": {
-        "audioText": "আমার সোনার বাংলা, আমি তোমায় ভালোবাসি।",
+        "audioText": "Amar shonar Bangla, ami tomay bhalobashi.",
         "languageCode": "bn-IN"
       },
       "fourthHint": {
-        "sentence": "বাংলাদেশ একটি সবুজ এবং সুন্দর দেশ।",
-        "translation": "Bangladesh es un país verde y hermoso."
+        "sentence": "Amader desh ekti shobuj ebong shundor jayga.",
+        "translation": "Nuestra tierra es un lugar verde y hermoso."
       },
       "fifthHint": {
         "countryName": "Bangladesh",
         "countryIso2Code": "bd",
         "countryIso3Code": "bgd"
-      }
-    },
-    {
-      "name": "Tagalo",
-      "firstHint": { "continents": ["AS"], "population": 28000000 },
-      "secondHint": {
-        "word": "Mabuhay",
-        "fonetic": "maˈbuːhaj",
-        "category": "Saludo",
-        "family": "Austronesia"
-      },
-      "thirdHint": {
-        "audioText": "Maligayang pagdating sa aming isla.",
-        "languageCode": "fil-PH"
-      },
-      "fourthHint": {
-        "sentence": "Masarap ang mangga mula sa Pilipinas.",
-        "translation": "El mango de Filipinas es delicioso."
-      },
-      "fifthHint": {
-        "countryName": "Filipinas",
-        "countryIso2Code": "ph",
-        "countryIso3Code": "phl"
-      }
-    },
-    {
-      "name": "Suajili",
-      "firstHint": { "continents": ["AF"], "population": 16000000 },
-      "secondHint": {
-        "word": "Uhuru",
-        "fonetic": "uˈhuru",
-        "category": "Concepto",
-        "family": "Níger-Congo (Bantú)"
-      },
-      "thirdHint": {
-        "audioText": "Karibu sana katika nchi ya Tanzania.",
-        "languageCode": "sw-KE"
-      },
-      "fourthHint": {
-        "sentence": "Hakuna matata ni msemo wa kufurahisha.",
-        "translation": "Hakuna matata es un dicho divertido."
-      },
-      "fifthHint": {
-        "countryName": "Tanzania",
-        "countryIso2Code": "tz",
-        "countryIso3Code": "tza"
-      }
-    },
-    {
-      "name": "Persa",
-      "firstHint": { "continents": ["AS"], "population": 70000000 },
-      "secondHint": {
-        "word": "Bazaar",
-        "fonetic": "bɒːˈzɒːr",
-        "category": "Lugar",
-        "family": "Indoeuropea (Indoirania)"
-      },
-      "thirdHint": {
-        "audioText": "من از خواندن شعرهای حافظ لذت میبرم.",
-        "languageCode": "fa-IR"
-      },
-      "fourthHint": {
-        "sentence": "ایران تاریخ و تمدن بسیار کهنی دارد.",
-        "translation": "Irán tiene una historia y civilización muy antiguas."
-      },
-      "fifthHint": {
-        "countryName": "Irán",
-        "countryIso2Code": "ir",
-        "countryIso3Code": "irn"
       }
     },
     {
@@ -729,178 +309,17 @@
         "family": "Afroasiática (Semítica)"
       },
       "thirdHint": {
-        "audioText": "እንኳን ደህና መጣችሁ ወደ ኢትዮጵያ።",
+        "audioText": "Enkwan dehna metachihu wede tyopya.",
         "languageCode": "am-ET"
       },
       "fourthHint": {
-        "sentence": "ኢትዮጵያ የቡና መገኛ ሀገር ናት።",
-        "translation": "Etiopía es el lugar de origen del café."
+        "sentence": "Ezi bet yebuna megegna ager nat.",
+        "translation": "Esta casa es el lugar de origen del café."
       },
       "fifthHint": {
         "countryName": "Etiopía",
         "countryIso2Code": "et",
         "countryIso3Code": "eth"
-      }
-    },
-    {
-      "name": "Islandés",
-      "firstHint": { "continents": ["EU"], "population": 350000 },
-      "secondHint": {
-        "word": "Eldfjall",
-        "fonetic": "ˈɛlt.fjatl",
-        "category": "Naturaleza",
-        "family": "Indoeuropea (Germánica)"
-      },
-      "thirdHint": {
-        "audioText": "Ísland er land elds og ísa.",
-        "languageCode": "is-IS"
-      },
-      "fourthHint": {
-        "sentence": "Hefur þú séð norðurljósin áður?",
-        "translation": "¿Has visto las auroras boreales antes?"
-      },
-      "fifthHint": {
-        "countryName": "Islandia",
-        "countryIso2Code": "is",
-        "countryIso3Code": "isl"
-      }
-    },
-    {
-      "name": "Catalán",
-      "firstHint": { "continents": ["EU"], "population": 4000000 },
-      "secondHint": {
-        "word": "Llibertat",
-        "fonetic": "ʎi.βəɾ.ˈtat",
-        "category": "Concepto",
-        "family": "Indoeuropea (Romance)"
-      },
-      "thirdHint": {
-        "audioText": "M'agrada molt caminar per la Rambla de Barcelona.",
-        "languageCode": "ca-ES"
-      },
-      "fourthHint": {
-        "sentence": "El pa amb tomàquet és una delícia típica.",
-        "translation": "El pan con tomate es una delicia típica."
-      },
-      "fifthHint": {
-        "countryName": "Andorra",
-        "countryIso2Code": "ad",
-        "countryIso3Code": "and"
-      }
-    },
-    {
-      "name": "Euskera",
-      "firstHint": { "continents": ["EU"], "population": 750000 },
-      "secondHint": {
-        "word": "Euskadi",
-        "fonetic": "eus̺.ka.di",
-        "category": "Lugar",
-        "family": "Aislada"
-      },
-      "thirdHint": {
-        "audioText": "Euskal Herria oso polita da eta ondo jaten da.",
-        "languageCode": "eu-ES"
-      },
-      "fourthHint": {
-        "sentence": "Hau nire lagun berria da, Bilbokoa.",
-        "translation": "Este es mi nuevo amigo, de Bilbao."
-      },
-      "fifthHint": {
-        "countryName": "España",
-        "countryIso2Code": "es",
-        "countryIso3Code": "esp"
-      }
-    },
-    {
-      "name": "Vietnamita",
-      "firstHint": { "continents": ["AS"], "population": 76000000 },
-      "secondHint": {
-        "word": "Phở",
-        "fonetic": "fəː˧˩",
-        "category": "Comida",
-        "family": "Austroasiática"
-      },
-      "thirdHint": {
-        "audioText": "Chào mừng bạn đến với Hà Nội.",
-        "languageCode": "vi-VN"
-      },
-      "fourthHint": {
-        "sentence": "Vịnh Hạ Long rất đẹp và hùng vĩ.",
-        "translation": "La bahía de Ha Long es muy hermosa y majestuosa."
-      },
-      "fifthHint": {
-        "countryName": "Vietnam",
-        "countryIso2Code": "vn",
-        "countryIso3Code": "vnm"
-      }
-    },
-    {
-      "name": "Yulúa",
-      "firstHint": { "continents": ["AF"], "population": 12000000 },
-      "secondHint": {
-        "word": "Sawubona",
-        "fonetic": "sa.wu.ˈɓɔː.na",
-        "category": "Saludo",
-        "family": "Níger-Congo (Bantú)"
-      },
-      "thirdHint": {
-        "audioText": "Ngiyakuthanda mngane wami.",
-        "languageCode": "zu-ZA"
-      },
-      "fourthHint": {
-        "sentence": "Intaba iKahlamba inhle kakhulu.",
-        "translation": "La montaña Drakensberg es muy hermosa."
-      },
-      "fifthHint": {
-        "countryName": "Sudáfrica",
-        "countryIso2Code": "za",
-        "countryIso3Code": "zaf"
-      }
-    },
-    {
-      "name": "Bengalí",
-      "firstHint": { "continents": ["AS"], "population": 230000000 },
-      "secondHint": {
-        "word": "Amar",
-        "fonetic": "a.maɾ",
-        "category": "Posesivo",
-        "family": "Indoeuropea (Indoirania)"
-      },
-      "thirdHint": {
-        "audioText": "ঢাকা খুব ব্যস্ত এবং বড় শহর।",
-        "languageCode": "bn-BD"
-      },
-      "fourthHint": {
-        "sentence": "আমি মিষ্টি খেতে খুব পছন্দ করি।",
-        "translation": "Me gusta mucho comer dulces."
-      },
-      "fifthHint": {
-        "countryName": "Bangladesh",
-        "countryIso2Code": "bd",
-        "countryIso3Code": "bgd"
-      }
-    },
-    {
-      "name": "Eslovaco",
-      "firstHint": { "continents": ["EU"], "population": 5000000 },
-      "secondHint": {
-        "word": "Hrad",
-        "fonetic": "ɦrat",
-        "category": "Lugar",
-        "family": "Indoeuropea (Eslava)"
-      },
-      "thirdHint": {
-        "audioText": "Slovensko má mnoho krásnych jaskýň.",
-        "languageCode": "sk-SK"
-      },
-      "fourthHint": {
-        "sentence": "Dáme si spolu tradičné halušky?",
-        "translation": "¿Comemos juntos los tradicionales halušky?"
-      },
-      "fifthHint": {
-        "countryName": "Eslovaquia",
-        "countryIso2Code": "sk",
-        "countryIso3Code": "svk"
       }
     },
     {
@@ -913,12 +332,12 @@
         "family": "Indoeuropea (Eslava)"
       },
       "thirdHint": {
-        "audioText": "България е известна със своето розово масло.",
+        "audioText": "Bulgaria e izvestna sas svoeto rozovo maslo.",
         "languageCode": "bg-BG"
       },
       "fourthHint": {
-        "sentence": "София е много древна столица.",
-        "translation": "Sofía es una capital muy antigua."
+        "sentence": "Nashiya stolitsa e mnogo dreven grad.",
+        "translation": "Nuestra capital es una ciudad muy antigua."
       },
       "fifthHint": {
         "countryName": "Bulgaria",
@@ -926,52 +345,7 @@
         "countryIso3Code": "bgr"
       }
     },
-    {
-      "name": "Azerbaiyano",
-      "firstHint": { "continents": ["AS", "EU"], "population": 25000000 },
-      "secondHint": {
-        "word": "Dost",
-        "fonetic": "dost",
-        "category": "Persona",
-        "family": "Túrquica"
-      },
-      "thirdHint": {
-        "audioText": "Azərbaycanın Bakı şəhəri çox müasirdir.",
-        "languageCode": "az-AZ"
-      },
-      "fourthHint": {
-        "sentence": "Hava bu gün Bakıda çox küləklidir.",
-        "translation": "El tiempo está muy ventoso hoy en Bakú."
-      },
-      "fifthHint": {
-        "countryName": "Azerbaiyán",
-        "countryIso2Code": "az",
-        "countryIso3Code": "aze"
-      }
-    },
-    {
-      "name": "Uzbeko",
-      "firstHint": { "continents": ["AS"], "population": 33000000 },
-      "secondHint": {
-        "word": "Salom",
-        "fonetic": "sa.lɒm",
-        "category": "Saludo",
-        "family": "Túrquica"
-      },
-      "thirdHint": {
-        "audioText": "O'zbekistonning Samarqand shahri juda qadimiy.",
-        "languageCode": "uz-UZ"
-      },
-      "fourthHint": {
-        "sentence": "Men palov yeyishni juda yaxshi ko'raman.",
-        "translation": "Me gusta mucho comer pilaf (palov)."
-      },
-      "fifthHint": {
-        "countryName": "Kazajistán",
-        "countryIso2Code": "kz",
-        "countryIso3Code": "kaz"
-      }
-    },
+
     {
       "name": "Guaraní",
       "firstHint": { "continents": ["SA"], "population": 6500000 },
@@ -982,11 +356,11 @@
         "family": "Tupí-guaraní"
       },
       "thirdHint": {
-        "audioText": "Rohayhu añetete, che retã paraguái.",
+        "audioText": "Rohayhu anetete, che reta paraguai.",
         "languageCode": "gn-PY"
       },
       "fourthHint": {
-        "sentence": "Iporãite ko ára ko'ẽ.",
+        "sentence": "Iporaite ko ara koe.",
         "translation": "Qué hermoso está este amanecer."
       },
       "fifthHint": {
@@ -1009,8 +383,8 @@
         "languageCode": "qu-PE"
       },
       "fourthHint": {
-        "sentence": "Machu Picchuqa ancha munaymi.",
-        "translation": "Machu Picchu es muy hermoso."
+        "sentence": "Chay llaqta Machu Picchuqa ancha munaymi.",
+        "translation": "Esa ciudad de Machu Picchu es muy hermosa."
       },
       "fifthHint": {
         "countryName": "Perú",
@@ -1033,7 +407,7 @@
       },
       "fourthHint": {
         "sentence": "Xeebta Muqdisho waa mid aad u qurux badan.",
-        "translation": "La playa de Mogadiscio es muy hermosa."
+        "translation": "La playa de la capital es muy hermosa."
       },
       "fifthHint": {
         "countryName": "Somalia",
@@ -1051,11 +425,11 @@
         "family": "Indoeuropea (Albanesa)"
       },
       "thirdHint": {
-        "audioText": "Shqipëria ka male dhe dete të mrekullueshme.",
+        "audioText": "Ky vend ka male dhe dete te mrekullueshme.",
         "languageCode": "sq-AL"
       },
       "fourthHint": {
-        "sentence": "A dëshironi të provoni ushqimin tonë tradicional?",
+        "sentence": "A deshironi te provoni ushqimin tone tradicional?",
         "translation": "¿Le gustaría probar nuestra comida tradicional?"
       },
       "fifthHint": {
@@ -1074,12 +448,12 @@
         "family": "Indoeuropea (Armenia)"
       },
       "thirdHint": {
-        "audioText": "Բարի գալուստ Հայաստանի մայրաքաղաք՝ Երևան:",
+        "audioText": "Bari galust mayrakaghak Yerevan.",
         "languageCode": "hy-AM"
       },
       "fourthHint": {
-        "sentence": "Արարատ լեռը հայերի խորհրդանիշն է:",
-        "translation": "El monte Ararat es el símbolo de los armenios."
+        "sentence": "Ararat lerr@ hayeri khorhrdanishn e.",
+        "translation": "El monte Ararat es el símbolo de nuestro pueblo."
       },
       "fifthHint": {
         "countryName": "Armenia",
@@ -1097,12 +471,12 @@
         "family": "Kartveliana"
       },
       "thirdHint": {
-        "audioText": "საქართველო ღვინის სამშობლოა.",
+        "audioText": "Sakartvelo ghvinis samshobloa.",
         "languageCode": "ka-GE"
       },
       "fourthHint": {
-        "sentence": "თბილისი ძალიან ლამაზი და ძველი ქალაქია.",
-        "translation": "Tiflis es una ciudad muy hermosa y antigua."
+        "sentence": "Tbilisi dzalian lamazia da dveli kalakia.",
+        "translation": "Nuestra capital es una ciudad muy hermosa y antigua."
       },
       "fifthHint": {
         "countryName": "Georgia",
@@ -1120,12 +494,12 @@
         "family": "Dravídica"
       },
       "thirdHint": {
-        "audioText": "കേരളം ദൈവത്തിന്റെ സ്വന്തം നാട് എന്നാണ് അറിയപ്പെടുന്നത്.",
+        "audioText": "Keralam daivathinte swantham nadu ennanu ariyappedunnathu.",
         "languageCode": "ml-IN"
       },
       "fourthHint": {
-        "sentence": "എനിക്ക് മലയാളം സിനിമകൾ കാണാൻ ഇഷ്ടമാണ്.",
-        "translation": "Me gusta ver películas en malayalam."
+        "sentence": "Enikku malayalam sinimakal kaanan ishtamanu.",
+        "translation": "Me gusta ver películas en este idioma dravídico."
       },
       "fifthHint": {
         "countryName": "India",
@@ -1143,11 +517,11 @@
         "family": "Dravídica"
       },
       "thirdHint": {
-        "audioText": "தமிழ் உலகின் மிகப்பண்டைய மொழிகளில் ஒன்று.",
+        "audioText": "Tamil ulakin mikappandaiya mozhikalil ondru.",
         "languageCode": "ta-IN"
       },
       "fourthHint": {
-        "sentence": "வணக்கம், நீங்கள் எப்படி இருக்கிறீர்கள்?",
+        "sentence": "Vanakkam, neengal eppadi irukkireergal?",
         "translation": "Hola, ¿cómo estás?"
       },
       "fifthHint": {
@@ -1166,11 +540,11 @@
         "family": "Dravídica"
       },
       "thirdHint": {
-        "audioText": "తెలుగు భాషను ఇటాలియన్ ఆఫ్ ది ఈస్ట్ అని పిలుస్తారు.",
+        "audioText": "Telugu bhashanu Italian of the East ani pilustaru.",
         "languageCode": "te-IN"
       },
       "fourthHint": {
-        "sentence": "ఈ రోజు వాతావరణం చాలా బాగుంది.",
+        "sentence": "Ee roju vatavaranam chala bagundi.",
         "translation": "El clima de hoy es muy bueno."
       },
       "fifthHint": {
@@ -1189,12 +563,12 @@
         "family": "Indoeuropea (Indoirania)"
       },
       "thirdHint": {
-        "audioText": "ਸਤਿ ਸ੍ਰੀ ਅਕਾਲ, ਤੁਹਾਡਾ ਕੀ ਹਾਲ ਹੈ?",
+        "audioText": "Sat Sri Akal, tuhada ki haal hai?",
         "languageCode": "pa-IN"
       },
       "fourthHint": {
-        "sentence": "ਮੈਨੂੰ ਪੰਜਾਬੀ ਖਾਣਾ ਬਹੁਤ ਪਸੰਦ ਹੈ।",
-        "translation": "Me gusta mucho la comida panyabí."
+        "sentence": "Mainu saadi roti bahut pasand hai.",
+        "translation": "Me gusta mucho nuestra comida tradicional."
       },
       "fifthHint": {
         "countryName": "Pakistán",
@@ -1212,11 +586,11 @@
         "family": "Indoeuropea (Indoirania)"
       },
       "thirdHint": {
-        "audioText": "मुंबई हे महाराष्ट्राचे सर्वात मोठे शहर आहे.",
+        "audioText": "Mumbai he amche sarvat mothe shahar aahe.",
         "languageCode": "mr-IN"
       },
       "fourthHint": {
-        "sentence": "तुम्ही मला मदत करू शकता का?",
+        "sentence": "Tumhi mala madat karu shakta ka?",
         "translation": "¿Me puedes ayudar?"
       },
       "fifthHint": {
@@ -1235,12 +609,12 @@
         "family": "Austroasiática"
       },
       "thirdHint": {
-        "audioText": "កម្ពុជាគឺជាទឹកដីនៃស្នាមញញឹម។",
+        "audioText": "Kampouchea kuchea tukdei nei snamonhnhum.",
         "languageCode": "km-KH"
       },
       "fourthHint": {
-        "sentence": "តើអ្នកចង់ទៅលេងប្រាសាទអង្គរវត្តដែរឬទេ?",
-        "translation": "¿Quieres ir a visitar el templo de Angkor Wat?"
+        "sentence": "Tae neak chang tov leng prasat Angkor Wat daer rue te?",
+        "translation": "¿Quieres ir a visitar el gran templo de piedra?"
       },
       "fifthHint": {
         "countryName": "Camboya",
@@ -1258,11 +632,11 @@
         "family": "Sino-tibetana"
       },
       "thirdHint": {
-        "audioText": "မြန်မာနိုင်ငံသည် လှပသော ဘုရားပုထိုးများရှိသည်။",
+        "audioText": "Myanma naingngandaw thi hlapaw bura pudho myar shi thi.",
         "languageCode": "my-MM"
       },
       "fourthHint": {
-        "sentence": "သင်ကူညီနိုင်မလား?",
+        "sentence": "Thin kuanyi naing ma lar?",
         "translation": "¿Puedes ayudarme?"
       },
       "fifthHint": {
@@ -1281,12 +655,12 @@
         "family": "Kra-Dai"
       },
       "thirdHint": {
-        "audioText": "ປະເທດລາວມີທໍາມະຊາດທີ່ສວຍງາມ.",
+        "audioText": "Pathed lao mi thammachad thi suay ngam.",
         "languageCode": "lo-LA"
       },
       "fourthHint": {
-        "sentence": "ຂ້ອຍຮັກອາຫານລາວ.",
-        "translation": "Amo la comida lao."
+        "sentence": "Khoy hak ahan khong phuak hao.",
+        "translation": "Amo nuestra comida."
       },
       "fifthHint": {
         "countryName": "Laos",
@@ -1304,12 +678,12 @@
         "family": "Níger-Congo (Volta-Níger)"
       },
       "thirdHint": {
-        "audioText": "Báwo ni o ṣe wà lónìí?",
+        "audioText": "Bawo ni o se wa loni?",
         "languageCode": "yo-NG"
       },
       "fourthHint": {
-        "sentence": "Ilẹ̀ Nàìjíríà tóbi gan-an.",
-        "translation": "La tierra de Nigeria es muy grande."
+        "sentence": "Ile wa tobi gan-an.",
+        "translation": "Nuestra tierra es muy grande."
       },
       "fifthHint": {
         "countryName": "Nigeria",
@@ -1326,13 +700,10 @@
         "category": "Saludo",
         "family": "Níger-Congo (Volta-Níger)"
       },
-      "thirdHint": {
-        "audioText": "Kedu ka i mere?",
-        "languageCode": "ig-NG"
-      },
+      "thirdHint": { "audioText": "Kedu ka i mere?", "languageCode": "ig-NG" },
       "fourthHint": {
-        "sentence": "Abụ m onye Igbo.",
-        "translation": "Yo soy una persona Igbo."
+        "sentence": "Abu m onye a.",
+        "translation": "Yo soy de esta etnia."
       },
       "fifthHint": {
         "countryName": "Nigeria",
@@ -1350,12 +721,12 @@
         "family": "Indoeuropea (Céltica)"
       },
       "thirdHint": {
-        "audioText": "Tá an aimsir go deas inniu in Éirinn.",
+        "audioText": "Ta an aimsir go deas inniu anseo.",
         "languageCode": "ga-IE"
       },
       "fourthHint": {
-        "sentence": "An dtuigeann tú Gaeilge?",
-        "translation": "¿Entiendes irlandés?"
+        "sentence": "An dtuigeann tu an teanga seo?",
+        "translation": "¿Entiendes esta lengua gaélica?"
       },
       "fifthHint": {
         "countryName": "Irlanda",
@@ -1368,7 +739,7 @@
       "firstHint": { "continents": ["EU"], "population": 560000 },
       "secondHint": {
         "word": "Cymru",
-        "fonetic": "ˈkəmrɨ",
+        "fonetic": "ˈəmrɨ",
         "category": "Lugar",
         "family": "Indoeuropea (Céltica)"
       },
@@ -1396,12 +767,12 @@
         "family": "Indoeuropea (Báltica)"
       },
       "thirdHint": {
-        "audioText": "Lietuva yra Baltijos šalis.",
+        "audioText": "Sitas krastas yra Baltijos salis.",
         "languageCode": "lt-LT"
       },
       "fourthHint": {
-        "sentence": "Ar kalbate lietuviškai?",
-        "translation": "¿Hablas lituano?"
+        "sentence": "Ar kalbate musu kalba?",
+        "translation": "¿Hablas nuestro idioma?"
       },
       "fifthHint": {
         "countryName": "Lituania",
@@ -1419,11 +790,11 @@
         "family": "Indoeuropea (Báltica)"
       },
       "thirdHint": {
-        "audioText": "Rīga ir Latvijas galvaspilsēta.",
+        "audioText": "Riga ir musu galvaspilseta.",
         "languageCode": "lv-LV"
       },
       "fourthHint": {
-        "sentence": "Es gribu apmeklēt Baltijas jūru.",
+        "sentence": "Es gribu apmeklet Baltijas juru.",
         "translation": "Quiero visitar el mar Báltico."
       },
       "fifthHint": {
@@ -1465,12 +836,12 @@
         "family": "Indoeuropea (Eslava)"
       },
       "thirdHint": {
-        "audioText": "Slovenija ima čudovite Alpe.",
+        "audioText": "Nasa dezela ima cudovite Alpe.",
         "languageCode": "sl-SI"
       },
       "fourthHint": {
         "sentence": "Ali greva na Bled?",
-        "translation": "¿Vamos al lago Bled?"
+        "translation": "¿Vamos al lago de la isla?"
       },
       "fifthHint": {
         "countryName": "Eslovenia",
@@ -1488,12 +859,12 @@
         "family": "Indoeuropea (Eslava)"
       },
       "thirdHint": {
-        "audioText": "Hrvatska obala je vrlo popularna ljeti.",
+        "audioText": "Nasa obala je vrlo popularna ljeti.",
         "languageCode": "hr-HR"
       },
       "fourthHint": {
-        "sentence": "Volim šetati zidinama Dubrovnika.",
-        "translation": "Me gusta caminar por las murallas de Dubrovnik."
+        "sentence": "Volim setati zidinama Dubrovnika.",
+        "translation": "Me gusta caminar por las murallas de la perla del Adriático."
       },
       "fifthHint": {
         "countryName": "Croacia",
@@ -1511,11 +882,11 @@
         "family": "Indoeuropea (Eslava)"
       },
       "thirdHint": {
-        "audioText": "Београд је град на ушћу двеју река.",
+        "audioText": "Beograd je grad na uscu dveju reka.",
         "languageCode": "sr-RS"
       },
       "fourthHint": {
-        "sentence": "Да ли желите да попијете кафу?",
+        "sentence": "Da li zelite da popijete kafu?",
         "translation": "¿Desea tomar un café?"
       },
       "fifthHint": {
@@ -1534,11 +905,11 @@
         "family": "Mongólica"
       },
       "thirdHint": {
-        "audioText": "Монгол улс бол өргөн уудам тал нутагтай.",
+        "audioText": "Manai uls bol orgon uudam tal nutagtai.",
         "languageCode": "mn-MN"
       },
       "fourthHint": {
-        "sentence": "Та морь унаж чадах уу?",
+        "sentence": "Ta mori unaj chadakh uu?",
         "translation": "¿Puedes montar a caballo?"
       },
       "fifthHint": {
@@ -1557,12 +928,12 @@
         "family": "Túrquica"
       },
       "thirdHint": {
-        "audioText": "Қазақстанның астанасы - Астана қаласы.",
+        "audioText": "Astana - bul bizdin eldin kiresi.",
         "languageCode": "kk-KZ"
       },
       "fourthHint": {
-        "sentence": "Мен қазақша сөйлей аламын.",
-        "translation": "Yo puedo hablar kazajo."
+        "sentence": "Men bul tilde soyley alamyn.",
+        "translation": "Yo puedo hablar en este idioma de la estepa."
       },
       "fifthHint": {
         "countryName": "Kazajistán",
@@ -1603,17 +974,477 @@
         "family": "Indoeuropea (Indoirania)"
       },
       "thirdHint": {
-        "audioText": "اردو بہت ہی پیاری اور میٹھی زبان ہے۔",
+        "audioText": "Urdu bahut hi pyaari aur meethi zabaan hai.",
         "languageCode": "ur-PK"
       },
       "fourthHint": {
-        "sentence": "کیا آپ میری بات سمجھ سکتے ہیں؟",
+        "sentence": "Kya aap meri baat samajh sakte hain?",
         "translation": "¿Puedes entender lo que digo?"
       },
       "fifthHint": {
         "countryName": "Pakistán",
         "countryIso2Code": "pk",
         "countryIso3Code": "pak"
+      }
+    },
+    {
+      "name": "Afrikáans",
+      "firstHint": { "continents": ["AF"], "population": 7000000 },
+      "secondHint": {
+        "word": "Lekker",
+        "fonetic": "ˈlɛkər",
+        "category": "Adjetivo",
+        "family": "Indoeuropea (Germánica)"
+      },
+      "thirdHint": {
+        "audioText": "Goie more, hoe gaan dit met jou?",
+        "languageCode": "af-ZA"
+      },
+      "fourthHint": {
+        "sentence": "Tafelberg is baie beroemd in die stad.",
+        "translation": "La Montaña de la Mesa es muy famosa en la ciudad."
+      },
+      "fifthHint": {
+        "countryName": "Sudáfrica",
+        "countryIso2Code": "za",
+        "countryIso3Code": "zaf"
+      }
+    },
+    {
+      "name": "Islandés",
+      "firstHint": { "continents": ["EU"], "population": 370000 },
+      "secondHint": {
+        "word": "Eldfjall",
+        "fonetic": "ˈɛlt.fjatl",
+        "category": "Naturaleza",
+        "family": "Indoeuropea (Germánica)"
+      },
+      "thirdHint": {
+        "audioText": "Hvad segir thu gott i dag?",
+        "languageCode": "is-IS"
+      },
+      "fourthHint": {
+        "sentence": "Viltu sja nordurljosin med mer?",
+        "translation": "¿Quieres ver las auroras boreales conmigo?"
+      },
+      "fifthHint": {
+        "countryName": "Islandia",
+        "countryIso2Code": "is",
+        "countryIso3Code": "isl"
+      }
+    },
+    {
+      "name": "Suajili",
+      "firstHint": { "continents": ["AF"], "population": 150000000 },
+      "secondHint": {
+        "word": "Rafiki",
+        "fonetic": "ra.ˈfi.ki",
+        "category": "Persona",
+        "family": "Níger-Congo (Bantú)"
+      },
+      "thirdHint": {
+        "audioText": "Habari za asubuhi, rafiki yangu.",
+        "languageCode": "sw-KE"
+      },
+      "fourthHint": {
+        "sentence": "Mlima Kilimanjaro ni mrefu sana.",
+        "translation": "El monte Kilimanjaro es muy alto."
+      },
+      "fifthHint": {
+        "countryName": "Tanzania",
+        "countryIso2Code": "tz",
+        "countryIso3Code": "tza"
+      }
+    },
+    {
+      "name": "Persa",
+      "firstHint": { "continents": ["AS"], "population": 70000000 },
+      "secondHint": {
+        "word": "Bazaar",
+        "fonetic": "bɒːˈzɒːr",
+        "category": "Lugar",
+        "family": "Indoeuropea (Indoirania)"
+      },
+      "thirdHint": {
+        "audioText": "Man az khandan-e she'r-haye Hafez lezzat mibaram.",
+        "languageCode": "fa-IR"
+      },
+      "fourthHint": {
+        "sentence": "Tarikh-e in sarzamin besyar kohan ast.",
+        "translation": "La historia de esta tierra es muy antigua."
+      },
+      "fifthHint": {
+        "countryName": "Irán",
+        "countryIso2Code": "ir",
+        "countryIso3Code": "irn"
+      }
+    },
+    {
+      "name": "Nepalí",
+      "firstHint": { "continents": ["AS"], "population": 25000000 },
+      "secondHint": {
+        "word": "Pahad",
+        "fonetic": "pa.ɦaɖ",
+        "category": "Naturaleza",
+        "family": "Indoeuropea (Indoirania)"
+      },
+      "thirdHint": {
+        "audioText": "Namaste, tapailai kasto chha?",
+        "languageCode": "ne-NP"
+      },
+      "fourthHint": {
+        "sentence": "Sagarmatha sansar ko sabai bhanda aglo chuchuro ho.",
+        "translation": "El Everest es el pico más alto del mundo."
+      },
+      "fifthHint": {
+        "countryName": "Nepal",
+        "countryIso2Code": "np",
+        "countryIso3Code": "npl"
+      }
+    },
+    {
+      "name": "Amhárico",
+      "firstHint": { "continents": ["AF"], "population": 32000000 },
+      "secondHint": {
+        "word": "Selam",
+        "fonetic": "səlam",
+        "category": "Saludo",
+        "family": "Afroasiática (Semítica)"
+      },
+      "thirdHint": {
+        "audioText": "Ene wede andat maderu tewodaj negn.",
+        "languageCode": "am-ET"
+      },
+      "fourthHint": {
+        "sentence": "Buna ye-agerachin kibe naw.",
+        "translation": "El café es el orgullo de nuestra tierra."
+      },
+      "fifthHint": {
+        "countryName": "Etiopía",
+        "countryIso2Code": "et",
+        "countryIso3Code": "eth"
+      }
+    },
+    {
+      "name": "Cingalés",
+      "firstHint": { "continents": ["AS"], "population": 17000000 },
+      "secondHint": {
+        "word": "Ayubowan",
+        "fonetic": "aː.ju.boː.wan",
+        "category": "Saludo",
+        "family": "Indoeuropea (Indoirania)"
+      },
+      "thirdHint": {
+        "audioText": "Mama oyata adareyi.",
+        "languageCode": "si-LK"
+      },
+      "fourthHint": {
+        "sentence": "Me dhuupathe walle godak lassanayi.",
+        "translation": "Las playas de esta isla son muy hermosas."
+      },
+      "fifthHint": {
+        "countryName": "Sri Lanka",
+        "countryIso2Code": "lk",
+        "countryIso3Code": "lka"
+      }
+    },
+    {
+      "name": "Azerbaiyano",
+      "firstHint": { "continents": ["AS", "EU"], "population": 25000000 },
+      "secondHint": {
+        "word": "Odlar",
+        "fonetic": "od.lar",
+        "category": "Naturaleza",
+        "family": "Túrquica"
+      },
+      "thirdHint": {
+        "audioText": "Baki cox gozel bir seherdir.",
+        "languageCode": "az-AZ"
+      },
+      "fourthHint": {
+        "sentence": "Bizim medeniyyet cox qedimdir.",
+        "translation": "Nuestra cultura es muy antigua."
+      },
+      "fifthHint": {
+        "countryName": "Azerbaiyán",
+        "countryIso2Code": "az",
+        "countryIso3Code": "aze"
+      }
+    },
+    {
+      "name": "Uzbeko",
+      "firstHint": { "continents": ["AS"], "population": 33000000 },
+      "secondHint": {
+        "word": "Salom",
+        "fonetic": "sa.lɒm",
+        "category": "Saludo",
+        "family": "Túrquica"
+      },
+      "thirdHint": {
+        "audioText": "Samarqand shahriga xush kelibsiz.",
+        "languageCode": "uz-UZ"
+      },
+      "fourthHint": {
+        "sentence": "Men palov yeyishni juda yaxshi ko'raman.",
+        "translation": "Me gusta mucho comer pilaf (palov)."
+      },
+      "fifthHint": {
+        "countryName": "Uzbekistán",
+        "countryIso2Code": "uz",
+        "countryIso3Code": "uzb"
+      }
+    },
+    {
+      "name": "Malayo",
+      "firstHint": { "continents": ["AF"], "population": 25000000 },
+      "secondHint": {
+        "word": "Salama",
+        "fonetic": "sa.ˈla.ma",
+        "category": "Saludo",
+        "family": "Austronesia"
+      },
+      "thirdHint": {
+        "audioText": "Manao ahoana ianao?",
+        "languageCode": "mg-MG"
+      },
+      "fourthHint": {
+        "sentence": "Tiako ny baobab.",
+        "translation": "Me gustan los baobabs."
+      },
+      "fifthHint": {
+        "countryName": "Madagascar",
+        "countryIso2Code": "mg",
+        "countryIso3Code": "mdg"
+      }
+    },
+    {
+      "name": "Hausa",
+      "firstHint": { "continents": ["AF"], "population": 50000000 },
+      "secondHint": {
+        "word": "Sannu",
+        "fonetic": "san.nuː",
+        "category": "Saludo",
+        "family": "Afroasiática (Chádica)"
+      },
+      "thirdHint": {
+        "audioText": "Ina kwana? Lafiya lau.",
+        "languageCode": "ha-NE"
+      },
+      "fourthHint": {
+        "sentence": "Kano birni ne mai dadaddun tarihi.",
+        "translation": "Kano es una ciudad con una larga historia."
+      },
+      "fifthHint": {
+        "countryName": "Nigeria",
+        "countryIso2Code": "ng",
+        "countryIso3Code": "nga"
+      }
+    },
+    {
+      "name": "Panyabí",
+      "firstHint": { "continents": ["AS"], "population": 125000000 },
+      "secondHint": {
+        "word": "Pyar",
+        "fonetic": "pjaːr",
+        "category": "Sentimiento",
+        "family": "Indoeuropea (Indoirania)"
+      },
+      "thirdHint": {
+        "audioText": "Tuhada naam ki hai?",
+        "languageCode": "pa-PK"
+      },
+      "fourthHint": {
+        "sentence": "Mainu sadi kheti badi pasand hai.",
+        "translation": "Me gusta mucho nuestra agricultura."
+      },
+      "fifthHint": {
+        "countryName": "Pakistán",
+        "countryIso2Code": "pk",
+        "countryIso3Code": "pak"
+      }
+    },
+    {
+      "name": "Bielorruso",
+      "firstHint": { "continents": ["EU"], "population": 8000000 },
+      "secondHint": {
+        "word": "Vytoki",
+        "fonetic": "vɨ.ˈtɔ.kʲi",
+        "category": "Naturaleza",
+        "family": "Indoeuropea (Eslava)"
+      },
+      "thirdHint": {
+        "audioText": "Minsk - heta stalitsa i samy vyaliki horad.",
+        "languageCode": "be-BY"
+      },
+      "fourthHint": {
+        "sentence": "U nas shmat prygozhykh lyasou i ayor.",
+        "translation": "Tenemos muchos bosques y lagos hermosos."
+      },
+      "fifthHint": {
+        "countryName": "Bielorrusia",
+        "countryIso2Code": "by",
+        "countryIso3Code": "blr"
+      }
+    },
+    {
+      "name": "Maorí",
+      "firstHint": { "continents": ["OC"], "population": 160000 },
+      "secondHint": {
+        "word": "Kia Ora",
+        "fonetic": "ki.a o.ra",
+        "category": "Saludo",
+        "family": "Austronesia"
+      },
+      "thirdHint": {
+        "audioText": "Nau mai ki te motu ataahua nei.",
+        "languageCode": "mi-NZ"
+      },
+      "fourthHint": {
+        "sentence": "He tino pai ki ahau te haka.",
+        "translation": "Me gusta mucho la danza de guerra."
+      },
+      "fifthHint": {
+        "countryName": "Nueva Zelanda",
+        "countryIso2Code": "nz",
+        "countryIso3Code": "nzl"
+      }
+    },
+    {
+      "name": "Fiyiano",
+      "firstHint": { "continents": ["OC"], "population": 450000 },
+      "secondHint": {
+        "word": "Bula",
+        "fonetic": "mbula",
+        "category": "Saludo",
+        "family": "Austronesia"
+      },
+      "thirdHint": {
+        "audioText": "Vinaka vakalevu sara.",
+        "languageCode": "fj-FJ"
+      },
+      "fourthHint": {
+        "sentence": "Sa rui totoka na noda veiyanuyanu.",
+        "translation": "Nuestras islas son muy hermosas."
+      },
+      "fifthHint": {
+        "countryName": "Fiyi",
+        "countryIso2Code": "fj",
+        "countryIso3Code": "fji"
+      }
+    },
+    {
+      "name": "Tamasheq",
+      "firstHint": { "continents": ["AF"], "population": 1200000 },
+      "secondHint": {
+        "word": "Azawad",
+        "fonetic": "aza.wad",
+        "category": "Lugar",
+        "family": "Afroasiática (Bereber)"
+      },
+      "thirdHint": {
+        "audioText": "Oy, imak as akal in.",
+        "languageCode": "tmh-ML"
+      },
+      "fourthHint": {
+        "sentence": "Nekkent n-imuhagh n-edinar n-tenere.",
+        "translation": "Nosotros somos los hombres libres del desierto."
+      },
+      "fifthHint": {
+        "countryName": "Malí",
+        "countryIso2Code": "ml",
+        "countryIso3Code": "mli"
+      }
+    },
+    {
+      "name": "Pashto",
+      "firstHint": { "continents": ["AS"], "population": 50000000 },
+      "secondHint": {
+        "word": "Khyber",
+        "fonetic": "xaɪ.bər",
+        "category": "Lugar",
+        "family": "Indoeuropea (Indoirania)"
+      },
+      "thirdHint": {
+        "audioText": "Pa khair raghlay.",
+        "languageCode": "ps-AF"
+      },
+      "fourthHint": {
+        "sentence": "Zama dade watan de.",
+        "translation": "Esta es mi patria."
+      },
+      "fifthHint": {
+        "countryName": "Afganistán",
+        "countryIso2Code": "af",
+        "countryIso3Code": "afg"
+      }
+    },
+    {
+      "name": "Tigriña",
+      "firstHint": { "continents": ["AF"], "population": 7000000 },
+      "secondHint": {
+        "word": "Selam",
+        "fonetic": "sə.lam",
+        "category": "Saludo",
+        "family": "Afroasiática (Semítica)"
+      },
+      "thirdHint": {
+        "audioText": "Kemey alekha? Dehan do?",
+        "languageCode": "ti-ER"
+      },
+      "fourthHint": {
+        "sentence": "Asmara tsibikti ketema eya.",
+        "translation": "Asmara es una ciudad hermosa."
+      },
+      "fifthHint": {
+        "countryName": "Eritrea",
+        "countryIso2Code": "er",
+        "countryIso3Code": "eri"
+      }
+    },
+    {
+      "name": "Kurdo",
+      "firstHint": { "continents": ["AS"], "population": 30000000 },
+      "secondHint": {
+        "word": "Azadi",
+        "fonetic": "aːzaːdiː",
+        "category": "Concepto",
+        "family": "Indoeuropea (Indoirania)"
+      },
+      "thirdHint": {
+        "audioText": "Spas, tu chawa yi?",
+        "languageCode": "ku-TR"
+      },
+      "fourthHint": {
+        "sentence": "Eme herin çiya.",
+        "translation": "Iremos a las montañas."
+      },
+      "fifthHint": {
+        "countryName": "Irak",
+        "countryIso2Code": "iq",
+        "countryIso3Code": "irq"
+      }
+    },
+    {
+      "name": "Bretón",
+      "firstHint": { "continents": ["EU"], "population": 210000 },
+      "secondHint": {
+        "word": "Degemer",
+        "fonetic": "de.ˈɡɛ.mɛr",
+        "category": "Saludo",
+        "family": "Indoeuropea (Céltica)"
+      },
+      "thirdHint": {
+        "audioText": "Mat an traou ganit?",
+        "languageCode": "br-FR"
+      },
+      "fourthHint": {
+        "sentence": "Ar mor a zo glas.",
+        "translation": "El mar es azul."
+      },
+      "fifthHint": {
+        "countryName": "Francia",
+        "countryIso2Code": "fr",
+        "countryIso3Code": "fra"
       }
     }
   ]
