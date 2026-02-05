@@ -108,7 +108,7 @@ export function GameContextProvider({
   };
 
   const startGame = async () => {
-    // Ponemos los valores por defecto
+    setGameStatus("loading");
     setSteps([
       { id: 1, status: "current", name: "Nº nativos" },
       { id: 2, status: "locked", name: "Palabra" },

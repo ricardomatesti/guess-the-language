@@ -10,6 +10,7 @@ import { Progress } from "./Progress";
 import { Button } from "./shared/Button";
 import { Guesses } from "./Guesses";
 import { GameOver } from "./GameOver";
+import LoadingScreen from "./LoadingScreen";
 
 const GameLayout = ({ children }: { children: ReactNode | ReactNode[] }) => {
   return (
@@ -31,6 +32,14 @@ const GameLayout = ({ children }: { children: ReactNode | ReactNode[] }) => {
 
 export const Game = () => {
   const { gameStatus, guessingData, startGame } = useContext(GameContext);
+
+  if (gameStatus === "loading" || true) {
+    return (
+      <GameLayout>
+        <LoadingScreen></LoadingScreen>
+      </GameLayout>
+    );
+  }
 
   if (gameStatus === "started" && guessingData) {
     return (
