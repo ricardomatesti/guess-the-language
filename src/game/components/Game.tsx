@@ -14,7 +14,7 @@ import { GameOver } from "./GameOver";
 
 const GameLayout = ({ children }: { children: ReactNode | ReactNode[] }) => {
   return (
-    <div className="absolute z-1 w-full h-full flex flex-col justify-start items-center">
+    <div className="relative z-1 w-full h-fit flex flex-col justify-start items-center mb-4">
       <div className="w-full flex justify-end p-2">
         <Button
           bg="#F7939B"

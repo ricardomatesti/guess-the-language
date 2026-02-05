@@ -12,9 +12,8 @@
 body {
   margin: 0;
   display: flex;
+  background-color: #b2e6ff;
   place-items: center;
-  min-width: 100vw;
-  min-height: 100vh;
 }
 
 .patron {
