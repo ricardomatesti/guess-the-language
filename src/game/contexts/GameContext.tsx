@@ -1,7 +1,6 @@
 import { createContext, useState } from "react";
 import type { Dispatch, ReactNode, SetStateAction } from "react";
 import { languages } from "../languages";
-import { number } from "motion";
 
 export type Step = {
   id: number;
