@@ -33,7 +33,7 @@ const GameLayout = ({ children }: { children: ReactNode | ReactNode[] }) => {
 export const Game = () => {
   const { gameStatus, guessingData, startGame } = useContext(GameContext);
 
-  if (gameStatus === "loading" || true) {
+  if (gameStatus === "loading") {
     return (
       <GameLayout>
         <LoadingScreen></LoadingScreen>
