@@ -44,7 +44,7 @@ export const AudioPlayer = ({
             <SoundBars></SoundBars>
           ) : (
             <p className="text-lg uppercase tracking-widest font-medium text-white line-clamp-1">
-              Haz click en el play
+              Click to play
             </p>
           )}
         </div>
@@ -77,7 +77,7 @@ export const AudioPlayer = ({
           <SoundBars></SoundBars>
         ) : (
           <p className="text-2xl uppercase tracking-widest font-medium text-white">
-            Haz click en el play
+            Click to play
           </p>
         )}
       </div>

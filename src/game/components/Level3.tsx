@@ -11,7 +11,7 @@ export const Level3 = () => {
       <div className="w-full flex flex-row justify-center">
         <div className="h-fit flex flex-col justify-center items-center">
           <div className="flex flex-col justify-start gap-6">
-            <span className="text-4xl font-bold">Escucha el audio...</span>
+            <span className="text-4xl font-bold">Listen to the audio...</span>
 
             <AudioPlayer
               textToSpeak={audioText}
@@ -27,7 +27,7 @@ export const Level3 = () => {
     <div className="w-full flex flex-row justify-center">
       <div className="h-fit flex flex-col justify-center items-center">
         <div className="flex flex-col justify-start gap-6">
-          <span className="text-6xl font-bold">Escucha el audio...</span>
+          <span className="text-6xl font-bold">Listen to the audio...</span>
 
           <AudioPlayer
             textToSpeak={audioText}

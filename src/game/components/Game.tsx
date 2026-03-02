@@ -21,7 +21,7 @@ const GameLayout = ({ children }: { children: ReactNode | ReactNode[] }) => {
           shadow="#f45b69"
           hover="#FF808B"
           textColor="#FFFFFF"
-          text="Iniciar sesión"
+          text="Log in"
           size="sm"
         ></Button>
       </div>
@@ -88,19 +88,19 @@ export const GameNotStarted = () => {
 
         {/* Título */}
         <h1 className="text-4xl font-black text-blue-900 mb-4 tracking-tight leading-none">
-          ¿CUÁNTO SABES <br />
-          <span className="text-blue-600">DE IDIOMAS?</span>
+          ARE YOU A <br />
+          <span className="text-blue-600">LANGUAGE LEGEND?</span>
         </h1>
 
         {/* Descripción corta */}
         <p className="text-blue-800/70 font-medium text-lg mb-10 leading-relaxed">
-          Escucha, lee y adivina. <br />
-          ¿Podrás llegar a la racha de 10?
+          Listen, read and guess. <br />
+          Can you reach a streak of 10?
         </p>
 
         <div className="w-full max-w-[280px]">
           <Button
-            text="EMPEZAR PARTIDA"
+            text="START GAME"
             bg="#1FB6FF"
             shadow="#0676a2"
             hover="#4fc6ff"
@@ -132,7 +132,7 @@ export const GameNotStarted = () => {
       </div>
 
       <p className="mt-6 text-blue-900/40 text-sm font-bold uppercase tracking-widest">
-        MÁS DE 200 IDIOMAS DISPONIBLES
+        OVER 200 LANGUAGES AVAILABLE
       </p>
     </div>
   );
@@ -151,7 +151,7 @@ export const GameStarted = () => {
         <div className="flex flex-row items-center justify-between h-fit -mt-4 -mx-4">
           <div className="flex flex-col gap-0">
             <span className="text-md font-normal text-gray-700 mb-0">
-              Pista {currentShowingStep} - {stepName}
+              Hint {currentShowingStep} - {stepName}
             </span>
           </div>
           <Progress steps={steps}></Progress>
@@ -172,7 +172,7 @@ export const GameStarted = () => {
     >
       <div className="flex flex-row items-center justify-between h-fit -mt-4">
         <span className="text-xl font-normal text-gray-700">
-          Pista {currentShowingStep} - {stepName}
+          Hint {currentShowingStep} - {stepName}
         </span>
         <Progress steps={steps}></Progress>
       </div>

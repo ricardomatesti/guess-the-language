@@ -15,11 +15,11 @@ export const GameOver = ({ status, correctLanguage, onRestart }: any) => {
           </div>
 
           <h2 className="text-4xl font-black mb-2 tracking-tighter text-emerald-600">
-            ¡INCREÍBLE!
+            INCREDIBLE!
           </h2>
 
           <p className="text-blue-900/60 font-bold tracking-widest uppercase text-sm mb-6">
-            Has dominado el idioma
+            You have mastered the language
           </p>
 
           <div className="w-full bg-white/40 rounded-3xl p-6 mb-8 border-white/20 shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)]">
@@ -31,7 +31,7 @@ export const GameOver = ({ status, correctLanguage, onRestart }: any) => {
           <div className="grid grid-cols-2 gap-4 w-full mb-10">
             <div className="bg-white/40 p-4 rounded-2xl shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)]">
               <span className="block text-[10px] font-black text-blue-900/40 uppercase tracking-widest">
-                Pistas Usadas
+                Hints Used
               </span>
 
               <div className="flex flex-row gap-0 w-full items-center justify-center">
@@ -43,7 +43,7 @@ export const GameOver = ({ status, correctLanguage, onRestart }: any) => {
             </div>
             <div className="bg-white/40 p-4 rounded-2xl shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)]">
               <span className="block text-[10px] font-black text-blue-900/40 uppercase tracking-widest">
-                Racha Actual
+                Current Streak
               </span>
               <span className="text-2xl font-black text-blue-900">
                 {streak} 🔥
@@ -53,7 +53,7 @@ export const GameOver = ({ status, correctLanguage, onRestart }: any) => {
 
           <div className="w-full">
             <Button
-              text="SEGUIR LA RACHA"
+              text="KEEP THE STREAK"
               textColor="white"
               bg="#00b4ff"
               shadow="#0676a2"
@@ -75,16 +75,16 @@ export const GameOver = ({ status, correctLanguage, onRestart }: any) => {
         </div>
 
         <h2 className="text-3xl font-black mb-1 tracking-tighter text-red-500">
-          ¡CASI LO TIENES!
+          SO CLOSE!
         </h2>
 
         <p className="text-blue-900/40 font-bold tracking-widest uppercase text-[10px] mb-6">
-          Te has quedado sin pistas
+          You've run out of hints
         </p>
 
         <div className="w-full bg-white/40 rounded-3xl p-6 mb-8 border-white/20 shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)]">
           <span className="block text-[10px] font-black text-blue-900/40 uppercase tracking-[0.2em] mb-2">
-            El idioma era...
+            The language was...
           </span>
           <div className="text-4xl font-black text-blue-600 tracking-widest uppercase">
             {correctLanguage}
@@ -94,7 +94,7 @@ export const GameOver = ({ status, correctLanguage, onRestart }: any) => {
         <div className="grid grid-cols-2 gap-4 w-full mb-8">
           <div className="bg-white/40 p-4 rounded-2xl shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)]">
             <span className="block text-[10px] font-black text-blue-900/40 uppercase tracking-widest mb-1">
-              Tu Mejor Racha
+              High Score
             </span>
             <span className="text-xl font-black text-blue-900">
               {record} 🏆
@@ -102,7 +102,7 @@ export const GameOver = ({ status, correctLanguage, onRestart }: any) => {
           </div>
           <div className="bg-white/40 p-4 rounded-2xl shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)]">
             <span className="block text-[10px] font-black text-blue-900/40 uppercase tracking-widest mb-1">
-              Intentos
+              Tries
             </span>
             <span className="text-xl font-black text-blue-900">{tries} ✍️</span>
           </div>
@@ -110,7 +110,7 @@ export const GameOver = ({ status, correctLanguage, onRestart }: any) => {
 
         <div className="w-full">
           <Button
-            text="INTENTARLO OTRA VEZ"
+            text="TRY AGAIN"
             textColor="white"
             bg="#00b4ff"
             shadow="#0676a2"

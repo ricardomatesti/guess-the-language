@@ -61,7 +61,7 @@ const LanguageSearch = () => {
               setQuery(e.target.value);
               if (e.target.value.length > 0) setShowDropdown(true);
             }}
-            placeholder="Busca un idioma..."
+            placeholder="Search for a language..."
             className="w-full pl-12 px-6 py-4 bg-white backdrop-blur-sm border-0 border-[#4BB8EB] rounded-xl font-medium
                 shadow-[inset_0_2px_4px_rgba(0,0,0,0.3),_inset_0_-2px_4px_rgba(255,255,255,0.2),_0_8px_10px_-3px_rgba(86,203,249,0.8)] 
                 focus:outline-none focus:border-blue-400 text-black placeholder-[#0391CE]/80 transition-all"
@@ -121,7 +121,7 @@ const LanguageSearch = () => {
             shadow="#0391CE"
             hover="#D9F3FF"
             textColor="#085878"
-            text="Saltar"
+            text="SKIP"
             tailwindClasses={isMobile ? "flex-1" : ""}
             onClick={skipLevel}
           ></Button>
@@ -131,7 +131,7 @@ const LanguageSearch = () => {
           shadow="#0676a2"
           hover="#4fc6ff"
           textColor="black"
-          text="¡Comprobar!"
+          text="Check!"
           onClick={() => checkGuess({ guess: query, setFormText: setQuery })}
           tailwindClasses={isMobile ? "flex-1 uppercase" : "uppercase"}
         ></Button>

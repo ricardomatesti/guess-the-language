@@ -17,14 +17,14 @@ export const Level5 = () => {
                 countryCode={countryIso3Code}
                 shortCountryCode={countryIso2Code}
                 countryName={countryName}
-                passengerName="Anónimo/a"
+                passengerName="Anonymous"
               ></BoardingPassMobile>
             ) : (
               <BoardingPass
                 countryCode={countryIso3Code}
                 shortCountryCode={countryIso2Code}
                 countryName={countryName}
-                passengerName="Anónimo/a"
+                passengerName="Anonymous"
               ></BoardingPass>
             )}
           </div>
@@ -89,13 +89,13 @@ const BoardingPass = ({
           <div className="w-full h-10 bg-[#F45B69] flex flex-row gap-2 items-center px-6">
             <img className="-mb-1" width={30} src="/flight-icon.png"></img>
             <span className="text-2xl font-semibold text-white line-clamp-1 ">
-              TARJETA DE EMBARQUE
+              BOARDING PASS
             </span>
           </div>
           <div className="w-full flex flex-col grow justify-between px-6 gap-2 ">
             <div>
               <span className="text-md tracking-widest font-bold uppercase text-gray-400 line-clamp-1 mt-2">
-                PAÍS CON MÁS HABLANTES DEL IDIOMA:
+                COUNTRY WITH THE MOST SPEAKERS:
               </span>
             </div>
             <div className="flex flex-row gap-2 -mt-6 items-center ml-2">
@@ -112,19 +112,11 @@ const BoardingPass = ({
               </span>
             </div>
             <div className="flex flex-row gap-2 justify-between mb-4">
-              <LabelAndText
-                label="Pasajero"
-                text={passengerName}
-                size="lg"
-              ></LabelAndText>
+              <LabelAndText label="Passenger" text={passengerName} size="lg"></LabelAndText>
 
-              <LabelAndText
-                label="Vuelo"
-                text="A 0123"
-                size="lg"
-              ></LabelAndText>
-              <LabelAndText label="Puerta" text="12" size="lg"></LabelAndText>
-              <LabelAndText label="Asiento" text="25F" size="lg"></LabelAndText>
+              <LabelAndText label="Flight" text="A 0123" size="lg"></LabelAndText>
+              <LabelAndText label="Gate" text="12" size="lg"></LabelAndText>
+              <LabelAndText label="Seat" text="25F" size="lg"></LabelAndText>
             </div>
           </div>
         </div>
@@ -160,11 +152,11 @@ const BoardingPass = ({
             <LiaQrcodeSolid size={80} />
           </div>
           <div className="flex flex-col">
-            <LabelAndText label="Pasajero" text={passengerName}></LabelAndText>
+            <LabelAndText label="Passenger" text={passengerName}></LabelAndText>
             <div className="flex flew-row justify-between">
-              <LabelAndText label="Vuelo" text="A 0123"></LabelAndText>
+              <LabelAndText label="Flight" text="A 0123"></LabelAndText>
 
-              <LabelAndText label="Asiento" text="25F"></LabelAndText>
+              <LabelAndText label="Seat" text="25F"></LabelAndText>
             </div>
           </div>
           <div className="max-w-50 mb-4">
@@ -265,7 +257,7 @@ const BoardingPassMobile = ({
 
           <div className="px-4 flex flex-col items-center">
             <span className="text-xs font-bold text-gray-400 mt-2 uppercase tracking-widest">
-              País con más hablantes:
+              Country with the most speakers:
             </span>
 
             <div className="flex flex-row items-center justify-between w-full gap-2 mt-4 mb-2">
@@ -299,12 +291,12 @@ const BoardingPassMobile = ({
       <div className="bg-white rounded-b-3xl flex flex-col items-center px-6 pb-4">
         <div className="w-full flex flex-row justify-between mb-2">
           <div className="flex flex-col ">
-            <LabelAndText label="Pasajero" text={passengerName} size="md" />
-            <LabelAndText label="Puerta" text="12" size="md" />
+            <LabelAndText label="Passenger" text={passengerName} size="md" />
+            <LabelAndText label="Gate" text="12" size="md" />
           </div>
           <div className="flex flex-col ">
-            <LabelAndText label="Vuelo" text="A 0123" size="md" />
-            <LabelAndText label="Asiento" text="25F" size="md" />
+            <LabelAndText label="Flight" text="A 0123" size="md" />
+            <LabelAndText label="Seat" text="25F" size="md" />
           </div>
         </div>
         <div className="w-full flex flex-col items-center gap-2">

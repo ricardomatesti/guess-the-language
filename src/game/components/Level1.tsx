@@ -10,8 +10,8 @@ export const Level1 = () => {
 
   const HEADER_TEXT =
     continents.length > 1
-      ? "Hablado en estos continentes:"
-      : "Hablado en este continente:";
+      ? "Spoken in these continents:"
+      : "Spoken in this continent:";
 
   if (isMobile) {
     return (

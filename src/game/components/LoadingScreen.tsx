@@ -13,21 +13,21 @@ export const LoadingScreen = () => {
 
       <div className="text-center space-y-4">
         <h2 className="text-[#1e3a8a] text-3xl font-black uppercase tracking-tight">
-          Preparando...
+          Preparing...
         </h2>
         <div className="flex flex-row gap-1 flex-wrap gap-y-0 justify-center">
           <p className="text-[#4a90e2] font-bold text-lg shrink-0">
-            Afilando el oído para los
+            Sharpening the ear for the
           </p>
           <div className="flex flex-row gap-1">
             <p className="text-[#1e3a8a] font-bold text-lg">+200</p>
-            <p className="text-[#4a90e2] font-bold text-lg">idiomas</p>
+            <p className="text-[#4a90e2] font-bold text-lg">languages</p>
           </div>
         </div>
       </div>
 
       <p className="text-[#1e3a8a]/60 font-medium italic animate-pulse">
-        Cargando datos lingüísticos...
+        Loading linguistic data...
       </p>
     </div>
   );
