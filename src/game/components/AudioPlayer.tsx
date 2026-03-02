@@ -20,7 +20,7 @@ export const AudioPlayer = ({
 
   if (isMobile) {
     return (
-      <div className="flex items-center gap-4 p-4 bg-[#56CBF9]/100 backdrop-blur-md rounded-2xl border border-white/20">
+      <div className="flex items-center gap-4 p-4 bg-[#56CBF9]/100 backdrop-blur-md rounded-2xl border border-white/20 max-w-lg w-full">
         <motion.button
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
@@ -53,7 +53,7 @@ export const AudioPlayer = ({
   }
 
   return (
-    <div className="flex items-center gap-4 p-4 bg-[#56CBF9]/100 backdrop-blur-md rounded-2xl border border-white/20">
+    <div className="flex items-center gap-4 p-4 bg-[#56CBF9]/100 backdrop-blur-md rounded-2xl border border-white/20 max-w-lg w-full">
       <motion.button
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}

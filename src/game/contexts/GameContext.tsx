@@ -72,7 +72,7 @@ export function GameContextProvider({
 }) {
   const { isMobile } = useIsMobile({ maxWidth: 900 });
   const [steps, setSteps] = useState<Step[]>([
-    { id: 1, status: "current", name: "Speakers" },
+    { id: 1, status: "current", name: "Nº of Speakers" },
     { id: 2, status: "locked", name: "Word" },
     { id: 3, status: "locked", name: "Audio" },
     { id: 4, status: "locked", name: "Sentence" },
@@ -112,7 +112,7 @@ export function GameContextProvider({
   const startGame = async () => {
     setGameStatus("loading");
     setSteps([
-      { id: 1, status: "current", name: "Speakers" },
+      { id: 1, status: "current", name: "No. of speakers" },
       { id: 2, status: "locked", name: "Word" },
       { id: 3, status: "locked", name: "Audio" },
       { id: 4, status: "locked", name: "Sentence" },

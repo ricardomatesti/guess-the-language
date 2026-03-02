@@ -60,12 +60,14 @@ export const Game = () => {
 
   if (gameStatus === "won" || gameStatus === "lost") {
     return (
-      <GameOver
-        status={gameStatus}
-        correctLanguage={guessingData["name"]}
-        stats={{ hintsUsed: 3, streak: 1 }}
-        onRestart={startGame}
-      ></GameOver>
+      <GameLayout>
+        <GameOver
+          status={gameStatus}
+          correctLanguage={guessingData["name"]}
+          stats={{ hintsUsed: 3, streak: 1 }}
+          onRestart={startGame}
+        ></GameOver>
+      </GameLayout>
     );
   }
 
@@ -193,7 +195,7 @@ export const GameStarted = () => {
   return (
     <div
       id="ContenedorDePista"
-      className="mt-20 backdrop-blur-[1px] w-220 min-h-fit p-10 bg-[#56CBF9]/40 shadow-lg rounded-2xl flex flex-col gap-6 relative justify-between"
+      className="mt-4 backdrop-blur-[1px] w-220 min-h-fit p-10 bg-[#56CBF9]/40 shadow-lg rounded-2xl flex flex-col gap-6 relative justify-between"
     >
       <div className="flex flex-row items-center justify-between h-fit -mt-4">
         <div className="flex items-center gap-4 w-full justify-between">

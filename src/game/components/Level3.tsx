@@ -9,8 +9,8 @@ export const Level3 = () => {
   if (isMobile) {
     return (
       <div className="w-full flex flex-row justify-center">
-        <div className="h-fit flex flex-col justify-center items-center">
-          <div className="flex flex-col justify-start gap-6">
+        <div className="h-fit flex flex-col justify-center items-center w-full">
+          <div className="flex flex-col justify-start gap-6 items-center w-full">
             <span className="text-4xl font-bold">Listen to the audio...</span>
 
             <AudioPlayer
@@ -25,8 +25,8 @@ export const Level3 = () => {
 
   return (
     <div className="w-full flex flex-row justify-center">
-      <div className="h-fit flex flex-col justify-center items-center">
-        <div className="flex flex-col justify-start gap-6">
+      <div className="h-fit flex flex-col justify-center items-center w-full">
+        <div className="flex flex-col justify-start gap-6 items-center w-full">
           <span className="text-6xl font-bold">Listen to the audio...</span>
 
           <AudioPlayer
