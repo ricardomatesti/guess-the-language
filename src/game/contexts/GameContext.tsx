@@ -35,6 +35,7 @@ export const GameContext = createContext<{
   setGuesses: Dispatch<SetStateAction<Guess[]>>;
   skipLevel: () => void;
   moveToLevel: ({ type }: { type: "up" | "down" }) => void;
+  goToLevel: (level: number) => void;
   checkGuess: ({
     guess,
     setFormText,
@@ -60,6 +61,7 @@ export const GameContext = createContext<{
   setSteps: () => { },
   skipLevel: () => { },
   moveToLevel: () => { },
+  goToLevel: () => { },
   checkGuess: () => { },
 });
 
@@ -237,6 +239,12 @@ export function GameContextProvider({
     }
   };
 
+  const goToLevel = (level: number) => {
+    if (steps[level - 1].status !== "locked") {
+      setCurrentShowingStep(level);
+    }
+  };
+
   return (
     <GameContext.Provider
       value={{
@@ -257,6 +265,7 @@ export function GameContextProvider({
         setSteps,
         skipLevel,
         moveToLevel,
+        goToLevel,
         checkGuess,
       }}
     >

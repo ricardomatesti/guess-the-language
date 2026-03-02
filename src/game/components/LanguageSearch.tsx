@@ -96,24 +96,29 @@ const LanguageSearch = () => {
         </div>
       </div>
       <div className="flex flew-row justify-end items-center w-full gap-2 shrink flex-wrap-reverse">
-        <ArrowButton
-          direction="left"
-          size="lg"
-          disabled={currentShowingStep === 1}
-          onClick={() => {
-            if (currentShowingStep !== 1) moveToLevel({ type: "down" });
-          }}
-        ></ArrowButton>
+        {isMobile && (
+          <>
+            <ArrowButton
+              direction="left"
+              size="lg"
+              disabled={currentShowingStep === 1}
+              onClick={() => {
+                if (currentShowingStep !== 1) moveToLevel({ type: "down" });
+              }}
+            ></ArrowButton>
 
-        <ArrowButton
-          direction="right"
-          size="lg"
-          disabled={steps[currentShowingStep - 1].status === "current"}
-          onClick={() => {
-            const disabled = steps[currentShowingStep - 1].status === "current";
-            if (!disabled) moveToLevel({ type: "up" });
-          }}
-        ></ArrowButton>
+            <ArrowButton
+              direction="right"
+              size="lg"
+              disabled={steps[currentShowingStep - 1].status === "current"}
+              onClick={() => {
+                const disabled =
+                  steps[currentShowingStep - 1].status === "current";
+                if (!disabled) moveToLevel({ type: "up" });
+              }}
+            ></ArrowButton>
+          </>
+        )}
 
         {currentPlayingStep < 4 && (
           <Button
