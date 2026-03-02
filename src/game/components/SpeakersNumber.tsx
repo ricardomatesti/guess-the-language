@@ -8,7 +8,7 @@ export const SpeakersNumber = ({ population }: { population: number }) => {
 
   const count = useMotionValue(0);
   const rounded = useTransform(() =>
-    new Intl.NumberFormat("es-ES").format(Math.round(count.get()))
+    new Intl.NumberFormat("en-US").format(Math.round(count.get()))
   );
 
   useEffect(() => {

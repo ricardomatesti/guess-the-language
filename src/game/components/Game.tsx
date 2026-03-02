@@ -1,4 +1,4 @@
-import { useContext, type ReactNode } from "react";
+import { useContext, useEffect, type ReactNode } from "react";
 import { GameContext } from "../contexts/GameContext";
 import LanguageSearch from "./LanguageSearch";
 import { Level1 } from "./Level1";
@@ -11,6 +11,7 @@ import { Button } from "./shared/Button";
 import { Guesses } from "./Guesses";
 import { GameOver } from "./GameOver";
 import LoadingScreen from "./LoadingScreen";
+import { ArrowButton } from "./shared/ArrowButton";
 
 const GameLayout = ({ children }: { children: ReactNode | ReactNode[] }) => {
   return (
@@ -21,7 +22,7 @@ const GameLayout = ({ children }: { children: ReactNode | ReactNode[] }) => {
           shadow="#f45b69"
           hover="#FF808B"
           textColor="#FFFFFF"
-          text="Iniciar sesión"
+          text="Log in"
           size="sm"
         ></Button>
       </div>
@@ -59,12 +60,14 @@ export const Game = () => {
 
   if (gameStatus === "won" || gameStatus === "lost") {
     return (
-      <GameOver
-        status={gameStatus}
-        correctLanguage={guessingData["name"]}
-        stats={{ hintsUsed: 3, streak: 1 }}
-        onRestart={startGame}
-      ></GameOver>
+      <GameLayout>
+        <GameOver
+          status={gameStatus}
+          correctLanguage={guessingData["name"]}
+          stats={{ hintsUsed: 3, streak: 1 }}
+          onRestart={startGame}
+        ></GameOver>
+      </GameLayout>
     );
   }
 
@@ -88,19 +91,19 @@ export const GameNotStarted = () => {
 
         {/* Título */}
         <h1 className="text-4xl font-black text-blue-900 mb-4 tracking-tight leading-none">
-          ¿CUÁNTO SABES <br />
-          <span className="text-blue-600">DE IDIOMAS?</span>
+          ARE YOU A <br />
+          <span className="text-blue-600">LANGUAGE LEGEND?</span>
         </h1>
 
         {/* Descripción corta */}
         <p className="text-blue-800/70 font-medium text-lg mb-10 leading-relaxed">
-          Escucha, lee y adivina. <br />
-          ¿Podrás llegar a la racha de 10?
+          Listen, read and guess. <br />
+          Can you reach a streak of 10?
         </p>
 
         <div className="w-full max-w-[280px]">
           <Button
-            text="EMPEZAR PARTIDA"
+            text="START GAME"
             bg="#1FB6FF"
             shadow="#0676a2"
             hover="#4fc6ff"
@@ -132,15 +135,39 @@ export const GameNotStarted = () => {
       </div>
 
       <p className="mt-6 text-blue-900/40 text-sm font-bold uppercase tracking-widest">
-        MÁS DE 200 IDIOMAS DISPONIBLES
+        OVER 200 LANGUAGES AVAILABLE
       </p>
     </div>
   );
 };
 
 export const GameStarted = () => {
-  const { currentShowingStep, steps, isMobile } = useContext(GameContext);
+  const { currentShowingStep, steps, isMobile, moveToLevel } =
+    useContext(GameContext);
   const stepName = steps[currentShowingStep - 1].name;
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Don't navigate if user is typing in the search bar
+      if (
+        document.activeElement?.tagName === "INPUT" ||
+        document.activeElement?.tagName === "TEXTAREA"
+      ) {
+        return;
+      }
+
+      if (e.key === "ArrowLeft") {
+        if (currentShowingStep > 1) moveToLevel({ type: "down" });
+      } else if (e.key === "ArrowRight") {
+        if (steps[currentShowingStep - 1].status !== "current") {
+          moveToLevel({ type: "up" });
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [currentShowingStep, steps, moveToLevel]);
 
   if (isMobile) {
     return (
@@ -151,7 +178,7 @@ export const GameStarted = () => {
         <div className="flex flex-row items-center justify-between h-fit -mt-4 -mx-4">
           <div className="flex flex-col gap-0">
             <span className="text-md font-normal text-gray-700 mb-0">
-              Pista {currentShowingStep} - {stepName}
+              Hint {currentShowingStep} - {stepName}
             </span>
           </div>
           <Progress steps={steps}></Progress>
@@ -168,13 +195,38 @@ export const GameStarted = () => {
   return (
     <div
       id="ContenedorDePista"
-      className="mt-20 backdrop-blur-[1px] w-220 h-fit p-10 bg-[#56CBF9]/40 shadow-lg rounded-2xl flex flex-col gap-6 relative"
+      className="mt-4 backdrop-blur-[1px] w-220 min-h-fit p-10 bg-[#56CBF9]/40 shadow-lg rounded-2xl flex flex-col gap-6 relative justify-between"
     >
       <div className="flex flex-row items-center justify-between h-fit -mt-4">
-        <span className="text-xl font-normal text-gray-700">
-          Pista {currentShowingStep} - {stepName}
-        </span>
-        <Progress steps={steps}></Progress>
+        <div className="flex items-center gap-4 w-full justify-between">
+          <span className="text-xl font-normal text-gray-700">
+            Hint {currentShowingStep} - {stepName}
+          </span>
+          <div className="flex flex-row gap-4">
+            <div className="flex gap-1 ml-2">
+              <ArrowButton
+                direction="left"
+                size="sm"
+                disabled={currentShowingStep === 1}
+                onClick={() => {
+                  if (currentShowingStep !== 1) moveToLevel({ type: "down" });
+                }}
+              ></ArrowButton>
+
+              <ArrowButton
+                direction="right"
+                size="sm"
+                disabled={steps[currentShowingStep - 1].status === "current"}
+                onClick={() => {
+                  const disabled =
+                    steps[currentShowingStep - 1].status === "current";
+                  if (!disabled) moveToLevel({ type: "up" });
+                }}
+              ></ArrowButton>
+            </div>
+            <Progress steps={steps}></Progress>
+          </div>
+        </div>
       </div>
       <CurrentLevel currentStep={currentShowingStep}></CurrentLevel>
       <div className="w-full flex justify-center">

@@ -35,6 +35,7 @@ export const GameContext = createContext<{
   setGuesses: Dispatch<SetStateAction<Guess[]>>;
   skipLevel: () => void;
   moveToLevel: ({ type }: { type: "up" | "down" }) => void;
+  goToLevel: (level: number) => void;
   checkGuess: ({
     guess,
     setFormText,
@@ -54,13 +55,14 @@ export const GameContext = createContext<{
   record: 0,
   tries: 0,
   isMobile: false,
-  startGame: () => {},
-  setGuesses: () => {},
-  setFormError: () => {},
-  setSteps: () => {},
-  skipLevel: () => {},
-  moveToLevel: () => {},
-  checkGuess: () => {},
+  startGame: () => { },
+  setGuesses: () => { },
+  setFormError: () => { },
+  setSteps: () => { },
+  skipLevel: () => { },
+  moveToLevel: () => { },
+  goToLevel: () => { },
+  checkGuess: () => { },
 });
 
 export function GameContextProvider({
@@ -70,11 +72,11 @@ export function GameContextProvider({
 }) {
   const { isMobile } = useIsMobile({ maxWidth: 900 });
   const [steps, setSteps] = useState<Step[]>([
-    { id: 1, status: "current", name: "Nº nativos" },
-    { id: 2, status: "locked", name: "Palabra" },
+    { id: 1, status: "current", name: "Nº of Speakers" },
+    { id: 2, status: "locked", name: "Word" },
     { id: 3, status: "locked", name: "Audio" },
-    { id: 4, status: "locked", name: "Frase" },
-    { id: 5, status: "locked", name: "País" },
+    { id: 4, status: "locked", name: "Sentence" },
+    { id: 5, status: "locked", name: "Country" },
   ]);
   const [stats, setStats] = useState(() => {
     const savedStreak = localStorage.getItem("game_current_streak");
@@ -110,11 +112,11 @@ export function GameContextProvider({
   const startGame = async () => {
     setGameStatus("loading");
     setSteps([
-      { id: 1, status: "current", name: "Nº nativos" },
-      { id: 2, status: "locked", name: "Palabra" },
+      { id: 1, status: "current", name: "No. of speakers" },
+      { id: 2, status: "locked", name: "Word" },
       { id: 3, status: "locked", name: "Audio" },
-      { id: 4, status: "locked", name: "Frase" },
-      { id: 5, status: "locked", name: "País" },
+      { id: 4, status: "locked", name: "Sentence" },
+      { id: 5, status: "locked", name: "Country" },
     ]);
     setGuesses([]);
     setCurrentShowingStep(1);
@@ -168,10 +170,13 @@ export function GameContextProvider({
   }) => {
     const trimmedGuess = guess.trim();
 
-    if (trimmedGuess === "") return;
+    if (trimmedGuess === "") {
+      setFormError("You must write something");
+      return;
+    }
 
     if (!isInLanguageList(trimmedGuess)) {
-      setFormError("Selecciona un idioma de la lista");
+      setFormError("Select a language from the list");
       return;
     }
 
@@ -234,6 +239,12 @@ export function GameContextProvider({
     }
   };
 
+  const goToLevel = (level: number) => {
+    if (steps[level - 1].status !== "locked") {
+      setCurrentShowingStep(level);
+    }
+  };
+
   return (
     <GameContext.Provider
       value={{
@@ -254,6 +265,7 @@ export function GameContextProvider({
         setSteps,
         skipLevel,
         moveToLevel,
+        goToLevel,
         checkGuess,
       }}
     >
