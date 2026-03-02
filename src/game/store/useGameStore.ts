@@ -1,7 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { languages } from "../languages";
-import useIsMobile from "../hooks/useIsMobile";
 
 export type statusType = "correct" | "skipped" | "incorrect" | "current" | "locked";
 export type GameStatusType = "notStarted" | "loading" | "started" | "won" | "lost";
