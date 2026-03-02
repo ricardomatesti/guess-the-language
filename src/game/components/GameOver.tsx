@@ -1,10 +1,17 @@
-import { useContext } from "react";
 import { Button } from "./shared/Button";
-import { GameContext } from "../contexts/GameContext";
+import { useGameStore } from "../store/useGameStore";
 
-export const GameOver = ({ status, correctLanguage, onRestart }: any) => {
+export const GameOver = ({
+  status,
+  correctLanguage,
+  onRestart,
+}: {
+  status: "won" | "lost";
+  correctLanguage: string;
+  onRestart: () => void;
+}) => {
   const isWin = status === "won";
-  const { streak, record, currentPlayingStep, tries } = useContext(GameContext);
+  const { streak, record, currentPlayingStep, tries } = useGameStore();
 
   if (isWin) {
     return (

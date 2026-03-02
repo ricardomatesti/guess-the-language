@@ -1,10 +1,9 @@
 import { RxFontFamily } from "react-icons/rx";
 import { MdOutlineCategory } from "react-icons/md";
-import { useContext } from "react";
-import { GameContext } from "../contexts/GameContext";
+import { useGameStore } from "../store/useGameStore";
 
 export const Level2 = () => {
-  const { guessingData } = useContext(GameContext);
+  const { guessingData } = useGameStore();
   const { word, fonetic, category, family } = guessingData["secondHint"];
 
   return (

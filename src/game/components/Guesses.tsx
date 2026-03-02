@@ -1,10 +1,9 @@
 import { ImCross } from "react-icons/im";
 import { FaCheck } from "react-icons/fa";
-import { useContext } from "react";
-import { GameContext } from "../contexts/GameContext";
+import { useGameStore } from "../store/useGameStore";
 
 export const Guesses = () => {
-  const { guesses } = useContext(GameContext);
+  const { guesses } = useGameStore();
 
   if (guesses.length === 0) return;
 

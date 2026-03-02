@@ -1,9 +1,8 @@
 import { LiaQrcodeSolid } from "react-icons/lia";
-import { useContext } from "react";
-import { GameContext } from "../contexts/GameContext";
+import { useGameStore } from "../store/useGameStore";
 
 export const Level5 = () => {
-  const { guessingData, isMobile } = useContext(GameContext);
+  const { guessingData, isMobile } = useGameStore();
   const { countryName, countryIso2Code, countryIso3Code } =
     guessingData["fifthHint"];
 
