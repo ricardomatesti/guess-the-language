@@ -1,13 +1,13 @@
-import { useState, useEffect, useRef, useContext } from "react";
+import { useState, useEffect, useRef } from "react";
 import { IoSearch } from "react-icons/io5";
-import { GameContext } from "../contexts/GameContext";
+import { useGameStore } from "../store/useGameStore";
 import { Button } from "./shared/Button";
 import { ArrowButton } from "./shared/ArrowButton";
 import { AnimatePresence, motion } from "motion/react";
 import { languages } from "../languages";
 
 const LanguageSearch = () => {
-  const { isMobile } = useContext(GameContext);
+  const { isMobile } = useGameStore();
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<String[]>([]);
   const [showDropdown, setShowDropdown] = useState(false);
@@ -21,7 +21,7 @@ const LanguageSearch = () => {
     skipLevel,
     moveToLevel,
     checkGuess,
-  } = useContext(GameContext);
+  } = useGameStore();
 
   useEffect(() => {
     const normalizeText = (text: string) =>
@@ -103,7 +103,7 @@ const LanguageSearch = () => {
               size="lg"
               disabled={currentShowingStep === 1}
               onClick={() => {
-                if (currentShowingStep !== 1) moveToLevel({ type: "down" });
+                if (currentShowingStep !== 1) moveToLevel("down");
               }}
             ></ArrowButton>
 
@@ -114,7 +114,7 @@ const LanguageSearch = () => {
               onClick={() => {
                 const disabled =
                   steps[currentShowingStep - 1].status === "current";
-                if (!disabled) moveToLevel({ type: "up" });
+                if (!disabled) moveToLevel("up");
               }}
             ></ArrowButton>
           </>
@@ -137,7 +137,7 @@ const LanguageSearch = () => {
           hover="#4fc6ff"
           textColor="black"
           text="Check!"
-          onClick={() => checkGuess({ guess: query, setFormText: setQuery })}
+          onClick={() => checkGuess(query, setQuery)}
           tailwindClasses={isMobile ? "flex-1 uppercase" : "uppercase"}
         ></Button>
       </div>
@@ -146,7 +146,7 @@ const LanguageSearch = () => {
 };
 
 const FormPopover = ({ text }: { text: string }) => {
-  const { setFormError } = useContext(GameContext);
+  const { setFormError } = useGameStore();
 
   useEffect(() => {
     setTimeout(() => {

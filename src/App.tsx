@@ -1,7 +1,16 @@
-import { GameContextProvider } from "./game/contexts/GameContext";
 import { Game } from "./game/components/Game";
+import { useIsMobile } from "./game/hooks/useIsMobile";
+import { useEffect } from "react";
+import { useGameStore } from "./game/store/useGameStore";
 
 function App() {
+  const { isMobile } = useIsMobile({ maxWidth: 900 });
+  const { setMobile } = useGameStore();
+
+  useEffect(() => {
+    setMobile(isMobile);
+  }, [isMobile, setMobile]);
+
   return (
     <>
       <div className="bg-[#B2E6FF] w-screen min-h-dvh h-fit bg-cover bg-center relative flex flex-col patron">
@@ -21,16 +30,10 @@ function App() {
             maskSize: "20px 20px",
           }}
         ></div>
-        <GameContextProvider>
-          <Game></Game>
-        </GameContextProvider>
+        <Game></Game>
       </div>
     </>
   );
 }
-
-// https://flagcdn.com/w640/fr.png
-
-// https://cdn.prod.website-files.com/67b5a02dc5d338960b17a7e9/67e2c781c4c953cd9e74eda5_ln4-2-helm-mask-fill.svg
 
 export default App;

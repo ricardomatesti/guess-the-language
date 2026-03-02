@@ -1,5 +1,5 @@
-import { useContext, useEffect, type ReactNode } from "react";
-import { GameContext } from "../contexts/GameContext";
+import { useEffect, type ReactNode } from "react";
+import { useGameStore } from "../store/useGameStore";
 import LanguageSearch from "./LanguageSearch";
 import { Level1 } from "./Level1";
 import { Level2 } from "./Level2";
@@ -32,7 +32,7 @@ const GameLayout = ({ children }: { children: ReactNode | ReactNode[] }) => {
 };
 
 export const Game = () => {
-  const { gameStatus, guessingData, startGame } = useContext(GameContext);
+  const { gameStatus, guessingData, startGame } = useGameStore();
 
   if (gameStatus === "loading") {
     return (
@@ -64,7 +64,6 @@ export const Game = () => {
         <GameOver
           status={gameStatus}
           correctLanguage={guessingData["name"]}
-          stats={{ hintsUsed: 3, streak: 1 }}
           onRestart={startGame}
         ></GameOver>
       </GameLayout>
@@ -79,7 +78,7 @@ export const Game = () => {
 };
 
 export const GameNotStarted = () => {
-  const { startGame } = useContext(GameContext);
+  const { startGame } = useGameStore();
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[400px] w-full max-w-lg mx-auto p-8">
@@ -142,8 +141,7 @@ export const GameNotStarted = () => {
 };
 
 export const GameStarted = () => {
-  const { currentShowingStep, steps, isMobile, moveToLevel } =
-    useContext(GameContext);
+  const { currentShowingStep, steps, isMobile, moveToLevel } = useGameStore();
   const stepName = steps[currentShowingStep - 1].name;
 
   useEffect(() => {
@@ -157,10 +155,10 @@ export const GameStarted = () => {
       }
 
       if (e.key === "ArrowLeft") {
-        if (currentShowingStep > 1) moveToLevel({ type: "down" });
+        if (currentShowingStep > 1) moveToLevel("down");
       } else if (e.key === "ArrowRight") {
         if (steps[currentShowingStep - 1].status !== "current") {
-          moveToLevel({ type: "up" });
+          moveToLevel("up");
         }
       }
     };
@@ -209,7 +207,7 @@ export const GameStarted = () => {
                 size="sm"
                 disabled={currentShowingStep === 1}
                 onClick={() => {
-                  if (currentShowingStep !== 1) moveToLevel({ type: "down" });
+                  if (currentShowingStep !== 1) moveToLevel("down");
                 }}
               ></ArrowButton>
 
@@ -220,7 +218,7 @@ export const GameStarted = () => {
                 onClick={() => {
                   const disabled =
                     steps[currentShowingStep - 1].status === "current";
-                  if (!disabled) moveToLevel({ type: "up" });
+                  if (!disabled) moveToLevel("up");
                 }}
               ></ArrowButton>
             </div>

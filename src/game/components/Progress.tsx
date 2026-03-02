@@ -1,10 +1,10 @@
 import { FaCheck } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
-import { GameContext, type Step } from "../contexts/GameContext";
-import { useContext } from "react";
+import { type Step } from "../store/useGameStore";
+import { useGameStore } from "../store/useGameStore";
 
 export const Progress = ({ steps }: { steps: Step[] }) => {
-  const { currentPlayingStep, goToLevel, isMobile } = useContext(GameContext);
+  const { currentPlayingStep, goToLevel, isMobile } = useGameStore();
 
   return (
     <div className="flex items-center justify-center gap-0">
