@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Button } from "./shared/Button";
 import { useGameStore } from "../store/useGameStore";
 
@@ -10,8 +11,21 @@ export const GameOver = ({
   correctLanguage: string;
   onRestart: () => void;
 }) => {
+  const navigate = useNavigate();
   const isWin = status === "won";
-  const { streak, record, currentPlayingStep, tries } = useGameStore();
+  const {
+    streak,
+    record,
+    currentPlayingStep,
+    tries,
+    lastRewardSummary,
+    dismissRewardSummary,
+  } = useGameStore();
+
+  const handleRestart = () => {
+    dismissRewardSummary();
+    onRestart();
+  };
 
   if (isWin) {
     return (
@@ -35,6 +49,8 @@ export const GameOver = ({
             </div>
           </div>
 
+          {lastRewardSummary && <RewardSummary />}
+
           <div className="grid grid-cols-2 gap-4 w-full mb-10">
             <div className="bg-white/40 p-4 rounded-2xl shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)]">
               <span className="block text-[10px] font-black text-blue-900/40 uppercase tracking-widest">
@@ -52,20 +68,29 @@ export const GameOver = ({
               <span className="block text-[10px] font-black text-blue-900/40 uppercase tracking-widest">
                 Current Streak
               </span>
-              <span className="text-2xl font-black text-blue-900">
-                {streak} 🔥
-              </span>
+              <span className="text-2xl font-black text-blue-900">{streak} 🔥</span>
             </div>
           </div>
 
-          <div className="w-full">
+          <div className="w-full flex flex-col gap-2">
+            {lastRewardSummary && (
+              <Button
+                text="VIEW PROFILE RECAP"
+                textColor="white"
+                bg="#0676a2"
+                shadow="#045573"
+                hover="#0b8bc0"
+                onClick={() => navigate("/profile")}
+                size="md"
+              />
+            )}
             <Button
               text="KEEP THE STREAK"
               textColor="white"
               bg="#00b4ff"
               shadow="#0676a2"
               hover="#4fc6ff"
-              onClick={onRestart}
+              onClick={handleRestart}
               size="lg"
             />
           </div>
@@ -98,14 +123,14 @@ export const GameOver = ({
           </div>
         </div>
 
+        {lastRewardSummary && <RewardSummary />}
+
         <div className="grid grid-cols-2 gap-4 w-full mb-8">
           <div className="bg-white/40 p-4 rounded-2xl shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)]">
             <span className="block text-[10px] font-black text-blue-900/40 uppercase tracking-widest mb-1">
               High Score
             </span>
-            <span className="text-xl font-black text-blue-900">
-              {record} 🏆
-            </span>
+            <span className="text-xl font-black text-blue-900">{record} 🏆</span>
           </div>
           <div className="bg-white/40 p-4 rounded-2xl shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)]">
             <span className="block text-[10px] font-black text-blue-900/40 uppercase tracking-widest mb-1">
@@ -115,18 +140,63 @@ export const GameOver = ({
           </div>
         </div>
 
-        <div className="w-full">
+        <div className="w-full flex flex-col gap-2">
+          {lastRewardSummary && (
+            <Button
+              text="VIEW PROFILE RECAP"
+              textColor="white"
+              bg="#0676a2"
+              shadow="#045573"
+              hover="#0b8bc0"
+              onClick={() => navigate("/profile")}
+              size="md"
+            />
+          )}
           <Button
             text="TRY AGAIN"
             textColor="white"
             bg="#00b4ff"
             shadow="#0676a2"
             hover="#4fc6ff"
-            onClick={onRestart}
+            onClick={handleRestart}
             size="lg"
           />
         </div>
       </div>
+    </div>
+  );
+};
+
+const RewardSummary = () => {
+  const { lastRewardSummary } = useGameStore();
+
+  if (!lastRewardSummary) return null;
+
+  return (
+    <div className="w-full bg-white/60 rounded-2xl p-4 mb-6 border border-blue-200 text-left">
+      <p className="text-xs font-black text-blue-900/50 uppercase tracking-widest mb-2">
+        Rewards
+      </p>
+      <p className="text-blue-900 font-bold mb-1">+{lastRewardSummary.xpGained} XP</p>
+      <p className="text-blue-900/70 text-sm mb-2">
+        Level {lastRewardSummary.levelBefore} → {lastRewardSummary.levelAfter}
+      </p>
+
+      {lastRewardSummary.unlockedBadges.length > 0 && (
+        <p className="text-emerald-700 text-sm font-semibold mb-1">
+          New badges: {lastRewardSummary.unlockedBadges.map((b) => b.title).join(", ")}
+        </p>
+      )}
+
+      {lastRewardSummary.questUpdates.length > 0 && (
+        <div className="text-xs text-blue-900/70">
+          {lastRewardSummary.questUpdates.slice(0, 2).map((q) => (
+            <p key={q.id}>
+              {q.title}: {q.progress}/{q.target}
+            </p>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

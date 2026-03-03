@@ -3,19 +3,27 @@ import { persist } from "zustand/middleware";
 import type { Session } from "@supabase/supabase-js";
 import { languages } from "../languages";
 import {
+  EMPTY_PLAYER_PROGRESS,
   EMPTY_PLAYER_STATS,
   type AuthStatus,
   type AuthUser,
+  type DailyQuest,
   type GameResult,
   type GameResultInput,
+  type GameRewardSummary,
+  type PlayerProgress,
   type PlayerStats,
+  type UserBadge,
 } from "../../types/auth";
 import {
   ensureProfile,
   getProfileSummary,
+  getProgressionSummary,
   mergeBestStats,
+  processGameProgress,
   recordGameResult,
 } from "../../lib/cloud";
+import { normalizeAuthError } from "../../lib/authErrors";
 import { getSessionUser, isSupabaseEnabled, supabase } from "../../lib/supabase";
 
 export type statusType =
@@ -61,7 +69,11 @@ interface GameState {
   isSyncing: boolean;
   syncError: string | null;
   profileStats: PlayerStats;
+  progress: PlayerProgress;
+  badges: UserBadge[];
+  dailyQuests: DailyQuest[];
   recentGames: GameResult[];
+  lastRewardSummary: GameRewardSummary | null;
   pendingResults: PendingGameResult[];
   statsVersion: number;
   mergeCompletedForUserId: string | null;
@@ -76,14 +88,23 @@ interface GameState {
   moveToLevel: (type: "up" | "down") => void;
   goToLevel: (level: number) => void;
   signInWithGoogle: () => Promise<void>;
-  signInWithEmail: (email: string) => Promise<void>;
+  signInWithEmailPassword: (email: string, password: string) => Promise<void>;
+  signUpWithEmailPassword: (email: string, password: string) => Promise<void>;
+  sendPasswordReset: (email: string) => Promise<void>;
+  updatePassword: (newPassword: string) => Promise<void>;
   signOut: () => Promise<void>;
   hydrateCloudStats: () => Promise<void>;
+  hydrateProgression: () => Promise<void>;
   mergeLocalStatsIfNeeded: () => Promise<void>;
+  syncProgressionAfterGame: (
+    result: GameResultInput,
+    token: string,
+  ) => Promise<void>;
   syncGameResult: (result: GameResultInput, token: string) => Promise<void>;
   syncCurrentGameResult: () => Promise<void>;
   retryPendingSync: () => Promise<void>;
   clearSyncError: () => void;
+  dismissRewardSummary: () => void;
 }
 
 const makeGameToken = () => `${Date.now()}-${Math.random().toString(16).slice(2)}`;
@@ -115,7 +136,11 @@ export const useGameStore = create<GameState>()(
       isSyncing: false,
       syncError: null,
       profileStats: EMPTY_PLAYER_STATS,
+      progress: EMPTY_PLAYER_PROGRESS,
+      badges: [],
+      dailyQuests: [],
       recentGames: [],
+      lastRewardSummary: null,
       pendingResults: [],
       statsVersion: 1,
       mergeCompletedForUserId: null,
@@ -125,6 +150,7 @@ export const useGameStore = create<GameState>()(
       setMobile: (isMobile) => set({ isMobile }),
       setFormError: (formError) => set({ formError }),
       clearSyncError: () => set({ syncError: null }),
+      dismissRewardSummary: () => set({ lastRewardSummary: null }),
 
       setAuthSession: (session) => {
         if (!isSupabaseEnabled) {
@@ -137,7 +163,16 @@ export const useGameStore = create<GameState>()(
           user,
           authStatus: user ? "authenticated" : "unauthenticated",
           syncError: null,
-          ...(user ? {} : { recentGames: [], profileStats: EMPTY_PLAYER_STATS }),
+          ...(user
+            ? {}
+            : {
+                recentGames: [],
+                profileStats: EMPTY_PLAYER_STATS,
+                progress: EMPTY_PLAYER_PROGRESS,
+                badges: [],
+                dailyQuests: [],
+                lastRewardSummary: null,
+              }),
         });
       },
 
@@ -150,6 +185,7 @@ export const useGameStore = create<GameState>()(
           currentPlayingStep: 0,
           tries: 0,
           currentGameToken: makeGameToken(),
+          lastRewardSummary: null,
         });
 
         try {
@@ -262,27 +298,85 @@ export const useGameStore = create<GameState>()(
         }
 
         const redirectTo = `${window.location.origin}/profile`;
-        const { error } = await supabase.auth.signInWithOAuth({
-          provider: "google",
-          options: { redirectTo },
-        });
+        try {
+          const { error } = await supabase.auth.signInWithOAuth({
+            provider: "google",
+            options: { redirectTo },
+          });
 
-        if (error) throw error;
+          if (error) throw error;
+        } catch (error) {
+          throw new Error(normalizeAuthError(error));
+        }
       },
 
-      signInWithEmail: async (email) => {
+      signInWithEmailPassword: async (email, password) => {
         if (!supabase) {
           throw new Error("Supabase auth is not configured.");
         }
 
-        const { error } = await supabase.auth.signInWithOtp({
-          email,
-          options: {
-            emailRedirectTo: `${window.location.origin}/profile`,
-          },
-        });
+        try {
+          const { error } = await supabase.auth.signInWithPassword({
+            email,
+            password,
+          });
 
-        if (error) throw error;
+          if (error) throw error;
+        } catch (error) {
+          throw new Error(normalizeAuthError(error));
+        }
+      },
+
+      signUpWithEmailPassword: async (email, password) => {
+        if (!supabase) {
+          throw new Error("Supabase auth is not configured.");
+        }
+
+        try {
+          const { error } = await supabase.auth.signUp({
+            email,
+            password,
+            options: {
+              emailRedirectTo: `${window.location.origin}/login`,
+            },
+          });
+
+          if (error) throw error;
+        } catch (error) {
+          throw new Error(normalizeAuthError(error));
+        }
+      },
+
+      sendPasswordReset: async (email) => {
+        if (!supabase) {
+          throw new Error("Supabase auth is not configured.");
+        }
+
+        try {
+          const { error } = await supabase.auth.resetPasswordForEmail(email, {
+            redirectTo: `${window.location.origin}/reset-password`,
+          });
+
+          if (error) throw error;
+        } catch (error) {
+          throw new Error(normalizeAuthError(error));
+        }
+      },
+
+      updatePassword: async (newPassword) => {
+        if (!supabase) {
+          throw new Error("Supabase auth is not configured.");
+        }
+
+        try {
+          const { error } = await supabase.auth.updateUser({
+            password: newPassword,
+          });
+
+          if (error) throw error;
+        } catch (error) {
+          throw new Error(normalizeAuthError(error));
+        }
       },
 
       signOut: async () => {
@@ -294,6 +388,10 @@ export const useGameStore = create<GameState>()(
           user: null,
           recentGames: [],
           profileStats: EMPTY_PLAYER_STATS,
+          progress: EMPTY_PLAYER_PROGRESS,
+          badges: [],
+          dailyQuests: [],
+          lastRewardSummary: null,
         });
       },
 
@@ -305,8 +403,23 @@ export const useGameStore = create<GameState>()(
         set({
           profileStats: summary.stats,
           recentGames: summary.recentGames,
+          progress: summary.progress,
+          badges: summary.badges,
+          dailyQuests: summary.dailyQuests,
           streak: summary.stats.currentStreak,
           record: summary.stats.bestStreak,
+        });
+      },
+
+      hydrateProgression: async () => {
+        const { user } = get();
+        if (!user) return;
+
+        const progression = await getProgressionSummary(user.id);
+        set({
+          progress: progression.progress,
+          badges: progression.badges,
+          dailyQuests: progression.dailyQuests,
         });
       },
 
@@ -326,6 +439,28 @@ export const useGameStore = create<GameState>()(
         });
       },
 
+      syncProgressionAfterGame: async (result, token) => {
+        const rewardSummary = await processGameProgress(result, token);
+
+        set({
+          lastRewardSummary: rewardSummary,
+          progress: {
+            totalXp: rewardSummary.totalXpAfter,
+            level: rewardSummary.levelAfter,
+            nextLevelXp: rewardSummary.levelAfter * 120,
+            currentLevelProgressPct: Number(
+              (
+                ((rewardSummary.totalXpAfter -
+                  (rewardSummary.levelAfter - 1) * 120) /
+                  120) *
+                100
+              ).toFixed(1),
+            ),
+          },
+          dailyQuests: rewardSummary.questUpdates,
+        });
+      },
+
       syncGameResult: async (result, token) => {
         const { user, pendingResults } = get();
         if (!user) return;
@@ -334,12 +469,16 @@ export const useGameStore = create<GameState>()(
 
         try {
           await recordGameResult(result);
+          await get().syncProgressionAfterGame(result, token);
           const summary = await getProfileSummary(user.id);
 
           set((state) => ({
             isSyncing: false,
             profileStats: summary.stats,
             recentGames: summary.recentGames,
+            progress: summary.progress,
+            badges: summary.badges,
+            dailyQuests: summary.dailyQuests,
             streak: summary.stats.currentStreak,
             record: summary.stats.bestStreak,
             lastSyncedGameToken: token,

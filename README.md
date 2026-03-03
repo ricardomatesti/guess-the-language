@@ -13,8 +13,36 @@ It was built using React, Vite, Tailwind, and **Zustand** for state management.
 This project supports:
 
 - Guest mode (no login required)
-- Email magic-link auth
+- Email/password auth (separate Log in + Sign up pages)
+- Password recovery flow (Forgot Password + Reset Password pages)
+- Google OAuth sign in
 - Cloud-synced game stats and recent games
+- Progression system (XP + levels)
+- Badge collection
+- Daily quests
+
+### Required environment variables
+
+Copy `.env.example` to `.env` and set:
+
+- `VITE_SUPABASE_URL`
+- `VITE_SUPABASE_ANON_KEY`
+
+### Supabase auth configuration
+
+In Supabase Dashboard:
+
+1. `Authentication -> Providers`
+   - Enable `Email`
+   - Enable `Google` (optional but supported by the app)
+2. `Authentication -> Settings`
+   - Require email confirmation for sign up
+3. `Authentication -> URL Configuration`
+   - Site URL: `http://localhost:5173`
+   - Redirect URLs:
+     - `http://localhost:5173/profile`
+     - `http://localhost:5173/reset-password`
+     - `http://localhost:5173/login`
 
 ## Learnings
 

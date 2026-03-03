@@ -9,6 +9,9 @@ export const ProfilePage = () => {
     user,
     authStatus,
     profileStats,
+    progress,
+    badges,
+    dailyQuests,
     recentGames,
     isSyncing,
     syncError,
@@ -44,7 +47,7 @@ export const ProfilePage = () => {
             textColor="#FFFFFF"
             size="md"
             text="Log in"
-            onClick={() => navigate("/auth")}
+            onClick={() => navigate("/login")}
           />
         </div>
       </Layout>
@@ -53,9 +56,9 @@ export const ProfilePage = () => {
 
   return (
     <Layout>
-      <div className="w-full max-w-4xl px-4 mt-10 mb-10">
-        <div className="bg-[#56CBF9]/40 rounded-2xl p-6 shadow-lg">
-          <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
+      <div className="w-full max-w-5xl px-4 mt-10 mb-10">
+        <div className="bg-[#56CBF9]/40 rounded-2xl p-6 shadow-lg space-y-6">
+          <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
               <h1 className="text-3xl font-black text-blue-900">
                 Your Profile
@@ -86,14 +89,112 @@ export const ProfilePage = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
+          <section className="bg-white/55 rounded-xl p-5">
+            <div className="flex items-end justify-between gap-3 mb-3">
+              <h2 className="text-xl font-bold text-blue-900">
+                Level Progress
+              </h2>
+              <div className="text-right">
+                <p className="text-blue-900/60 text-xs uppercase tracking-wider">
+                  Level
+                </p>
+                <p className="text-3xl font-black text-blue-900">
+                  {progress.level}
+                </p>
+              </div>
+            </div>
+            <div className="w-full h-4 bg-white rounded-full overflow-hidden">
+              <div
+                className="h-full bg-gradient-to-r from-[#00b4ff] to-[#1FB6FF]"
+                style={{
+                  width: `${Math.min(progress.currentLevelProgressPct, 100)}%`,
+                }}
+              ></div>
+            </div>
+            <div className="flex justify-between text-xs text-blue-900/70 mt-2">
+              <span>{progress.totalXp} XP</span>
+              <span>Next level at {progress.nextLevelXp} XP</span>
+            </div>
+          </section>
+
+          <section className="bg-white/55 rounded-xl p-5">
+            <h2 className="text-xl font-bold text-blue-900 mb-3">
+              Daily Quests
+            </h2>
+            {dailyQuests.length === 0 ? (
+              <p className="text-blue-900/70">
+                Play a game to generate today's quests.
+              </p>
+            ) : (
+              <div className="grid md:grid-cols-3 gap-3">
+                {dailyQuests.map((quest) => {
+                  const pct =
+                    quest.target > 0
+                      ? (quest.progress / quest.target) * 100
+                      : 0;
+                  return (
+                    <div key={quest.id} className="bg-white/70 rounded-lg p-3">
+                      <p className="font-bold text-blue-900 mb-2">
+                        {quest.title}
+                      </p>
+                      <div className="w-full h-2 bg-blue-100 rounded-full overflow-hidden mb-2">
+                        <div
+                          className={`h-full ${
+                            quest.completed ? "bg-emerald-500" : "bg-blue-500"
+                          }`}
+                          style={{ width: `${Math.min(pct, 100)}%` }}
+                        ></div>
+                      </div>
+                      <p className="text-sm text-blue-900/70">
+                        {quest.progress}/{quest.target}{" "}
+                        {quest.completed ? "- Completed" : ""}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </section>
+
+          <section className="bg-white/55 rounded-xl p-5">
+            <h2 className="text-xl font-bold text-blue-900 mb-3">Badges</h2>
+            {badges.length === 0 ? (
+              <p className="text-blue-900/70">
+                No badges yet. Keep playing to unlock them.
+              </p>
+            ) : (
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                {badges.map((badge) => (
+                  <div
+                    key={badge.id}
+                    className={`rounded-lg p-3 border ${
+                      badge.unlocked
+                        ? "bg-white/80 border-blue-200"
+                        : "bg-white/40 border-blue-100"
+                    }`}
+                  >
+                    <p className="text-xs uppercase tracking-wider text-blue-900/60">
+                      {badge.rarity}
+                    </p>
+                    <p className="font-bold text-blue-900">{badge.title}</p>
+                    <p className="text-xs text-blue-900/70 mt-1">
+                      {badge.description}
+                    </p>
+                    <p className="text-xs mt-2 font-semibold text-blue-900/60">
+                      {badge.unlocked ? "Unlocked" : "Locked"}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </section>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             <StatCard
               label="Games played"
               value={profileStats.gamesPlayed.toString()}
             />
             <StatCard label="Win rate" value={`${profileStats.winRate}%`} />
-            <StatCard label="Wins" value={profileStats.wins.toString()} />
-            <StatCard label="Losses" value={profileStats.losses.toString()} />
             <StatCard
               label="Current streak"
               value={profileStats.currentStreak.toString()}
@@ -101,10 +202,6 @@ export const ProfilePage = () => {
             <StatCard
               label="Best streak"
               value={profileStats.bestStreak.toString()}
-            />
-            <StatCard
-              label="Avg hints used"
-              value={profileStats.avgHintsUsed.toFixed(2)}
             />
           </div>
 
@@ -189,22 +286,8 @@ const StatCard = ({ label, value }: { label: string; value: string }) => {
 };
 
 const Layout = ({ children }: { children: ReactNode | ReactNode[] }) => {
-  const { signOut } = useGameStore();
   return (
     <div className="relative z-1 w-full h-fit flex flex-col justify-start items-center mb-4">
-      <div className="w-full flex justify-end p-2 gap-2">
-        <Button
-          bg="#F7939B"
-          shadow="#f45b69"
-          hover="#FF808B"
-          textColor="#FFFFFF"
-          text="Sign out"
-          size="sm"
-          onClick={() => {
-            void signOut();
-          }}
-        ></Button>
-      </div>
       {children}
     </div>
   );

@@ -1,14 +1,15 @@
-import { useEffect, useState, type ReactNode } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../game/components/shared/Button";
 import { useGameStore } from "../game/store/useGameStore";
-import { isSupabaseEnabled } from "../lib/supabase";
+import { AuthLayout } from "./AuthLayout";
 
-export const AuthPage = () => {
+export const LoginPage = () => {
   const navigate = useNavigate();
-  const { authStatus, signInWithEmail, signInWithGoogle } = useGameStore();
+  const { authStatus, signInWithEmailPassword, signInWithGoogle } =
+    useGameStore();
   const [email, setEmail] = useState("");
-  const [message, setMessage] = useState<string | null>(null);
+  const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -18,34 +19,30 @@ export const AuthPage = () => {
     }
   }, [authStatus, navigate]);
 
-  const handleEmailSignIn = async (e: React.FormEvent) => {
+  const handleEmailLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
-    setMessage(null);
 
-    if (!email.trim()) {
-      setError("Please enter an email.");
+    if (!email.trim() || !password.trim()) {
+      setError("Please enter your email and password.");
       return;
     }
 
     setLoading(true);
     try {
-      await signInWithEmail(email.trim());
-      setMessage("Magic link sent. Check your inbox.");
+      await signInWithEmailPassword(email.trim(), password);
+      navigate("/profile");
     } catch (authError) {
       setError(
-        authError instanceof Error
-          ? authError.message
-          : "Could not send magic link."
+        authError instanceof Error ? authError.message : "Could not log in."
       );
     } finally {
       setLoading(false);
     }
   };
 
-  const handleGoogleSignIn = async () => {
+  const handleGoogleLogin = async () => {
     setError(null);
-    setMessage(null);
     setLoading(true);
 
     try {
@@ -54,23 +51,21 @@ export const AuthPage = () => {
       setError(
         authError instanceof Error
           ? authError.message
-          : "Could not sign in with Google."
+          : "Could not continue with Google."
       );
       setLoading(false);
     }
   };
 
   return (
-    <Layout>
+    <AuthLayout>
       <div className="w-full max-w-lg bg-[#56CBF9]/40 rounded-2xl p-8 shadow-lg mt-12">
-        <h1 className="text-3xl font-black text-blue-900 mb-3">
-          Sign up / Log in
-        </h1>
+        <h1 className="text-3xl font-black text-blue-900 mb-3">Log in</h1>
         <p className="text-blue-900/70 mb-6">
-          Keep your streak synced across devices.
+          Access your synced profile and stats.
         </p>
 
-        <form onSubmit={handleEmailSignIn} className="flex flex-col gap-3 mb-4">
+        <form onSubmit={handleEmailLogin} className="flex flex-col gap-3 mb-4">
           <input
             type="email"
             value={email}
@@ -79,17 +74,32 @@ export const AuthPage = () => {
             className="w-full px-4 py-3 rounded-xl bg-white focus:outline-none"
             disabled={loading}
           />
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Your password"
+            className="w-full px-4 py-3 rounded-xl bg-white focus:outline-none"
+            disabled={loading}
+          />
           <Button
             bg="#1FB6FF"
             shadow="#0676a2"
             hover="#4fc6ff"
             textColor="#FFFFFF"
-            text={loading ? "Sending..." : "Send magic link"}
+            text={loading ? "Logging in..." : "Log in"}
             size="md"
           />
         </form>
 
-        {/* Google Auth Button - not adding it yet
+        <div className="flex justify-end mb-4">
+          <Link
+            className="text-blue-900/70 font-semibold underline"
+            to="/forgot-password"
+          >
+            Forgot password?
+          </Link>
+        </div>
 
         <div className="my-4 text-blue-900/60 text-center font-bold">OR</div>
 
@@ -102,14 +112,19 @@ export const AuthPage = () => {
           size="md"
           tailwindClasses="w-full"
           onClick={() => {
-            void handleGoogleSignIn();
+            void handleGoogleLogin();
           }}
-        />*/}
+        />
 
-        {message && <p className="text-emerald-700 mt-4 text-sm">{message}</p>}
         {error && <p className="text-red-600 mt-4 text-sm">{error}</p>}
 
-        <div className="mt-6 text-center">
+        <div className="mt-6 flex flex-col gap-2 text-center">
+          <Link
+            className="text-blue-900/70 font-semibold underline"
+            to="/signup"
+          >
+            Need an account? Sign up
+          </Link>
           <button
             type="button"
             className="text-blue-900/70 font-semibold underline"
@@ -119,14 +134,6 @@ export const AuthPage = () => {
           </button>
         </div>
       </div>
-    </Layout>
-  );
-};
-
-const Layout = ({ children }: { children: ReactNode | ReactNode[] }) => {
-  return (
-    <div className="relative z-1 w-full h-fit flex flex-col justify-start items-center mb-4">
-      {children}
-    </div>
+    </AuthLayout>
   );
 };

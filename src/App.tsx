@@ -3,8 +3,11 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { Game } from "./game/components/Game";
 import { useIsMobile } from "./game/hooks/useIsMobile";
 import { useGameStore } from "./game/store/useGameStore";
-import { AuthPage } from "./pages/AuthPage";
+import { ForgotPasswordPage } from "./pages/ForgotPasswordPage";
+import { LoginPage } from "./pages/LoginPage";
 import { ProfilePage } from "./pages/ProfilePage";
+import { ResetPasswordPage } from "./pages/ResetPasswordPage";
+import { SignUpPage } from "./pages/SignUpPage";
 import { isSupabaseEnabled, supabase } from "./lib/supabase";
 
 function App() {
@@ -72,7 +75,25 @@ function App() {
     <div className="bg-[#B2E6FF] w-screen min-h-dvh h-fit bg-cover bg-center relative flex flex-col patron">
       <Routes>
         <Route path="/" element={<Game />} />
-        <Route path="/auth" element={<AuthPage />} />
+        <Route
+          path="/login"
+          element={
+            <PublicOnlyRoute authStatus={authStatus}>
+              <LoginPage />
+            </PublicOnlyRoute>
+          }
+        />
+        <Route
+          path="/signup"
+          element={
+            <PublicOnlyRoute authStatus={authStatus}>
+              <SignUpPage />
+            </PublicOnlyRoute>
+          }
+        />
+        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+        <Route path="/reset-password" element={<ResetPasswordPage />} />
+        <Route path="/auth" element={<Navigate to="/login" replace />} />
         <Route
           path="/profile"
           element={
@@ -99,7 +120,25 @@ const ProtectedRoute = ({
   }
 
   if (authStatus !== "authenticated") {
-    return <Navigate to="/auth" replace />;
+    return <Navigate to="/login" replace />;
+  }
+
+  return children;
+};
+
+const PublicOnlyRoute = ({
+  authStatus,
+  children,
+}: {
+  authStatus: "disabled" | "loading" | "authenticated" | "unauthenticated";
+  children: ReactElement;
+}) => {
+  if (authStatus === "loading") {
+    return <div className="w-full text-center mt-10">Loading session...</div>;
+  }
+
+  if (authStatus === "authenticated") {
+    return <Navigate to="/profile" replace />;
   }
 
   return children;

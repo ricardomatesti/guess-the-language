@@ -50,9 +50,9 @@ const GameLayout = ({ children }: { children: ReactNode | ReactNode[] }) => {
             shadow="#f45b69"
             hover="#FF808B"
             textColor="#FFFFFF"
-            text="Log in / Sign up"
+            text="Log in"
             size="sm"
-            onClick={() => navigate("/auth")}
+            onClick={() => navigate("/login")}
           ></Button>
         )}
       </div>
@@ -128,7 +128,7 @@ export const GameNotStarted = () => {
         {/* Título */}
         <h1 className="text-4xl font-black text-blue-900 mb-4 tracking-tight leading-none">
           ARE YOU A <br />
-          <span className="text-blue-600">LANGUAGE LEGEND?</span>
+          <span className="text-blue-600">LANGUAGE EXPERT?</span>
         </h1>
 
         {/* Descripción corta */}
