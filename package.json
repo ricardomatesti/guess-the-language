@@ -10,11 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.98.0",
     "@tailwindcss/vite": "^4.1.18",
     "motion": "^12.31.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.5.0",
+    "react-router-dom": "^7.13.1",
     "react-simple-maps": "^3.0.0",
     "tailwindcss": "^4.1.18",
     "zustand": "^5.0.11"

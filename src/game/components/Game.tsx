@@ -1,5 +1,6 @@
 import { useEffect, type ReactNode } from "react";
 import { useGameStore } from "../store/useGameStore";
+import { useNavigate } from "react-router-dom";
 import LanguageSearch from "./LanguageSearch";
 import { Level1 } from "./Level1";
 import { Level2 } from "./Level2";
@@ -14,17 +15,46 @@ import LoadingScreen from "./LoadingScreen";
 import { ArrowButton } from "./shared/ArrowButton";
 
 const GameLayout = ({ children }: { children: ReactNode | ReactNode[] }) => {
+  const navigate = useNavigate();
+  const { authStatus, user, signOut } = useGameStore();
+
   return (
     <div className="relative z-1 w-full h-fit flex flex-col justify-start items-center mb-4">
-      <div className="w-full flex justify-end p-2">
-        <Button
-          bg="#F7939B"
-          shadow="#f45b69"
-          hover="#FF808B"
-          textColor="#FFFFFF"
-          text="Log in"
-          size="sm"
-        ></Button>
+      <div className="w-full flex justify-end p-2 gap-2">
+        {authStatus === "authenticated" && user ? (
+          <>
+            <Button
+              bg="#1FB6FF"
+              shadow="#0676a2"
+              hover="#4fc6ff"
+              textColor="#FFFFFF"
+              text="Profile"
+              size="sm"
+              onClick={() => navigate("/profile")}
+            ></Button>
+            <Button
+              bg="#F7939B"
+              shadow="#f45b69"
+              hover="#FF808B"
+              textColor="#FFFFFF"
+              text="Sign out"
+              size="sm"
+              onClick={() => {
+                void signOut();
+              }}
+            ></Button>
+          </>
+        ) : (
+          <Button
+            bg="#F7939B"
+            shadow="#f45b69"
+            hover="#FF808B"
+            textColor="#FFFFFF"
+            text="Log in / Sign up"
+            size="sm"
+            onClick={() => navigate("/auth")}
+          ></Button>
+        )}
       </div>
       {children}
     </div>
@@ -32,7 +62,14 @@ const GameLayout = ({ children }: { children: ReactNode | ReactNode[] }) => {
 };
 
 export const Game = () => {
-  const { gameStatus, guessingData, startGame } = useGameStore();
+  const { gameStatus, guessingData, startGame, syncCurrentGameResult } =
+    useGameStore();
+
+  useEffect(() => {
+    if (gameStatus === "won" || gameStatus === "lost") {
+      void syncCurrentGameResult();
+    }
+  }, [gameStatus, syncCurrentGameResult]);
 
   if (gameStatus === "loading") {
     return (

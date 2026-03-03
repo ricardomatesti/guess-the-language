@@ -1,39 +1,108 @@
+import { useEffect, type ReactElement } from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { Game } from "./game/components/Game";
 import { useIsMobile } from "./game/hooks/useIsMobile";
-import { useEffect } from "react";
 import { useGameStore } from "./game/store/useGameStore";
+import { AuthPage } from "./pages/AuthPage";
+import { ProfilePage } from "./pages/ProfilePage";
+import { isSupabaseEnabled, supabase } from "./lib/supabase";
 
 function App() {
   const { isMobile } = useIsMobile({ maxWidth: 900 });
-  const { setMobile } = useGameStore();
+  const {
+    setMobile,
+    setAuthSession,
+    mergeLocalStatsIfNeeded,
+    hydrateCloudStats,
+    retryPendingSync,
+    authStatus,
+  } = useGameStore();
 
   useEffect(() => {
     setMobile(isMobile);
   }, [isMobile, setMobile]);
 
-  return (
-    <>
-      <div className="bg-[#B2E6FF] w-screen min-h-dvh h-fit bg-cover bg-center relative flex flex-col patron">
-        <div
-          className="w-full h-full absolute z-0 hidden"
-          style={{
-            backgroundImage: "url('/world-map-no-bg.png')",
-            backgroundSize: "2000px 800px",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            opacity: "35%",
+  useEffect(() => {
+    if (!isSupabaseEnabled || !supabase) {
+      setAuthSession(null);
+      return;
+    }
 
-            WebkitMaskImage:
-              "radial-gradient(circle, black 2px, transparent 2px)",
-            WebkitMaskSize: "20px 20px",
-            maskImage: "radial-gradient(circle, black 2px, transparent 2px)",
-            maskSize: "20px 20px",
-          }}
-        ></div>
-        <Game></Game>
-      </div>
-    </>
+    let active = true;
+
+    void (async () => {
+      const { data, error } = await supabase.auth.getSession();
+      if (error || !active) return;
+
+      setAuthSession(data.session);
+      if (data.session?.user) {
+        await mergeLocalStatsIfNeeded();
+        await hydrateCloudStats();
+        await retryPendingSync();
+      }
+    })();
+
+    const { data: listener } = supabase.auth.onAuthStateChange(
+      (_event, session) => {
+        if (!active) return;
+
+        setAuthSession(session);
+        if (session?.user) {
+          void (async () => {
+            await mergeLocalStatsIfNeeded();
+            await hydrateCloudStats();
+            await retryPendingSync();
+          })();
+        }
+      }
+    );
+
+    return () => {
+      active = false;
+      listener.subscription.unsubscribe();
+    };
+  }, [
+    setAuthSession,
+    mergeLocalStatsIfNeeded,
+    hydrateCloudStats,
+    retryPendingSync,
+  ]);
+
+  return (
+    <div className="bg-[#B2E6FF] w-screen min-h-dvh h-fit bg-cover bg-center relative flex flex-col patron">
+      <Routes>
+        <Route path="/" element={<Game />} />
+        <Route path="/auth" element={<AuthPage />} />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute authStatus={authStatus}>
+              <ProfilePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </div>
   );
 }
+
+const ProtectedRoute = ({
+  authStatus,
+  children,
+}: {
+  authStatus: "disabled" | "loading" | "authenticated" | "unauthenticated";
+  children: ReactElement;
+}) => {
+  if (authStatus === "loading") {
+    return <div className="w-full text-center mt-10">Loading session...</div>;
+  }
+
+  if (authStatus !== "authenticated") {
+    return <Navigate to="/auth" replace />;
+  }
+
+  return children;
+};
 
 export default App;
