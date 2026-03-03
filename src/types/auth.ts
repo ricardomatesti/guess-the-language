@@ -90,14 +90,28 @@ export type DailyQuest = {
   completedAt: string | null;
 };
 
+export type QuestRewardUpdate = {
+  id: string;
+  title: string;
+  progressBefore: number;
+  progressAfter: number;
+  target: number;
+  completed: boolean;
+  completedAt: string | null;
+  completedNow: boolean;
+  xpReward: number;
+};
+
 export type GameRewardSummary = {
-  xpGained: number;
+  xpBase: number;
+  xpQuestBonus: number;
+  xpTotal: number;
   levelBefore: number;
   levelAfter: number;
   totalXpBefore: number;
   totalXpAfter: number;
   unlockedBadges: UserBadge[];
-  questUpdates: DailyQuest[];
+  questUpdates: QuestRewardUpdate[];
 };
 
 export type ProfileSummary = {

@@ -5,6 +5,7 @@ import {
   type GameResult,
   type GameResultInput,
   type GameRewardSummary,
+  type QuestRewardUpdate,
   type PlayerProgress,
   type PlayerStats,
   type ProfileSummary,
@@ -351,13 +352,30 @@ export const processGameProgress = async (
   );
 
   return {
-    xpGained: data?.xpGained ?? 0,
+    xpBase: data?.xpBase ?? data?.xpGained ?? 0,
+    xpQuestBonus: data?.xpQuestBonus ?? 0,
+    xpTotal: data?.xpTotal ?? data?.xpGained ?? 0,
     levelBefore: data?.levelBefore ?? 1,
     levelAfter: data?.levelAfter ?? 1,
     totalXpBefore: data?.totalXpBefore ?? 0,
     totalXpAfter: data?.totalXpAfter ?? 0,
     unlockedBadges,
-    questUpdates: (data?.questUpdates ?? []) as DailyQuest[],
+    questUpdates: ((data?.questUpdates ?? []) as QuestRewardUpdate[]).map(
+      (quest) => ({
+        id: quest.id,
+        title: quest.title,
+        progressBefore: quest.progressBefore ?? 0,
+        progressAfter: quest.progressAfter ?? quest.progressBefore ?? 0,
+        target: quest.target ?? 0,
+        completed:
+          typeof quest.completed === "boolean"
+            ? quest.completed
+            : Boolean(quest.completedAt),
+        completedAt: quest.completedAt ?? null,
+        completedNow: Boolean(quest.completedNow),
+        xpReward: quest.xpReward ?? 0,
+      }),
+    ),
   };
 };
 

@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "./shared/Button";
 import { useGameStore } from "../store/useGameStore";
+import { RewardSequence } from "./rewards/RewardSequence";
 
 export const GameOver = ({
   status,
@@ -31,7 +32,7 @@ export const GameOver = ({
     return (
       <div className="flex flex-col items-center justify-center min-h-[500px] w-full max-w-lg mx-auto p-6 animate-in zoom-in duration-500">
         <div className="w-full p-10 rounded-2xl backdrop-blur-[1px] border-0 flex flex-col items-center text-center shadow-2xl bg-[#56CBF9]/40 border-emerald-400/50 shadow-emerald-500/20">
-          <div className="w-28 h-28 rounded-full flex items-center justify-center mb-8 border-8 border-white/30 shadow-lg text-6xl animate-bounce bg-emerald-500 shadow-[0_8px_0_#059669]">
+          <div className="w-28 h-28 rounded-full flex items-center justify-center border-8 border-white/30 shadow-lg text-6xl animate-bounce bg-emerald-500 shadow-[0_8px_0_#059669]">
             🏆
           </div>
 
@@ -43,16 +44,16 @@ export const GameOver = ({
             You have mastered the language
           </p>
 
-          <div className="w-full bg-white/40 rounded-3xl p-6 mb-8 border-white/20 shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)]">
+          <div className="w-full bg-white/50 rounded-3xl p-6 mb-6 border-white/20 shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)]">
             <div className="text-4xl font-black text-green-600 tracking-widest uppercase">
               {correctLanguage}
             </div>
           </div>
 
-          {lastRewardSummary && <RewardSummary />}
+          {lastRewardSummary && <RewardSequence summary={lastRewardSummary} />}
 
-          <div className="grid grid-cols-2 gap-4 w-full mb-10">
-            <div className="bg-white/40 p-4 rounded-2xl shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)]">
+          <div className="grid grid-cols-2 gap-4 w-full mb-6">
+            <div className="bg-white/50 p-4 rounded-2xl shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)]">
               <span className="block text-[10px] font-black text-blue-900/40 uppercase tracking-widest">
                 Hints Used
               </span>
@@ -64,11 +65,13 @@ export const GameOver = ({
                 <span className="text-2xl font-black text-blue-900/60">/5</span>
               </div>
             </div>
-            <div className="bg-white/40 p-4 rounded-2xl shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)]">
+            <div className="bg-white/50 p-4 rounded-2xl shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)]">
               <span className="block text-[10px] font-black text-blue-900/40 uppercase tracking-widest">
                 Current Streak
               </span>
-              <span className="text-2xl font-black text-blue-900">{streak} 🔥</span>
+              <span className="text-2xl font-black text-blue-900">
+                {streak} 🔥
+              </span>
             </div>
           </div>
 
@@ -102,7 +105,7 @@ export const GameOver = ({
   return (
     <div className="flex flex-col items-center justify-center min-h-[550px] w-full max-w-lg mx-auto p-6 animate-in zoom-in duration-500">
       <div className="w-full p-10 rounded-2xl backdrop-blur-[1px] border-0 flex flex-col items-center text-center shadow-2xl bg-[#56CBF9]/40 shadow-lg">
-        <div className="w-24 h-24 rounded-full flex items-center justify-center mb-6 border-8 border-white/20 animate-bounce shadow-lg text-5xl bg-[#f7939b] shadow-[0_6px_0_#b91c1c]">
+        <div className="w-24 h-24 rounded-full flex items-center justify-center border-8 border-white/20 animate-bounce shadow-lg text-5xl bg-[#f7939b] shadow-[0_6px_0_#b91c1c]">
           🌍
         </div>
 
@@ -114,7 +117,7 @@ export const GameOver = ({
           You've run out of hints
         </p>
 
-        <div className="w-full bg-white/40 rounded-3xl p-6 mb-8 border-white/20 shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)]">
+        <div className="w-full bg-white/50 rounded-3xl p-6 mb-6  shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)]">
           <span className="block text-[10px] font-black text-blue-900/40 uppercase tracking-[0.2em] mb-2">
             The language was...
           </span>
@@ -123,16 +126,18 @@ export const GameOver = ({
           </div>
         </div>
 
-        {lastRewardSummary && <RewardSummary />}
+        {lastRewardSummary && <RewardSequence summary={lastRewardSummary} />}
 
-        <div className="grid grid-cols-2 gap-4 w-full mb-8">
-          <div className="bg-white/40 p-4 rounded-2xl shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)]">
+        <div className="grid grid-cols-2 gap-4 w-full mb-6">
+          <div className="bg-white/50 p-4 rounded-2xl shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)]">
             <span className="block text-[10px] font-black text-blue-900/40 uppercase tracking-widest mb-1">
               High Score
             </span>
-            <span className="text-xl font-black text-blue-900">{record} 🏆</span>
+            <span className="text-xl font-black text-blue-900">
+              {record} 🏆
+            </span>
           </div>
-          <div className="bg-white/40 p-4 rounded-2xl shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)]">
+          <div className="bg-white/50 p-4 rounded-2xl shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)]">
             <span className="block text-[10px] font-black text-blue-900/40 uppercase tracking-widest mb-1">
               Tries
             </span>
@@ -163,40 +168,6 @@ export const GameOver = ({
           />
         </div>
       </div>
-    </div>
-  );
-};
-
-const RewardSummary = () => {
-  const { lastRewardSummary } = useGameStore();
-
-  if (!lastRewardSummary) return null;
-
-  return (
-    <div className="w-full bg-white/60 rounded-2xl p-4 mb-6 border border-blue-200 text-left">
-      <p className="text-xs font-black text-blue-900/50 uppercase tracking-widest mb-2">
-        Rewards
-      </p>
-      <p className="text-blue-900 font-bold mb-1">+{lastRewardSummary.xpGained} XP</p>
-      <p className="text-blue-900/70 text-sm mb-2">
-        Level {lastRewardSummary.levelBefore} → {lastRewardSummary.levelAfter}
-      </p>
-
-      {lastRewardSummary.unlockedBadges.length > 0 && (
-        <p className="text-emerald-700 text-sm font-semibold mb-1">
-          New badges: {lastRewardSummary.unlockedBadges.map((b) => b.title).join(", ")}
-        </p>
-      )}
-
-      {lastRewardSummary.questUpdates.length > 0 && (
-        <div className="text-xs text-blue-900/70">
-          {lastRewardSummary.questUpdates.slice(0, 2).map((q) => (
-            <p key={q.id}>
-              {q.title}: {q.progress}/{q.target}
-            </p>
-          ))}
-        </div>
-      )}
     </div>
   );
 };

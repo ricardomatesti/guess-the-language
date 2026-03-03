@@ -457,7 +457,14 @@ export const useGameStore = create<GameState>()(
               ).toFixed(1),
             ),
           },
-          dailyQuests: rewardSummary.questUpdates,
+          dailyQuests: rewardSummary.questUpdates.map((quest) => ({
+            id: quest.id,
+            title: quest.title,
+            progress: quest.progressAfter,
+            target: quest.target,
+            completed: quest.completed,
+            completedAt: quest.completedAt,
+          })),
         });
       },
 
