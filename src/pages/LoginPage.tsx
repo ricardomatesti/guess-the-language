@@ -6,8 +6,7 @@ import { AuthLayout } from "./AuthLayout";
 
 export const LoginPage = () => {
   const navigate = useNavigate();
-  const { authStatus, signInWithEmailPassword, signInWithGoogle } =
-    useGameStore();
+  const { authStatus, signInWithEmailPassword } = useGameStore();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -41,6 +40,7 @@ export const LoginPage = () => {
     }
   };
 
+  /*
   const handleGoogleLogin = async () => {
     setError(null);
     setLoading(true);
@@ -56,6 +56,7 @@ export const LoginPage = () => {
       setLoading(false);
     }
   };
+*/
 
   return (
     <AuthLayout>
