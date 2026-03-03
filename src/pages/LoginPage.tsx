@@ -101,7 +101,8 @@ export const LoginPage = () => {
           </Link>
         </div>
 
-        <div className="my-4 text-blue-900/60 text-center font-bold">OR</div>
+        {/*  not added google auth config yet
+       <div className="my-4 text-blue-900/60 text-center font-bold">OR</div>
 
         <Button
           bg="#FFFFFF"
@@ -114,7 +115,7 @@ export const LoginPage = () => {
           onClick={() => {
             void handleGoogleLogin();
           }}
-        />
+        />*/}
 
         {error && <p className="text-red-600 mt-4 text-sm">{error}</p>}
 
