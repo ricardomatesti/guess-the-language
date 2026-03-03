@@ -28,10 +28,10 @@ export const Level1 = () => {
 
   return (
     <div className="w-full flex flex-row justify-center">
-      <div className="h-fit flex flex-col gap-10 justify-center items-center">
+      <div className="h-fit flex flex-col gap-8 justify-center items-center">
         <span className="bg-[#56CBF9] w-fit text-2xl">{HEADER_TEXT}</span>
 
-        <div className="h-fit w-130 -mb-20 -mt-25">
+        <div className="h-fit w-130 -mb-20 -mt-23">
           <MapChart continents={continents} />
         </div>
         <SpeakersNumber population={population}></SpeakersNumber>

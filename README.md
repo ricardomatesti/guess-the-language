@@ -2,7 +2,7 @@
 
 ## Welcome! 👋
 
-[![Video Preview](https://cdn.loom.com/sessions/thumbnails/590e526e390a477284a00d720bde0a30-3283025b8dff14ec-full-play.gif)](https://www.loom.com/share/590e526e390a477284a00d720bde0a30)
+[![Video Preview](https://cdn.loom.com/sessions/thumbnails/f72d3f068be84435ad419a1a46112ee6-01a1b572c44ee982-full-play.gif)](https://www.loom.com/share/f72d3f068be84435ad419a1a46112ee6)
 
 This is a game where you have to guess the language. Will give you up to 5 hints! You can check the [live site right here](https://guess-the-language-taupe.vercel.app/).
 
